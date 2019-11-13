@@ -11,5 +11,5 @@ package oop19_ca2_aaron_reihill;
  */
 public enum Water
 {
-    FRESHWATER, SEAWATER,BRACKISH
+    FRESHWATER, SEAWATER,BRACKISH,UNKOWN
 }
