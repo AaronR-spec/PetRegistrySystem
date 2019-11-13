@@ -33,7 +33,10 @@ public class Mammal extends Pet
     {
         this.neutered = neutered;
     }
-
+    public static Pet createMammal(String type, String name, String breed, int age, String colour, String gender, String regDate,boolean neutered)
+    {
+        return new Mammal(type,name,breed,age,colour,gender,regDate,neutered);
+    }
     @Override
     public String toString()
     {
