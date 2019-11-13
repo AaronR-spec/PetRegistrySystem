@@ -185,10 +185,10 @@ public class Pet
         this.ownerID = ownerID;
     }
 
-    public Pet createPet(String type, String name, String breed, int age, String colour, String gender, String regDate)
+    public Pet createPet(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate)
     {
         this.petID++;
-        return new Pet(type, name, breed, age, colour, gender, regDate);
+        return new Pet(owner,type, name, breed, age, colour, gender, regDate);
     }
 
     public void displayAllPets(List<Pet> pets)
