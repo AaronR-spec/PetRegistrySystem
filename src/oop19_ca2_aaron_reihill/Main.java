@@ -45,6 +45,7 @@ public class Main
         tim.setPets(pets2);
         
         displayList(bob);
+        System.out.println("");
         displayList(tim);
 
     }
