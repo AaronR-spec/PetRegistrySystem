@@ -122,7 +122,10 @@ public class Pet {
     public static void setOwnerID(int ownerID) {
         Pet.ownerID = ownerID;
     }
-
+    public static Pet createPet(String type, String name, String breed, int age, String colour, String gender, String regDate)
+    {
+        return new Pet(type,name,breed,age,colour,gender,regDate);
+    }
     @Override
     public String toString() {
         return getClass().getSimpleName()+ "{" + "type=" + type + ", name=" + name + ", breed=" + breed + ", age=" + age + ", colour=" + colour + ", gender=" + gender + ", regDate=" + regDate + '}';
