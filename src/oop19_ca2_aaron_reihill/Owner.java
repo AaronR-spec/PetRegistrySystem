@@ -6,6 +6,7 @@
 package oop19_ca2_aaron_reihill;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,43 +14,62 @@ import java.util.ArrayList;
  */
 public class Owner {
     private String name;
-    private static int id;
+    private static int index = 0;
+    private int id;
     private String email;
     private String telephone;
     private String address;
-    private ArrayList<Pet> pets;
+    private List<Pet> pets = new ArrayList<>();
 
-    public Owner(String name,ArrayList<Pet> pets) 
+    public Owner(String name)
+    {
+        this.name = name;
+        this.id = index++;
+    }
+
+    public Owner(String name,List<Pet> pets) 
     {
         this.name = name;
         this.pets = pets;
+        this.id = index++;
     }
 
-    public Owner(String name, String email, String telephone, String address,ArrayList<Pet> pets) {
+    public Owner(String name, String email, String telephone, String address,List<Pet> pets) {
         this.name = name;
         this.email = email;
         this.telephone = telephone;
         this.address = address;
         this.pets = pets;
+       this.id = index++;
     }
 
     public Owner(String name, String email, String address) {
         this.name = name;
         this.email = email;
         this.address = address;
-        this.pets = new ArrayList<>();
+        this.id = index++;
     }
 
     public String getName() {
         return name;
     }
 
-    public static int getId() {
+    public static int getIndex()
+    {
+        return index;
+    }
+
+    public int getId() {
         return id;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public List<Pet> getPets()
+    {
+        return pets;
     }
 
     public String getTelephone() {
@@ -64,8 +84,13 @@ public class Owner {
         this.name = name;
     }
 
-    public static void setId(int id) {
-        Owner.id = id;
+    public static void setIndex(int index)
+    {
+        Owner.index = index;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setEmail(String email) {
@@ -76,8 +101,24 @@ public class Owner {
         this.telephone = telephone;
     }
 
+    public void setPets(List<Pet> pets)
+    {
+        this.pets = pets;
+    }
+
     public void setAddress(String address) {
         this.address = address;
+    }
+    public void displayAllPets()
+    {
+        Pet p = new Pet();
+            p.displayAllPets(this.pets);
+        
+    }
+    @Override
+    public String toString()
+    {
+        return getClass().getSimpleName()+"{" + "name=" + name + ", email=" + email + ", telephone=" + telephone + ", address=" + address + ", pets=" + pets + '}';
     }
     
     
