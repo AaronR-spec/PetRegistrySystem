@@ -15,7 +15,7 @@ public class Pet {
     private String breed;
     private int age;
     private String colour;
-    private String gender;
+    private Gender gender;
     private String regDate;
     private static int petID;
     private static int ownerID;
@@ -27,7 +27,7 @@ public class Pet {
         this.breed = "";
         this.age = 0;
         this.colour = "";
-        this.gender = "";
+        this.gender = gender.UNKOWN;
         this.regDate = "";
     }
 
@@ -37,6 +37,7 @@ public class Pet {
         this.age = age;
         this.colour = colour;
         this.regDate = regDate;
+        this.gender = gender.UNKOWN;
     }
 
     
@@ -47,7 +48,7 @@ public class Pet {
         this.breed = breed;
         this.age = age;
         this.colour = colour;
-        this.gender = gender;
+        findGender(gender);
         this.regDate = regDate;
     }
 
@@ -71,7 +72,8 @@ public class Pet {
         return colour;
     }
 
-    public String getGender() {
+    public Gender getGender()
+    {
         return gender;
     }
 
@@ -107,9 +109,11 @@ public class Pet {
         this.colour = colour;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender)
+    {
         this.gender = gender;
     }
+
 
     public void setRegDate(String regDate) {
         this.regDate = regDate;
@@ -125,6 +129,21 @@ public class Pet {
     public static Pet createPet(String type, String name, String breed, int age, String colour, String gender, String regDate)
     {
         return new Pet(type,name,breed,age,colour,gender,regDate);
+    }
+    private void findGender(String g)
+    {
+        if(g.equalsIgnoreCase("male"))
+        {
+            this.gender = this.gender.MALE;
+        }
+        else if(g.equalsIgnoreCase("female"))
+        {
+            this.gender = this.gender.FEMALE;
+        }
+        else
+        {
+            this.gender = this.gender.UNKOWN;
+        }
     }
     @Override
     public String toString() {
