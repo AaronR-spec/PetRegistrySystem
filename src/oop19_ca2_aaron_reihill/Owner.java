@@ -109,6 +109,11 @@ public class Owner {
     public void setAddress(String address) {
         this.address = address;
     }
+    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate)
+    {
+        Pet p = new Pet();
+        this.pets.add(p.createPet(this.id,type, name, breed, age, colour, gender, regDate));
+    }
     public void displayAllPets()
     {
         Pet p = new Pet();
