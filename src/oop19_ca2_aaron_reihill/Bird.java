@@ -19,9 +19,21 @@ public class Bird extends Pet
         this.wingspan = wingspan;
         this.fly = fly;
     }
+        public Bird(int owner,String type, String breed, int age, String colour, String regDate,int wingspan, boolean fly)
+    {
+        super(owner,type,breed,age,colour,regDate);
+        this.wingspan = wingspan;
+        this.fly = fly;
+    }
     public Bird(String type, String name, String breed, int age, String colour, String gender, String regDate,int wingspan, boolean fly)
     {
         super(type,name,breed,age,colour,gender,regDate);
+        this.wingspan = wingspan;
+        this.fly = fly;
+    }
+     public Bird(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,int wingspan, boolean fly)
+    {
+        super(owner,type,name,breed,age,colour,gender,regDate);
         this.wingspan = wingspan;
         this.fly = fly;
     }
