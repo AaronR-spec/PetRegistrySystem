@@ -168,7 +168,7 @@ public class Owner
         int petIndex = -1;
         boolean found = false;
         int i = 0;
-        while (!found || i < this.pets.size())
+        while (!found && i < this.pets.size())
         {
             {
                 if (this.pets.get(i).getPetID() == id)
@@ -179,7 +179,7 @@ public class Owner
                 i++;
             }
         }
-        return index;
+        return petIndex;
     }
 
     @Override
