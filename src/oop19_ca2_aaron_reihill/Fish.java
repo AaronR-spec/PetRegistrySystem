@@ -13,14 +13,24 @@ public class Fish extends Pet
 {
     private Water water;
     
-    public Fish(String type, String breed, int age, String colour, String regDate,int wingspan, boolean fly)
+    public Fish(String type, String breed, int age, String colour, String regDate)
     {
         super(type,breed,age,colour,regDate);
+        this.water = this.water.UNKOWN;
+    }
+        public Fish(int owner,String type, String breed, int age, String colour, String regDate)
+    {
+        super(owner,type,breed,age,colour,regDate);
         this.water = this.water.UNKOWN;
     }
     public Fish(String type, String name, String breed, int age, String colour, String gender, String regDate,String water)
     {
         super(type,name,breed,age,colour,gender,regDate);
+        findWater(water);
+    }
+    public Fish(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,String water)
+    {
+        super(owner,type,name,breed,age,colour,gender,regDate);
         findWater(water);
     }
 
