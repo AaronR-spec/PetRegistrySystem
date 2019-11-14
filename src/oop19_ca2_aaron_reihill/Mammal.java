@@ -18,9 +18,19 @@ public class Mammal extends Pet
         super(type,breed,age,colour,regDate);
         this.neutered = neutered;
     }
+        public Mammal(int owner,String type, String breed, int age, String colour, String regDate,boolean neutered)
+    {
+        super(owner,type,breed,age,colour,regDate);
+        this.neutered = neutered;
+    }
         public Mammal(String type, String name, String breed, int age, String colour, String gender, String regDate,boolean neutered)
     {
         super(type,name,breed,age,colour,gender,regDate);
+        this.neutered = neutered;
+    }
+     public Mammal(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,boolean neutered)
+    {
+        super(owner,type,name,breed,age,colour,gender,regDate);
         this.neutered = neutered;
     }
 
