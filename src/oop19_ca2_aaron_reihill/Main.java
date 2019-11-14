@@ -32,9 +32,7 @@ public class Main
         bob.setPets(pets);
         
         displayList(bob);
-        System.out.println("\n");
-        bob.removePet(p4);
-        bob.removePet(3);
+        bob.addPet("Cat", "sarah", "Poddle", 4, "Blue", "female", "20-20-10",2,false);
         displayList(bob);
 
     }
