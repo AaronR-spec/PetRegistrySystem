@@ -205,22 +205,22 @@ public class Pet
 
     public Pet createPet(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate)
     {
-        this.petID++;
+        this.index--;
         return new Pet(owner,type, name, breed, age, colour, gender, regDate);
     }
     public Pet createPet(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,String water)
     {
-        this.petID++;
+        this.index--;
         return new Fish(owner,type, name, breed, age, colour, gender, regDate,water);
     }
     public Pet createPet(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,boolean neutered)
     {
-        this.petID++;
+        this.index--;
         return new Mammal(owner,type, name, breed, age, colour, gender, regDate,neutered);
     }
     public Pet createPet(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,int wingspan,boolean fly)
     {
-        this.petID++;
+        this.index--;
         return new Bird(owner,type, name, breed, age, colour, gender, regDate,wingspan,fly);
     }
     public void displayAllPets(List<Pet> pets)
