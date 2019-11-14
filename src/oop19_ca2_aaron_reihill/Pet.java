@@ -119,6 +119,24 @@ public class Pet
     {
         return gender;
     }
+    public String getGenderString()
+    {
+        String gender = "";
+        if(this.gender == this.gender.MALE)
+        {
+            gender = "Male";
+        }
+        else if(this.gender == this.gender.FEMALE)
+        {
+            gender = "Female";
+        }
+        else
+        {
+            gender = "Unkown";
+        }
+        return gender;
+        
+    }
 
     public String getRegDate()
     {
@@ -190,7 +208,21 @@ public class Pet
         this.petID++;
         return new Pet(owner,type, name, breed, age, colour, gender, regDate);
     }
-
+    public Pet createPet(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,String water)
+    {
+        this.petID++;
+        return new Fish(owner,type, name, breed, age, colour, gender, regDate,water);
+    }
+    public Pet createPet(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,boolean neutered)
+    {
+        this.petID++;
+        return new Mammal(owner,type, name, breed, age, colour, gender, regDate,neutered);
+    }
+    public Pet createPet(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,int wingspan,boolean fly)
+    {
+        this.petID++;
+        return new Bird(owner,type, name, breed, age, colour, gender, regDate,wingspan,fly);
+    }
     public void displayAllPets(List<Pet> pets)
     {
         for (Pet p : pets)
