@@ -19,7 +19,7 @@ public class Main
     {
         Owner bob = new Owner("bob");
 
-        Mammal p1 = new Mammal(bob.getId(), "Dog", "kevin", "Poddle", 2, "Black", "male", "4-22-10",true);
+        Pet p1 = new Mammal(bob.getId(), "Dog", "kevin", "Poddle", 2, "Black", "male", "4-22-10",true);
         Pet p2 = new Bird(bob.getId(), "Cat", "sarah", "Poddle", 4, "Blue", "female", "20-20-10",2,false);
         Pet p3 = new Fish(bob.getId(), "Fish", "Kevin","Poddle", 1, "Black","male", "21-20-10","freshwater");
         Pet p4 = new Pet(bob.getId(), "GoldFish", "Poddle", 6, "Yellow", "20-20-10");
@@ -33,7 +33,8 @@ public class Main
         
         displayList(bob);
         System.out.println("\n");
-        bob.removePet(p1);
+        bob.removePet(p4);
+        bob.removePet(3);
         displayList(bob);
 
     }
