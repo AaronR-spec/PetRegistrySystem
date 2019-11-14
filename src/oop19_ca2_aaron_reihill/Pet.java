@@ -195,7 +195,28 @@ public class Pet
     {
         for (Pet p : pets)
         {
-            System.out.println("PetID: " + p.getPetID()+ ", OwnerID: " + p.getOwnerID() + ", Type: " + p.getType() + ", Name: " + p.getName() + ", Age:" + p.getAge() + ", Breed: " + p.getBreed() + ", Colour:" + p.getColour() + ", Gender: " + p.getGender() + ", DateReg: " + p.getRegDate());
+                        
+            if (p instanceof Mammal)
+            {
+                Mammal m = (Mammal) p;
+                System.out.println("(Mammal) "+ "PetID:"+ m.getPetID()+ ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age:" + m.getAge() + ", Breed: " + m.getBreed() + ", Colour:" + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate()+", Neutered: " + m.isNeutered());
+
+            }
+            else if (p instanceof Bird)
+            {
+                Bird b = (Bird) p;
+                System.out.println("(Bird) "+ "PetID:"+ b.getPetID()+ ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age:" + b.getAge() + ", Breed: " + b.getBreed() + ", Colour:" + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate()+", Wingspan: " +b.getWingspan()+"ft"+", Fly: " + b.isFly());
+
+            }
+            else if (p instanceof Fish)
+            {
+                Fish f = (Fish) p;
+                System.out.println("(Fish) "+ "PetID:"+ f.getPetID()+ ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age:" + f.getAge() + ", Breed: " + f.getBreed() + ", Colour:" + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate()+", Water Type: "+ f.getWater());
+
+            }
+            else{
+            System.out.println("("+getClass().getSimpleName() +") PetID: " + p.getPetID()+ ", OwnerID: " + p.getOwnerID() + ", Type: " + p.getType() + ", Name: " + p.getName() + ", Age:" + p.getAge() + ", Breed: " + p.getBreed() + ", Colour:" + p.getColour() + ", Gender: " + p.getGender() + ", DateReg: " + p.getRegDate());
+        }
         }
     }
 
