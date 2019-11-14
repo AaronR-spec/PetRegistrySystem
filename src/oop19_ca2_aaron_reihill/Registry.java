@@ -6,6 +6,7 @@
 package oop19_ca2_aaron_reihill;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,5 +25,24 @@ public class Registry
     {
         this.owners = owners;
     }
-    
+    public void addOwner(String name)
+    {
+        owners.add(new Owner(name));
+    }
+    public void addOwner(String name, String email, String telephone, String address, List<Pet> pets)
+    {
+        owners.add(new Owner(name,email,telephone,address,pets));
+    }
+    public void addOwner(String name, String email, String address)
+    {
+        owners.add(new Owner(name,email,address));
+    }
+        public void addOwner(String name, int id, String email, String telephone, String address)
+    {
+        owners.add(new Owner(name,id,email,telephone,address));
+    }
+    public void addOwner(String name, List<Pet> pets)
+    {
+        owners.add(new Owner(name,pets));
+    }
 }
