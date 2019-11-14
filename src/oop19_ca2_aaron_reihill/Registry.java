@@ -45,4 +45,43 @@ public class Registry
     {
         owners.add(new Owner(name,pets));
     }
+    public void removeOwner(Owner o)
+    {
+        int ownerIndex = findOwner(o.getId());
+        if(ownerIndex!= -1)
+        {
+        this.owners.remove(o);
+        }
+        else
+        {
+            System.out.println("Owner Not Found");
+        }
+    }
+    public void removeOwner(int id)
+    {
+        int ownerIndex = findOwner(id);
+        if(ownerIndex != -1)
+        {
+            this.owners.remove(ownerIndex);
+        }
+        else
+        {
+            System.out.println("Owner Not Found");
+        }
+    }
+    private int findOwner(int id)
+    {
+        int index = -1;
+        int i = 0;
+        boolean found =false;
+        while(!found&& i<this.owners.size())
+        {
+            if(this.owners.get(i).getId()== id)
+            {
+               index=i;
+               found = true;
+            }
+        }
+        return index;
+    }
 }
