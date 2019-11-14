@@ -49,6 +49,15 @@ public class Owner {
         this.id = index++;
     }
 
+    public Owner(String name, int id, String email, String telephone, String address) {
+        this.name = name;
+        this.id = index++;
+        this.email = email;
+        this.telephone = telephone;
+        this.address = address;
+    }
+    
+
     public String getName() {
         return name;
     }
@@ -171,8 +180,7 @@ public class Owner {
         Pet p = new Pet();
         p.displayAllPets(this.pets);
 
-    }
-
+        }
     private int findPet(int id) {
         int petIndex = -1;
         boolean found = false;
