@@ -7,6 +7,7 @@ package oop19_ca2_aaron_reihill;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -239,7 +240,7 @@ public class Owner
         this.index--;
         for (Owner o : owners)
         {
-            System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail()+ "\nTelephone: " + o.getTelephone()+ "\nAddress: " + o.getAddress()+"\nPets Registered: " +o.getPets().size());
+            System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
         }
     }
 
@@ -262,13 +263,14 @@ public class Owner
 
     private int CheckPetDup(String type, String name, String breed, int age, String colour, String gender)
     {
+        Pet pet = new Pet();
         int petIndex = -1;
         boolean found = false;
         int i = 0;
         while (!found && i < this.pets.size())
         {
             Pet p = this.pets.get(i);
-            if (p.getType().equalsIgnoreCase(type) && p.getName().equalsIgnoreCase(name) && p.getBreed().equalsIgnoreCase(breed) && p.getAge() == age && p.getColour().equalsIgnoreCase(colour) && p.getGenderString().equalsIgnoreCase(gender))
+            if (!p.equals(pet))
             {
                 petIndex = i;
                 found = true;
@@ -276,6 +278,47 @@ public class Owner
             i++;
         }
         return petIndex;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.name);
+        hash = 53 * hash + this.id;
+        hash = 53 * hash + Objects.hashCode(this.email);
+        hash = 53 * hash + Objects.hashCode(this.telephone);
+        hash = 53 * hash + Objects.hashCode(this.address);
+        hash = 53 * hash + Objects.hashCode(this.pets);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        this.index--;
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (getClass() != obj.getClass())
+        {
+            return false;
+        }
+        final Owner other = (Owner) obj;
+        if (!Objects.equals(this.name, other.name))
+        {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address))
+        {
+            return false;
+        }
+        return true;
     }
 
     @Override
