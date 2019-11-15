@@ -43,7 +43,7 @@ public class Registry
 
     public void addOwner(Owner o)
     {
-        if (CheckOwnerDup(o.getName(), o.getAddress()) ==  -1)
+        if (CheckOwnerDup(o.getName(), o.getAddress()) == -1)
         {
             this.owners.add(o);
         }
@@ -55,7 +55,7 @@ public class Registry
 
     public void addOwner(String name, String email, String telephone, String address, List<Pet> pets)
     {
-        if (CheckOwnerDup(name, address) ==  -1)
+        if (CheckOwnerDup(name, address) == -1)
         {
             this.owners.add(new Owner(name, email, telephone, address, pets));
         }
@@ -67,7 +67,7 @@ public class Registry
 
     public void addOwner(String name, String email, String address)
     {
-        if (CheckOwnerDup(name, address) ==  -1)
+        if (CheckOwnerDup(name, address) == -1)
         {
             this.owners.add(new Owner(name, email, address));
         }
@@ -79,7 +79,7 @@ public class Registry
 
     public void addOwner(String name, String email, String telephone, String address)
     {
-        if (CheckOwnerDup(name, address) ==  -1)
+        if (CheckOwnerDup(name, address) == -1)
         {
             this.owners.add(new Owner(name, email, telephone, address));
         }
@@ -117,6 +117,12 @@ public class Registry
         {
             System.out.println("Owner Not Found");
         }
+    }
+
+    public void displayOwners()
+    {
+        Owner o = new Owner();
+        o.displayAllOwners(owners);
     }
 
     private int findOwner(int id)
