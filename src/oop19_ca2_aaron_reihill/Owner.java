@@ -12,7 +12,8 @@ import java.util.List;
  *
  * @author D00222467
  */
-public class Owner {
+public class Owner
+{
 
     private String name;
     private static int index = 0;
@@ -22,18 +23,25 @@ public class Owner {
     private String address;
     private List<Pet> pets = new ArrayList<>();
 
-    public Owner(String name) {
+    public Owner()
+    {
+    }
+
+    public Owner(String name)
+    {
         this.name = name;
         this.id = index++;
     }
 
-    public Owner(String name, List<Pet> pets) {
+    public Owner(String name, List<Pet> pets)
+    {
         this.name = name;
         this.pets = pets;
         this.id = index++;
     }
 
-    public Owner(String name, String email, String telephone, String address, List<Pet> pets) {
+    public Owner(String name, String email, String telephone, String address, List<Pet> pets)
+    {
         this.name = name;
         this.email = email;
         this.telephone = telephone;
@@ -42,151 +50,208 @@ public class Owner {
         this.id = index++;
     }
 
-    public Owner(String name, String email, String address) {
+    public Owner(String name, String email, String address)
+    {
         this.name = name;
         this.email = email;
         this.address = address;
         this.id = index++;
     }
 
-    public Owner(String name, int id, String email, String telephone, String address) {
+    public Owner(String name, String email, String telephone, String address)
+    {
         this.name = name;
         this.id = index++;
         this.email = email;
         this.telephone = telephone;
         this.address = address;
     }
-    
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public static int getIndex() {
+    public static int getIndex()
+    {
         return index;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public List<Pet> getPets() {
+    public List<Pet> getPets()
+    {
         return pets;
     }
 
-    public String getTelephone() {
+    public String getTelephone()
+    {
         return telephone;
     }
 
-    public String getAddress() {
+    public String getAddress()
+    {
         return address;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public static void setIndex(int index) {
+    public static void setIndex(int index)
+    {
         Owner.index = index;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public void setTelephone(String telephone) {
+    public void setTelephone(String telephone)
+    {
         this.telephone = telephone;
     }
 
-    public void setPets(List<Pet> pets) {
+    public void setPets(List<Pet> pets)
+    {
         this.pets = pets;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(String address)
+    {
         this.address = address;
     }
 
-    public void addPet(Pet p) {
-        if (CheckPetDup(p.getType(), p.getName(), p.getBreed(), p.getAge(), p.getColour(), p.getGenderString()) == -1) {
+    public void addPet(Pet p)
+    {
+        if (CheckPetDup(p.getType(), p.getName(), p.getBreed(), p.getAge(), p.getColour(), p.getGenderString()) == -1)
+        {
             this.pets.add(p);
-        } else {
+        }
+        else
+        {
             System.out.println("Pet Already Registered");
         }
     }
 
-    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate) {
-        if (CheckPetDup(type, name, breed, age, colour, gender) == -1) {
+    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
             Pet p = new Pet();
             this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, regDate));
-        } else {
+        }
+        else
+        {
             System.out.println("Pet Already Registered");
         }
     }
 
-    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, String water) {
-        if (CheckPetDup(type, name, breed, age, colour, gender) == -1) {
+    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, String water)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
             Pet p = new Pet();
             this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, regDate, water));
-        } else {
+        }
+        else
+        {
             System.out.println("Pet Already Registered");
         }
     }
 
-    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, boolean neutered) {
-        if (CheckPetDup(type, name, breed, age, colour, gender) == -1) {
+    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, boolean neutered)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
             Pet p = new Pet();
             this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, regDate, neutered));
-        } else {
+        }
+        else
+        {
             System.out.println("Pet Already Registered");
         }
     }
 
-    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, int wingspan, boolean fly) {
-        if (CheckPetDup(type, name, breed, age, colour, gender) == -1) {
+    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, int wingspan, boolean fly)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
             Pet p = new Pet();
             this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, regDate, wingspan, fly));
-        } else {
+        }
+        else
+        {
             System.out.println("Pet Already Registered");
         }
     }
 
-    public void removePet(Pet p) {
+    public void removePet(Pet p)
+    {
         int petIndex = findPet(p.getPetID());
-        if (petIndex != -1) {
+        if (petIndex != -1)
+        {
             this.pets.remove(this.pets.get(petIndex));
-        } else {
+        }
+        else
+        {
             System.out.println("Pet Not Found");
         }
     }
 
-    public void removePet(int id) {
+    public void removePet(int id)
+    {
         int petIndex = findPet(id);
-        if (petIndex != -1) {
+        if (petIndex != -1)
+        {
             this.pets.remove(petIndex);
-        } else {
+        }
+        else
+        {
             System.out.println("Pet Not Found");
         }
     }
 
-    public void displayAllPets() {
+    public void displayAllPets()
+    {
         Pet p = new Pet();
         p.displayAllPets(this.pets);
 
+    }
+
+    public void displayAllOwners(List<Owner> owners)
+    {
+        this.index--;
+        for (Owner o : owners)
+        {
+            System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail()+ "\nTelephone: " + o.getTelephone()+ "\nAddress: " + o.getAddress()+"\nPets Registered: " +o.getPets().size());
         }
-    private int findPet(int id) {
+    }
+
+    private int findPet(int id)
+    {
         int petIndex = -1;
         boolean found = false;
         int i = 0;
-        while (!found && i < this.pets.size()) {
-            if (this.pets.get(i).getPetID() == id) {
+        while (!found && i < this.pets.size())
+        {
+            if (this.pets.get(i).getPetID() == id)
+            {
                 petIndex = i;
                 found = true;
             }
@@ -195,15 +260,18 @@ public class Owner {
         return petIndex;
     }
 
-    private int CheckPetDup(String type, String name, String breed, int age, String colour, String gender) {
+    private int CheckPetDup(String type, String name, String breed, int age, String colour, String gender)
+    {
         int petIndex = -1;
         boolean found = false;
         int i = 0;
-        while (!found && i < this.pets.size()) {
+        while (!found && i < this.pets.size())
+        {
             Pet p = this.pets.get(i);
-            if (p.getType().equalsIgnoreCase(type) && p.getName().equalsIgnoreCase(name) && p.getBreed().equalsIgnoreCase(breed) && p.getAge() == age && p.getColour().equalsIgnoreCase(colour) && p.getGenderString().equalsIgnoreCase(gender)) {
-                found = true;
+            if (p.getType().equalsIgnoreCase(type) && p.getName().equalsIgnoreCase(name) && p.getBreed().equalsIgnoreCase(breed) && p.getAge() == age && p.getColour().equalsIgnoreCase(colour) && p.getGenderString().equalsIgnoreCase(gender))
+            {
                 petIndex = i;
+                found = true;
             }
             i++;
         }
@@ -211,7 +279,8 @@ public class Owner {
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return getClass().getSimpleName() + "{" + "name=" + name + ", email=" + email + ", telephone=" + telephone + ", address=" + address + ", pets=" + pets + '}';
     }
 
