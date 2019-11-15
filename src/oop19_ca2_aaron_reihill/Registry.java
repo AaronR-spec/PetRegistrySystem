@@ -14,33 +14,33 @@ import java.util.List;
  */
 public class Registry
 {
-
+    
     ArrayList<Owner> owners = new ArrayList<>();
-
+    
     public Registry()
     {
     }
-
+    
     public Registry(ArrayList<Owner> owners)
     {
         this.owners = owners;
     }
-
+    
     public ArrayList<Owner> getOwners()
     {
         return owners;
     }
-
+    
     public void setOwners(ArrayList<Owner> owners)
     {
         this.owners = owners;
     }
-
+    
     public void addOwner(String name)
     {
         this.owners.add(new Owner(name));
     }
-
+    
     public void addOwner(Owner o)
     {
         if (CheckOwnerDup(o.getName(), o.getAddress()) == -1)
@@ -52,7 +52,7 @@ public class Registry
             System.out.println("Owner Already Registered");
         }
     }
-
+    
     public void addOwner(String name, String email, String telephone, String address, List<Pet> pets)
     {
         if (CheckOwnerDup(name, address) == -1)
@@ -64,7 +64,7 @@ public class Registry
             System.out.println("Owner Already Registered");
         }
     }
-
+    
     public void addOwner(String name, String email, String address)
     {
         if (CheckOwnerDup(name, address) == -1)
@@ -76,7 +76,7 @@ public class Registry
             System.out.println("Owner Already Registered");
         }
     }
-
+    
     public void addOwner(String name, String email, String telephone, String address)
     {
         if (CheckOwnerDup(name, address) == -1)
@@ -88,12 +88,12 @@ public class Registry
             System.out.println("Owner Already Registered");
         }
     }
-
+    
     public void addOwner(String name, List<Pet> pets)
     {
         this.owners.add(new Owner(name, pets));
     }
-
+    
     public void removeOwner(Owner o)
     {
         if (findOwner(o.getId()) == -1)
@@ -105,7 +105,7 @@ public class Registry
             System.out.println("Owner Not Found");
         }
     }
-
+    
     public void removeOwner(int id)
     {
         int ownerIndex = findOwner(id);
@@ -118,13 +118,13 @@ public class Registry
             System.out.println("Owner Not Found");
         }
     }
-
+    
     public void displayOwners()
     {
         Owner o = new Owner();
         o.displayAllOwners(owners);
     }
-
+    
     private int findOwner(int id)
     {
         int index = -1;
@@ -141,16 +141,17 @@ public class Registry
         }
         return index;
     }
-
+    
     private int CheckOwnerDup(String name, String address)
     {
         int ownerIndex = -1;
         boolean found = false;
+        Owner owner = new Owner();
         int i = 0;
         while (!found && i < this.owners.size())
         {
             Owner o = this.owners.get(i);
-            if (o.getName().equalsIgnoreCase(name) && o.getAddress().equalsIgnoreCase(address))
+            if(!o.equals(owner))
             {
                 ownerIndex = i;
                 found = true;
@@ -159,11 +160,11 @@ public class Registry
         }
         return ownerIndex;
     }
-
+    
     @Override
     public String toString()
     {
         return "Registry{" + "owners=" + owners + '}';
     }
-
+    
 }
