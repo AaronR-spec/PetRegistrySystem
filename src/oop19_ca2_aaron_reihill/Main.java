@@ -15,6 +15,7 @@ import java.util.Scanner;
  */
 public class Main
 {
+
     static Scanner keyboard = new Scanner(System.in);
     static Registry r = new Registry();
 
@@ -37,7 +38,7 @@ public class Main
             System.out.println("(3) Remove Options");
             System.out.println("(4) Edit Options");
             System.out.println("(5) Display Options");
-            System.out.print("Select an option:  ");
+            System.out.print("Select an option: ");
             int option = keyboard.nextInt();
             switch (option)
             {
@@ -66,8 +67,9 @@ public class Main
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
-    
+
     }
+
     public static void addOptions()
     {
         boolean exit = false;
@@ -77,7 +79,7 @@ public class Main
             System.out.println("(0) Back");
             System.out.println("(1) Add Owner");
             System.out.println("(2) Add Pet");
-            System.out.print("Select an option:  ");
+            System.out.print("Select an option: ");
             int option = keyboard.nextInt();
             switch (option)
             {
@@ -89,15 +91,17 @@ public class Main
                     addOwner();
                     break;
                 case 2:
+                    addPet();
                     break;
             }
-            if (option > 4)
+            if (option > 2)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
+
     public static void addOwner()
     {
         System.out.print("\nName: ");
@@ -108,31 +112,139 @@ public class Main
         String telephone = keyboard.next();
         System.out.print("Email? (Y/N): ");
         boolean added = false;
-        while(!added){
-        String yN = keyboard.next();
-        if(yN.equalsIgnoreCase("y"))
+        while (!added)
         {
-            System.out.print("Email: " );
-            String email = keyboard.next();
-            r.addOwner(name, email, telephone, address);
-            System.out.println(name + " added, Returning...");
-            added = true;
-        }
-        else if(yN.equalsIgnoreCase("n"))
-        {
-            r.addOwner(name, telephone, address);
-            added = true;
-        }
-        else
-        {
-            System.out.print("Please Enter Either Y or N: ");
-        }
+            String yN = keyboard.next();
+            if (yN.equalsIgnoreCase("y"))
+            {
+                System.out.print("Email: ");
+                String email = keyboard.next();
+                r.addOwner(name, email, telephone, address);
+                System.out.println(name + " added, Returning...");
+                added = true;
+            }
+            else if (yN.equalsIgnoreCase("n"))
+            {
+                r.addOwner(name, telephone, address);
+                added = true;
+            }
+            else
+            {
+                System.out.print("Please Enter Either Y or N: ");
+            }
         }
     }
-        public static void addPet()
+
+    public static void addPet()
     {
-       
+        boolean back = false;
+        int id;
+
+        while (!back)
+        {
+            System.out.println("\nOptions");
+            System.out.println("(0) Back");
+            System.out.println("(1) Mammal");
+            System.out.println("(2) Fish");
+            System.out.println("(3) Bird");
+            System.out.println("(4) Unkown");
+            System.out.print("Select an option: ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...");
+                    back = true;
+                    break;
+                case 1:
+                    System.out.print("Owner ID: ");
+                    id = keyboard.nextInt();
+                    if (r.findOwner(id) > -1)
+                    {
+                        addMammal(id);
+                    }
+                    else
+                    {
+                        System.out.println("Owner ID " + id + " Not Found");
+                    }
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+            }
+            if (option > 4)
+            {
+                System.out.println("Option " + option + " Is Not Valid");
+                System.out.print("Please Enter Valid Option");
+            }
+        }
     }
+
+    public static void addMammal(int id)
+    {
+        String type, name, breed, colour, gender ="";
+        int age;
+        boolean neutered = false;
+        System.out.print("\nType: ");
+        type = keyboard.next();
+        System.out.print("Name: ");
+        name = keyboard.next();
+        System.out.print("Breed: ");
+        breed = keyboard.next();
+        System.out.print("Age: ");
+        age = keyboard.nextInt();
+        System.out.print("Colour: ");
+        colour = keyboard.next();
+        System.out.print("Gender (Male/Female/Other): ");
+        boolean picked = false;
+        while (!picked)
+        {
+            gender = keyboard.next();
+            if (gender.equalsIgnoreCase("male"))
+            {
+                gender = "MALE";
+                picked = true;
+            }
+            else if (gender.equalsIgnoreCase("female"))
+            {
+                gender = "FEMALE";
+                picked = true;
+            }
+            else if(gender.equalsIgnoreCase("UNKOWN"))
+            {
+                gender = "UNKOWN";
+            }
+            else
+            {
+                System.out.print("Please Select A Valid Option:");
+            }
+        }
+        picked = false;
+        System.out.println("Neutered(Y/N): ");
+        while (!picked)
+        {
+            String option = keyboard.next();
+            if (option.equalsIgnoreCase("y"))
+            {
+                neutered = true;
+                picked = true;
+            }
+            else if (option.equalsIgnoreCase("n"))
+            {
+                neutered = false;
+                picked = true;
+            }
+            else
+            {
+                System.out.print("Please Select A Valid Option:");
+            }
+        }
+        r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, neutered);
+    }
+
     public static void displayOptions()
     {
         boolean exit = false;
@@ -163,11 +275,13 @@ public class Main
             }
         }
     }
+
     public static void displayList(Owner o)
     {
         o.displayAllPets();
     }
-        public static void displayOwners()
+
+    public static void displayOwners()
     {
         r.displayOwners();
     }
@@ -178,8 +292,8 @@ public class Main
         Pet p2 = new Bird("Cat", "sarah", "Poddle", 4, "Blue", "female", "20-20-10", 2, false);
         Pet p3 = new Fish("Fish", "Kevin", "Poddle", 1, "Black", "male", "21-20-10", "freshwater");
         Pet p4 = new Pet("GoldFish", "Poddle", 6, "Yellow", "20-20-10");
-        Pet p5 = new Mammal( "Dog", "kevin", "Poddle", 2, "Black", "male", "4-22-10", true);
-        Pet p6 = new Bird( "Cat", "sarah", "Poddle", 4, "Blue", "female", "20-20-10", 2, false);
+        Pet p5 = new Mammal("Dog", "kevin", "Poddle", 2, "Black", "male", "4-22-10", true);
+        Pet p6 = new Bird("Cat", "sarah", "Poddle", 4, "Blue", "female", "20-20-10", 2, false);
         Pet p7 = new Fish("Fish", "Kevin", "Poddle", 1, "Black", "male", "21-20-10", "freshwater");
         Pet p8 = new Pet("GoldFish", "Poddle", 6, "Yellow", "20-20-10");
 
@@ -194,9 +308,9 @@ public class Main
         pets.add(p7);
         pets.add(p6);
         pets.add(p8);
-        r.addOwner("Greg",pets);
-        r.addOwner("Bob",pets2);
-        r.addOwner("Kevin",pets3);
-        
+        r.addOwner("Greg", pets);
+        r.addOwner("Bob", pets2);
+        r.addOwner("Kevin", pets3);
+
     }
 }
