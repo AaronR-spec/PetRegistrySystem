@@ -11,26 +11,30 @@ package oop19_ca2_aaron_reihill;
  */
 public class Fish extends Pet
 {
+
     private Water water;
-    
+
     public Fish(String type, String breed, int age, String colour, String regDate)
     {
-        super(type,breed,age,colour,regDate);
+        super(type, breed, age, colour, regDate);
         this.water = this.water.UNKOWN;
     }
-        public Fish(int owner,String type, String breed, int age, String colour, String regDate)
+
+    public Fish(int owner, String type,String name, String breed, int age, String colour,String gender, String water)
     {
-        super(owner,type,breed,age,colour,regDate);
-        this.water = this.water.UNKOWN;
-    }
-    public Fish(String type, String name, String breed, int age, String colour, String gender, String regDate,String water)
-    {
-        super(type,name,breed,age,colour,gender,regDate);
+        super(owner, type,name, breed, age, colour,gender);
         findWater(water);
     }
-    public Fish(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,String water)
+
+    public Fish(String type, String name, String breed, int age, String colour, String gender, String regDate, String water)
     {
-        super(owner,type,name,breed,age,colour,gender,regDate);
+        super(type, name, breed, age, colour, gender, regDate);
+        findWater(water);
+    }
+
+    public Fish(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, String water)
+    {
+        super(owner, type, name, breed, age, colour, gender, regDate);
         findWater(water);
     }
 
@@ -43,18 +47,18 @@ public class Fish extends Pet
     {
         this.water = water;
     }
-    
+
     private void findWater(String w)
     {
-        if(w.equalsIgnoreCase("FRESHWATER"))
+        if (w.equalsIgnoreCase("FRESHWATER"))
         {
             this.water = this.water.FRESHWATER;
         }
-        else if(w.equalsIgnoreCase("BRACKISH"))
+        else if (w.equalsIgnoreCase("BRACKISH"))
         {
             this.water = this.water.BRACKISH;
         }
-        else if(w.equalsIgnoreCase("SEAWATER"))
+        else if (w.equalsIgnoreCase("SEAWATER"))
         {
             this.water = this.water.SEAWATER;
         }
