@@ -124,7 +124,22 @@ public class Registry
         Owner o = new Owner();
         o.displayAllOwners(owners);
     }
-    
+    public int findOwnerID(String name)
+    {
+        int ownerID = -1;
+        boolean found = false;
+        int i = 0;
+        while (!found && i < this.owners.size())
+        {
+            if(this.owners.get(i).getName().equalsIgnoreCase(name))
+            {
+                ownerID = i;
+                found = true;
+            }
+            i++;
+        }
+        return ownerID;
+    }
     private int findOwner(int id)
     {
         int index = -1;
@@ -150,8 +165,7 @@ public class Registry
         int i = 0;
         while (!found && i < this.owners.size())
         {
-            Owner o = this.owners.get(i);
-            if(!o.equals(owner))
+            if(!this.owners.get(i).equals(owner))
             {
                 ownerIndex = i;
                 found = true;
