@@ -15,16 +15,16 @@ import java.util.Scanner;
  */
 public class Main
 {
-
+    
     static Scanner keyboard = new Scanner(System.in);
     static Registry r = new Registry();
-
+    
     public static void main(String[] args)
     {
         fillReg();
         displayMenu();
     }
-
+    
     public static void displayMenu()
     {
         System.out.println("Aaron Reihill CA2 (OOP)");
@@ -67,9 +67,9 @@ public class Main
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
-
+        
     }
-
+    
     public static void addOptions()
     {
         boolean exit = false;
@@ -91,7 +91,7 @@ public class Main
                     addOwner();
                     break;
                 case 2:
-                    addPet();
+                    addPetOption();
                     break;
             }
             if (option > 2)
@@ -101,7 +101,7 @@ public class Main
             }
         }
     }
-
+    
     public static void addOwner()
     {
         System.out.print("\nName: ");
@@ -134,12 +134,12 @@ public class Main
             }
         }
     }
-
-    public static void addPet()
+    
+    public static void addPetOption()
     {
         boolean back = false;
         int id;
-
+        
         while (!back)
         {
             System.out.println("\nOptions");
@@ -150,6 +150,11 @@ public class Main
             System.out.println("(4) Unkown");
             System.out.print("Select an option: ");
             int option = keyboard.nextInt();
+            System.out.println("Choose From ");
+            for (int i = 0; i < r.getOwners().size(); i++)
+            {
+                System.out.print("(ID: " + r.getOwners().get(i).getId() + ", Name: " + r.getOwners().get(i).getName() + " )\n");
+            }
             switch (option)
             {
                 case 0:
@@ -169,10 +174,40 @@ public class Main
                     }
                     break;
                 case 2:
+                    System.out.print("Owner ID: ");
+                    id = keyboard.nextInt();
+                    if (r.findOwner(id) > -1)
+                    {
+                        addFish(id);
+                    }
+                    else
+                    {
+                        System.out.println("Owner ID " + id + " Not Found");
+                    }
                     break;
                 case 3:
+                    System.out.print("Owner ID: ");
+                    id = keyboard.nextInt();
+                    if (r.findOwner(id) > -1)
+                    {
+                        addBird(id);
+                    }
+                    else
+                    {
+                        System.out.println("Owner ID " + id + " Not Found");
+                    }
                     break;
                 case 4:
+                    System.out.print("Owner ID: ");
+                    id = keyboard.nextInt();
+                    if (r.findOwner(id) > -1)
+                    {
+                        addPet(id);
+                    }
+                    else
+                    {
+                        System.out.println("Owner ID " + id + " Not Found");
+                    }
                     break;
             }
             if (option > 4)
@@ -182,7 +217,7 @@ public class Main
             }
         }
     }
-
+    
     public static void addMammal(int id)
     {
         String type, name, breed, colour, gender = "";
@@ -223,7 +258,7 @@ public class Main
             }
         }
         picked = false;
-        System.out.println("Neutered(Y/N): ");
+        System.out.print("Neutered(Y/N): ");
         while (!picked)
         {
             String option = keyboard.next();
@@ -245,7 +280,7 @@ public class Main
         r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, neutered);
         System.out.println("Pet " + name + " added");
     }
-
+    
     public static void addFish(int id)
     {
         String type, name, breed, colour, gender = "", water = "";
@@ -285,7 +320,7 @@ public class Main
             }
         }
         picked = false;
-        System.out.println("Water(Freshwater/Seawater/Brackish/Unkown): ");
+        System.out.print("Water(Freshwater/Seawater/Brackish/Unkown): ");
         while (!picked)
         {
             String option = keyboard.next();
@@ -316,7 +351,7 @@ public class Main
         }
         r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, water);
     }
-
+    
     public static void addBird(int id)
     {
         String type, name, breed, colour, gender = "";
@@ -359,7 +394,7 @@ public class Main
             }
         }
         picked = false;
-        System.out.println("Able To Fly(Y/N): ");
+        System.out.print("Able To Fly(Y/N): ");
         while (!picked)
         {
             String option = keyboard.next();
@@ -381,7 +416,49 @@ public class Main
         r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, wingspan, fly);
         System.out.println("Pet " + name + " added");
     }
-
+    
+    public static void addPet(int id)
+    {
+        String type, name, breed, colour, gender = "";
+        int age;
+        System.out.print("\nType: ");
+        type = keyboard.next();
+        System.out.print("Name: ");
+        name = keyboard.next();
+        System.out.print("Breed: ");
+        breed = keyboard.next();
+        System.out.print("Age: ");
+        age = keyboard.nextInt();
+        System.out.print("Colour: ");
+        colour = keyboard.next();
+        System.out.print("Gender (Male/Female/Other): ");
+        boolean picked = false;
+        while (!picked)
+        {
+            gender = keyboard.next();
+            if (gender.equalsIgnoreCase("male"))
+            {
+                gender = "MALE";
+                picked = true;
+            }
+            else if (gender.equalsIgnoreCase("female"))
+            {
+                gender = "FEMALE";
+                picked = true;
+            }
+            else if (gender.equalsIgnoreCase("UNKOWN"))
+            {
+                gender = "UNKOWN";
+            }
+            else
+            {
+                System.out.print("Please Select A Valid Option:");
+            }
+        }
+        r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender);
+        System.out.println("Pet " + name + " added");
+    }
+    
     public static void displayOptions()
     {
         boolean exit = false;
@@ -403,6 +480,7 @@ public class Main
                     displayOwners();
                     break;
                 case 2:
+                    displayPets();
                     break;
             }
             if (option > 4)
@@ -412,15 +490,27 @@ public class Main
             }
         }
     }
-
+    
     public static void displayList(Owner o)
     {
         o.displayAllPets();
     }
-
+    
     public static void displayOwners()
     {
         r.displayOwners();
+    }
+
+    public static void displayPets()
+    {
+        System.out.println();
+        for (int i = 0; i < r.getOwners().size(); i++)
+        {
+            System.out.print("(ID: " + r.getOwners().get(i).getId() + ", Name: " + r.getOwners().get(i).getName() + " )\n");
+        }
+        System.out.print("\nSelect An Owner(ID) To Display There Pets: ");
+        int id = keyboard.nextInt();
+        r.displayOwnersPet(id);
     }
 
     public static void fillReg()
@@ -433,7 +523,7 @@ public class Main
         Pet p6 = new Bird("Cat", "sarah", "Poddle", 4, "Blue", "female", "20-20-10", 2, false);
         Pet p7 = new Fish("Fish", "Kevin", "Poddle", 1, "Black", "male", "21-20-10", "freshwater");
         Pet p8 = new Pet("GoldFish", "Poddle", 6, "Yellow", "20-20-10");
-
+        
         List<Pet> pets = new ArrayList<>();
         pets.add(p1);
         pets.add(p2);
@@ -448,6 +538,6 @@ public class Main
         r.addOwner("Greg", pets);
         r.addOwner("Bob", pets2);
         r.addOwner("Kevin", pets3);
-
+        
     }
 }
