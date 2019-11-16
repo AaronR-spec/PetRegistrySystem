@@ -51,6 +51,13 @@ public class Owner
         this.id = index++;
     }
 
+    public Owner(String name, String address)
+    {
+        this.name = name;
+        this.address = address;
+        this.id = index++;
+    }
+
     public Owner(String name, String email, String address)
     {
         this.name = name;
@@ -242,6 +249,42 @@ public class Owner
         {
             System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
         }
+    }
+
+    public Owner createOwner(String name)
+    {
+        this.index--;
+        return new Owner(name);
+    }
+
+    public Owner createOwner(String name, String address)
+    {
+        this.index--;
+        return new Owner(name, address);
+    }
+
+    public Owner createOwner(String name, List<Pet> pets)
+    {
+        this.index--;
+        return new Owner(name, pets);
+    }
+
+    public Owner createOwner(String name, String email, String telephone, String address, List<Pet> pets)
+    {
+        this.index--;
+        return new Owner(name, email, telephone, address, pets);
+    }
+
+    public Owner createOwner(String name, String email, String address)
+    {
+        this.index--;
+        return new Owner(name, email, address);
+    }
+
+    public Owner createOwner(String name, String email, String telephone, String address)
+    {
+        this.index--;
+        return new Owner(name, email, telephone, address);
     }
 
     private int findPet(int id)
