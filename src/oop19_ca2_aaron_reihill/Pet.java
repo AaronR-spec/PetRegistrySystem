@@ -72,6 +72,26 @@ public class Pet
         this.gender = gender.UNKOWN;
         this.petID = this.index++;
     }
+        public Pet(int owner, String type, String breed, int age, String colour)
+    {
+        this.ownerID = owner;
+        this.type = type;
+        this.breed = breed;
+        this.age = age;
+        this.colour = colour;
+        this.gender = gender.UNKOWN;
+        this.petID = this.index++;
+    }
+        public Pet(int owner, String type,String name,String breed, int age,String colour, String gender)
+    {
+        this.ownerID = owner;
+        this.type = type;
+        this.breed = breed;
+        this.age = age;
+        this.colour = colour;
+        findGender(gender);
+        this.petID = this.index++;
+    }
 
     public Pet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate)
     {
@@ -205,10 +225,10 @@ public class Pet
         this.ownerID = ownerID;
     }
 
-    public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate)
+    public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String water)
     {
         this.index--;
-        return new Pet(owner, type, name, breed, age, colour, gender, regDate);
+        return new Fish(owner, type, name, breed, age, colour, gender, water);
     }
 
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, String water)
@@ -222,11 +242,20 @@ public class Pet
         this.index--;
         return new Mammal(owner, type, name, breed, age, colour, gender, regDate, neutered);
     }
-
+    public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
+    {
+        this.index--;
+        return new Mammal(owner, type, name, breed, age, colour, gender, neutered);
+    }
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, int wingspan, boolean fly)
     {
         this.index--;
         return new Bird(owner, type, name, breed, age, colour, gender, regDate, wingspan, fly);
+    }
+    public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender)
+    {
+        this.index--;
+        return new Pet(owner, type, name, breed, age, colour, gender);
     }
 
     public void displayAllPets(List<Pet> pets)
