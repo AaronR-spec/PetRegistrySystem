@@ -185,7 +185,7 @@ public class Main
 
     public static void addMammal(int id)
     {
-        String type, name, breed, colour, gender ="";
+        String type, name, breed, colour, gender = "";
         int age;
         boolean neutered = false;
         System.out.print("\nType: ");
@@ -213,7 +213,7 @@ public class Main
                 gender = "FEMALE";
                 picked = true;
             }
-            else if(gender.equalsIgnoreCase("UNKOWN"))
+            else if (gender.equalsIgnoreCase("UNKOWN"))
             {
                 gender = "UNKOWN";
             }
@@ -243,6 +243,141 @@ public class Main
             }
         }
         r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, neutered);
+        System.out.println("Pet " + name + " added");
+    }
+
+    public static void addFish(int id)
+    {
+        String type, name, breed, colour, gender = "", water = "";
+        int age;
+        System.out.print("\nType: ");
+        type = keyboard.next();
+        System.out.print("Name: ");
+        name = keyboard.next();
+        System.out.print("Breed: ");
+        breed = keyboard.next();
+        System.out.print("Age: ");
+        age = keyboard.nextInt();
+        System.out.print("Colour: ");
+        colour = keyboard.next();
+        System.out.print("Gender (Male/Female/Other): ");
+        boolean picked = false;
+        while (!picked)
+        {
+            gender = keyboard.next();
+            if (gender.equalsIgnoreCase("male"))
+            {
+                gender = "MALE";
+                picked = true;
+            }
+            else if (gender.equalsIgnoreCase("female"))
+            {
+                gender = "FEMALE";
+                picked = true;
+            }
+            else if (gender.equalsIgnoreCase("UNKOWN"))
+            {
+                gender = "UNKOWN";
+            }
+            else
+            {
+                System.out.print("Please Select A Valid Option:");
+            }
+        }
+        picked = false;
+        System.out.println("Water(Freshwater/Seawater/Brackish/Unkown): ");
+        while (!picked)
+        {
+            String option = keyboard.next();
+            if (option.equalsIgnoreCase("FRESHWATER"))
+            {
+                water = option;
+                picked = true;
+            }
+            else if (option.equalsIgnoreCase("SEAWATER"))
+            {
+                water = option;
+                picked = true;
+            }
+            else if (option.equalsIgnoreCase("BRACKISH"))
+            {
+                water = option;
+                picked = true;
+            }
+            else if (option.equalsIgnoreCase("UNKOWN"))
+            {
+                water = option;
+                picked = true;
+            }
+            else
+            {
+                System.out.print("Please Select A Valid Option:");
+            }
+        }
+        r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, water);
+    }
+
+    public static void addBird(int id)
+    {
+        String type, name, breed, colour, gender = "";
+        int age, wingspan;
+        boolean fly = false;
+        System.out.print("\nType: ");
+        type = keyboard.next();
+        System.out.print("Name: ");
+        name = keyboard.next();
+        System.out.print("Breed: ");
+        breed = keyboard.next();
+        System.out.print("Age: ");
+        age = keyboard.nextInt();
+        System.out.print("Colour: ");
+        colour = keyboard.next();
+        System.out.print("Gender (Male/Female/Other): ");
+        boolean picked = false;
+        while (!picked)
+        {
+            gender = keyboard.next();
+            if (gender.equalsIgnoreCase("male"))
+            {
+                gender = "MALE";
+                picked = true;
+            }
+            else if (gender.equalsIgnoreCase("female"))
+            {
+                gender = "FEMALE";
+                picked = true;
+            }
+            else if (gender.equalsIgnoreCase("UNKOWN"))
+            {
+                gender = "UNKOWN";
+            }
+            else
+            {
+                System.out.print("Please Select A Valid Option:");
+            }
+        }
+        picked = false;
+        System.out.println("Neutered(Y/N): ");
+        while (!picked)
+        {
+            String option = keyboard.next();
+            if (option.equalsIgnoreCase("y"))
+            {
+                fly = true;
+                picked = true;
+            }
+            else if (option.equalsIgnoreCase("n"))
+            {
+                fly = false;
+                picked = true;
+            }
+            else
+            {
+                System.out.print("Please Select A Valid Option:");
+            }
+        }
+        r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, fly);
+        System.out.println("Pet " + name + " added");
     }
 
     public static void displayOptions()
