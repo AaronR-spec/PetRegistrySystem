@@ -118,6 +118,18 @@ public class Registry
             System.out.println("Pet Not Found");
         }
     }
+    public String petsName(int id, int petID)
+    {
+        String name = "";
+        int ownerIndex = findOwner(id);
+        if (ownerIndex != -1)
+        {
+           Owner o = getOwnerByID(id);
+           int index = o.findPet(petID);
+          name = o.getPets().get(index).getName();
+        }
+        return name;
+    }
     public void removeOwner(int id)
     {
         int ownerIndex = findOwner(id);
