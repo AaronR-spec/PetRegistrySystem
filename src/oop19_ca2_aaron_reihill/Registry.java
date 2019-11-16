@@ -105,7 +105,19 @@ public class Registry
             System.out.println("Owner Not Found");
         }
     }
-
+    public void removePet(int id , int petID)
+    {
+        int ownerIndex = findOwner(id);
+        if (ownerIndex != -1)
+        {
+           Owner o = getOwnerByID(id);
+           o.removePet(petID);
+        }
+        else
+        {
+            System.out.println("Pet Not Found");
+        }
+    }
     public void removeOwner(int id)
     {
         int ownerIndex = findOwner(id);
