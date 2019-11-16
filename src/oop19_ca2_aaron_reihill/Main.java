@@ -330,6 +330,8 @@ public class Main
         breed = keyboard.next();
         System.out.print("Age: ");
         age = keyboard.nextInt();
+        System.out.print("Wingspan(ft): ");
+        wingspan = keyboard.nextInt();
         System.out.print("Colour: ");
         colour = keyboard.next();
         System.out.print("Gender (Male/Female/Other): ");
@@ -357,7 +359,7 @@ public class Main
             }
         }
         picked = false;
-        System.out.println("Neutered(Y/N): ");
+        System.out.println("Able To Fly(Y/N): ");
         while (!picked)
         {
             String option = keyboard.next();
@@ -376,7 +378,7 @@ public class Main
                 System.out.print("Please Select A Valid Option:");
             }
         }
-        r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, fly);
+        r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, wingspan, fly);
         System.out.println("Pet " + name + " added");
     }
 
