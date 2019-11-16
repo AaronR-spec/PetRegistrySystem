@@ -72,7 +72,8 @@ public class Pet
         this.gender = gender.UNKOWN;
         this.petID = this.index++;
     }
-        public Pet(int owner, String type, String breed, int age, String colour)
+
+    public Pet(int owner, String type, String breed, int age, String colour)
     {
         this.ownerID = owner;
         this.type = type;
@@ -82,7 +83,8 @@ public class Pet
         this.gender = gender.UNKOWN;
         this.petID = this.index++;
     }
-        public Pet(int owner, String type,String name,String breed, int age,String colour, String gender)
+
+    public Pet(int owner, String type, String name, String breed, int age, String colour, String gender)
     {
         this.ownerID = owner;
         this.type = type;
@@ -242,16 +244,25 @@ public class Pet
         this.index--;
         return new Mammal(owner, type, name, breed, age, colour, gender, regDate, neutered);
     }
+
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
     {
         this.index--;
         return new Mammal(owner, type, name, breed, age, colour, gender, neutered);
     }
+
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, int wingspan, boolean fly)
     {
         this.index--;
         return new Bird(owner, type, name, breed, age, colour, gender, regDate, wingspan, fly);
     }
+
+    public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
+    {
+        this.index--;
+        return new Bird(owner, type, name, breed, age, colour, gender, wingspan, fly);
+    }
+
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender)
     {
         this.index--;
@@ -364,7 +375,6 @@ public class Pet
         }
         return true;
     }
-    
 
     @Override
     public String toString()
