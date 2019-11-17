@@ -164,6 +164,7 @@ public class Registry
             System.out.println("Owner Not Found");
         }
     }
+
     public int findOwnerID(String name)
     {
         int ownerID = -1;
@@ -180,6 +181,7 @@ public class Registry
         }
         return ownerID;
     }
+
     public void displayOwner(Owner o)
     {
         if (findOwnerID(o.getName()) != -1)
@@ -191,6 +193,46 @@ public class Registry
             System.out.println("Owner Not Found");
         }
     }
+
+    public void displayOwnerByName(String name)
+    {
+
+        if (findOwnerID(name) != -1)
+        {
+            Owner o = this.owners.get(findOwnerID(name));
+            o.displayOwner(o);
+        }
+        else
+        {
+            System.out.println("Owner Not Found");
+        }
+    }
+
+    public void displayAllPets()
+    {
+        for (Owner o : this.owners)
+        {
+            o.displayAllPets();
+        }
+    }
+
+    public Owner getOwnerByName(String name)
+    {
+        int index = -1;
+        int i = 0;
+        boolean found = false;
+        while (!found && i < this.owners.size())
+        {
+            if (this.owners.get(i).getName().equalsIgnoreCase(name))
+            {
+                index = i;
+                found = true;
+            }
+            i++;
+        }
+        return this.owners.get(i);
+    }
+
     public Owner getOwnerByID(int id)
     {
         Owner o = new Owner();
@@ -224,6 +266,7 @@ public class Registry
         }
         return index;
     }
+
     private int CheckOwnerDup(String name, String address)
     {
         int ownerIndex = -1;
