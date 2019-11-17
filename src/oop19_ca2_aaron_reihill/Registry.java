@@ -180,9 +180,16 @@ public class Registry
         }
         return ownerID;
     }
-    public static void displayOwner(Owner o)
+    public void displayOwner(Owner o)
     {
-        o.displayOwner(o);
+        if (findOwnerID(o.getName()) != -1)
+        {
+            o.displayOwner(o);
+        }
+        else
+        {
+            System.out.println("Owner Not Found");
+        }
     }
     public Owner getOwnerByID(int id)
     {
