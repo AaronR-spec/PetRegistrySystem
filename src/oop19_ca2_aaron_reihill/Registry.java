@@ -105,31 +105,34 @@ public class Registry
             System.out.println("Owner Not Found");
         }
     }
-    public void removePet(int id , int petID)
+
+    public void removePet(int id, int petID)
     {
         int ownerIndex = findOwner(id);
         if (ownerIndex != -1)
         {
-           Owner o = getOwnerByID(id);
-           o.removePet(petID);
+            Owner o = getOwnerByID(id);
+            o.removePet(petID);
         }
         else
         {
             System.out.println("Pet Not Found");
         }
     }
+
     public String petsName(int id, int petID)
     {
         String name = "";
         int ownerIndex = findOwner(id);
         if (ownerIndex != -1)
         {
-           Owner o = getOwnerByID(id);
-           int index = o.findPet(petID);
-          name = o.getPets().get(index).getName();
+            Owner o = getOwnerByID(id);
+            int index = o.findPet(petID);
+            name = o.getPets().get(index).getName();
         }
         return name;
     }
+
     public void removeOwner(int id)
     {
         int ownerIndex = findOwner(id);
@@ -148,10 +151,11 @@ public class Registry
         Owner o = new Owner();
         o.displayAllOwners(owners);
     }
+
     public void displayOwnersPet(int id)
     {
         Owner o = getOwnerByID(id);
-        if(findOwnerID(o.getName()) != -1)
+        if (findOwnerID(o.getName()) != -1)
         {
             o.displayAllPets();
         }
@@ -176,7 +180,10 @@ public class Registry
         }
         return ownerID;
     }
-
+    public static void displayOwner(Owner o)
+    {
+        o.displayOwner(o);
+    }
     public Owner getOwnerByID(int id)
     {
         Owner o = new Owner();
@@ -210,7 +217,6 @@ public class Registry
         }
         return index;
     }
-
     private int CheckOwnerDup(String name, String address)
     {
         int ownerIndex = -1;
