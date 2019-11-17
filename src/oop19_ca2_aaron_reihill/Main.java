@@ -51,6 +51,8 @@ public class Main
                     addOptions();
                     break;
                 case 2:
+                    System.out.println("Search Option Selected...");
+                    searchOptions();
                     break;
                 case 3:
                     System.out.println("Remove Option Selected...");
@@ -482,12 +484,101 @@ public class Main
                     displayPets();
                     break;
             }
-            if (option > 4)
+            if (option > 2)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
+    }
+
+    public static void searchOptions()
+    {
+        boolean back = false;
+        while (!back)
+        {
+            System.out.println("\nDisplay Options");
+            System.out.println("(0) Back");
+            System.out.println("(1) Find Owner");
+            System.out.println("(2) Find Pet");
+            System.out.print("Select an option:  ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...\n");
+                    back = true;
+                    break;
+                case 1:
+                    ownerSearchOptions();
+                    break;
+                case 2:
+                    petSearchOptions();
+                    break;
+            }
+            if (option > 2)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
+
+    }
+
+    public static void ownerSearchOptions()
+    {
+        String user = "";
+        boolean back = false;
+        while (!back)
+        {
+            System.out.println("\nOwner Search Options");
+            System.out.println("(0) Back");
+            System.out.println("(1) Find Owner By ID");
+            System.out.println("(2) Find Owner By Name");
+            System.out.println("(3) Find Owner By Address");
+            System.out.println("(4) Find Owner By Telephone");
+            System.out.println("(5) Find Owner By Email");
+            System.out.print("Select an option: ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...\n");
+                    back = true;
+                    break;
+                case 1:
+                    System.out.print("ID: ");
+                    int id = keyboard.nextInt();
+                    Owner o = r.getOwnerByID(id);
+                    r.displayOwner(o);
+                    break;
+                case 2:
+                    System.out.print("Name: ");
+                    user = keyboard.next();
+                    r.displayOwnerByName(user);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+            }
+            if (option > 5)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
+    }
+
+    public static void petSearchOptions()
+    {
+        System.out.println("(1) Find Pet By ID");
+        System.out.println("(2) Find Pet By Name");
+        System.out.println("(3) Find Pet By Animal Category");
+        System.out.println("(4) Find Pet By Type");
+
     }
 
     public static void displayList(Owner o)
@@ -502,20 +593,49 @@ public class Main
 
     public static void displayPets()
     {
-        System.out.println();
-        availableOwners();
-        System.out.print("\nSelect An Owner(ID) To Display There Pets: ");
-        int id = keyboard.nextInt();
-        r.displayOwnersPet(id);
+        boolean back = false;
+        while (!back)
+        {
+            System.out.println("\n(0) Back");
+            System.out.println("(1) Display Pet By Owner ID");
+            System.out.println("(2) Display All Pet(s) Registered");
+            System.out.print("Select an option: ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...");
+                    back = true;
+                    break;
+                case 1:
+                    System.out.println();
+                    availableOwners();
+                    System.out.print("\nSelect An Owner(ID) To Display There Pets: ");
+                    int id = keyboard.nextInt();
+                    r.displayOwnersPet(id);
+                    break;
+                case 2:
+                    r.displayAllPets();
+                    break;
+
+            }
+            if (option > 2)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
     }
+
     public static void availableOwners()
     {
         System.out.println();
-            for (int i = 0; i < r.getOwners().size(); i++)
+        for (int i = 0; i < r.getOwners().size(); i++)
         {
             System.out.print("(ID: " + r.getOwners().get(i).getId() + ", Name: " + r.getOwners().get(i).getName() + " )\n");
         }
     }
+
     public static void removeOptions()
     {
         boolean back = false;
@@ -538,13 +658,14 @@ public class Main
                     availableOwners();
                     System.out.print("Remove(ID):");
                     id = keyboard.nextInt();
-                    if(r.findOwner(id)!= -1){
-                    System.out.println("Owner " + r.getOwnerByID(id).getName()+" removed");
-                    r.removeOwner(id);
+                    if (r.findOwner(id) != -1)
+                    {
+                        System.out.println("Owner " + r.getOwnerByID(id).getName() + " removed");
+                        r.removeOwner(id);
                     }
                     else
                     {
-                        System.out.println("Owner ID "+id+" Not Found");
+                        System.out.println("Owner ID " + id + " Not Found");
                     }
                     break;
                 case 2:
@@ -554,7 +675,7 @@ public class Main
                     r.displayOwnersPet(id);
                     System.out.print("\nPet ID: ");
                     int petID = keyboard.nextInt();
-                    System.out.println(r.petsName(id, petID)+" Removed");
+                    System.out.println(r.petsName(id, petID) + " Removed");
                     r.removePet(id, petID);
                     break;
             }
