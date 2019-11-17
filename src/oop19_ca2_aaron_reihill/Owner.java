@@ -58,10 +58,10 @@ public class Owner
         this.id = index++;
     }
 
-    public Owner(String name, String email, String address)
+    public Owner(String name, String telephone, String address)
     {
         this.name = name;
-        this.email = email;
+        this.telephone = telephone;
         this.address = address;
         this.id = index++;
     }
@@ -157,12 +157,25 @@ public class Owner
         }
     }
 
-    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate)
+    public void addPet(String type, String name, String breed, int age, String colour, String gender)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
         {
             Pet p = new Pet();
-            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, regDate));
+            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender));
+        }
+        else
+        {
+            System.out.println("Pet Already Registered");
+        }
+    }
+
+    public void addPet(String type, String name, String breed, int age, String colour, String gender, String water)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
+            Pet p = new Pet();
+            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, water));
         }
         else
         {
@@ -196,12 +209,38 @@ public class Owner
         }
     }
 
+    public void addPet(String type, String name, String breed, int age, String colour, String gender, boolean neutered)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
+            Pet p = new Pet();
+            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, neutered));
+        }
+        else
+        {
+            System.out.println("Pet Already Registered");
+        }
+    }
+
     public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, int wingspan, boolean fly)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
         {
             Pet p = new Pet();
             this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, regDate, wingspan, fly));
+        }
+        else
+        {
+            System.out.println("Pet Already Registered");
+        }
+    }
+
+    public void addPet(String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
+            Pet p = new Pet();
+            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, wingspan, fly));
         }
         else
         {
@@ -244,50 +283,17 @@ public class Owner
 
     public void displayAllOwners(List<Owner> owners)
     {
-        this.index--;
         for (Owner o : owners)
         {
             System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
         }
     }
-
-    public Owner createOwner(String name)
+    public void displayOwner(Owner o)
     {
-        this.index--;
-        return new Owner(name);
+            System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
     }
 
-    public Owner createOwner(String name, String address)
-    {
-        this.index--;
-        return new Owner(name, address);
-    }
-
-    public Owner createOwner(String name, List<Pet> pets)
-    {
-        this.index--;
-        return new Owner(name, pets);
-    }
-
-    public Owner createOwner(String name, String email, String telephone, String address, List<Pet> pets)
-    {
-        this.index--;
-        return new Owner(name, email, telephone, address, pets);
-    }
-
-    public Owner createOwner(String name, String email, String address)
-    {
-        this.index--;
-        return new Owner(name, email, address);
-    }
-
-    public Owner createOwner(String name, String email, String telephone, String address)
-    {
-        this.index--;
-        return new Owner(name, email, telephone, address);
-    }
-
-    private int findPet(int id)
+    public int findPet(int id)
     {
         int petIndex = -1;
         boolean found = false;
