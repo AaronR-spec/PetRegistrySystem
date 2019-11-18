@@ -28,14 +28,6 @@ public class Pet
 
     public Pet()
     {
-        this.type = "";
-        this.name = "";
-        this.breed = "";
-        this.age = 0;
-        this.colour = "";
-        this.gender = gender.UNKOWN;
-        this.regDate = "";
-        this.petID = this.index++;
     }
 
     public Pet(String type, String breed, int age, String colour, String regDate)
@@ -229,74 +221,92 @@ public class Pet
 
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String water)
     {
-        this.index--;
         return new Fish(owner, type, name, breed, age, colour, gender, water);
     }
 
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, String water)
     {
-        this.index--;
         return new Fish(owner, type, name, breed, age, colour, gender, regDate, water);
     }
 
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, boolean neutered)
     {
-        this.index--;
         return new Mammal(owner, type, name, breed, age, colour, gender, regDate, neutered);
     }
 
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
     {
-        this.index--;
         return new Mammal(owner, type, name, breed, age, colour, gender, neutered);
     }
 
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, int wingspan, boolean fly)
     {
-        this.index--;
         return new Bird(owner, type, name, breed, age, colour, gender, regDate, wingspan, fly);
     }
 
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
     {
-        this.index--;
         return new Bird(owner, type, name, breed, age, colour, gender, wingspan, fly);
     }
 
     public Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender)
     {
-        this.index--;
         return new Pet(owner, type, name, breed, age, colour, gender);
     }
 
     public void displayAllPets(List<Pet> pets)
     {
-        this.index--;
         for (Pet p : pets)
         {
 
             if (p instanceof Mammal)
             {
                 Mammal m = (Mammal) p;
-                System.out.println("(Mammal) " + "PetID:" + m.getPetID() + ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age:" + m.getAge() + ", Breed: " + m.getBreed() + ", Colour:" + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate() + ", Neutered: " + m.isNeutered());
+                System.out.println("\n(Mammal) " + "PetID:" + m.getPetID() + ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age: " + m.getAge() + ", Breed: " + m.getBreed() + ", Colour: " + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate() + ", Neutered: " + m.isNeutered());
 
             }
             else if (p instanceof Bird)
             {
                 Bird b = (Bird) p;
-                System.out.println("(Bird) " + "PetID:" + b.getPetID() + ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age:" + b.getAge() + ", Breed: " + b.getBreed() + ", Colour:" + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate() + ", Wingspan: " + b.getWingspan() + "ft" + ", Fly: " + b.isFly());
+                System.out.println("\n(Bird) " + "PetID:" + b.getPetID() + ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age: " + b.getAge() + ", Breed: " + b.getBreed() + ", Colour: " + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate() + ", Wingspan: " + b.getWingspan() + "ft" + ", Fly: " + b.isFly());
 
             }
             else if (p instanceof Fish)
             {
                 Fish f = (Fish) p;
-                System.out.println("(Fish) " + "PetID:" + f.getPetID() + ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age:" + f.getAge() + ", Breed: " + f.getBreed() + ", Colour:" + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate() + ", Water Type: " + f.getWater());
+                System.out.println("\n(Fish) " + "PetID:" + f.getPetID() + ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age: " + f.getAge() + ", Breed: " + f.getBreed() + ", Colour: " + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate() + ", Water Type: " + f.getWater());
 
             }
             else
             {
-                System.out.println("(" + getClass().getSimpleName() + ") PetID: " + p.getPetID() + ", OwnerID: " + p.getOwnerID() + ", Type: " + p.getType() + ", Name: " + p.getName() + ", Age:" + p.getAge() + ", Breed: " + p.getBreed() + ", Colour:" + p.getColour() + ", Gender: " + p.getGender() + ", DateReg: " + p.getRegDate());
+                System.out.println("\n(" + getClass().getSimpleName() + ") PetID: " + p.getPetID() + ", OwnerID: " + p.getOwnerID() + ", Type: " + p.getType() + ", Name: " + p.getName() + ", Age: " + p.getAge() + ", Breed: " + p.getBreed() + ", Colour: " + p.getColour() + ", Gender: " + p.getGender() + ", DateReg: " + p.getRegDate());
             }
+        }
+    }
+
+    public void displayPet(Pet p)
+    {
+        if (p instanceof Mammal)
+        {
+            Mammal m = (Mammal) p;
+            System.out.println("\n(Mammal) " + "PetID:" + m.getPetID() + ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age: " + m.getAge() + ", Breed: " + m.getBreed() + ", Colour: " + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate() + ", Neutered: " + m.isNeutered());
+
+        }
+        else if (p instanceof Bird)
+        {
+            Bird b = (Bird) p;
+            System.out.println("\n(Bird) " + "PetID:" + b.getPetID() + ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age: " + b.getAge() + ", Breed: " + b.getBreed() + ", Colour: " + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate() + ", Wingspan: " + b.getWingspan() + "ft" + ", Fly: " + b.isFly());
+
+        }
+        else if (p instanceof Fish)
+        {
+            Fish f = (Fish) p;
+            System.out.println("\n(Fish) " + "PetID:" + f.getPetID() + ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age: " + f.getAge() + ", Breed: " + f.getBreed() + ", Colour: " + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate() + ", Water Type: " + f.getWater());
+
+        }
+        else
+        {
+            System.out.println("\n(" + getClass().getSimpleName() + ") PetID: " + p.getPetID() + ", OwnerID: " + p.getOwnerID() + ", Type: " + p.getType() + ", Name: " + p.getName() + ", Age: " + p.getAge() + ", Breed: " + p.getBreed() + ", Colour: " + p.getColour() + ", Gender: " + p.getGender() + ", DateReg: " + p.getRegDate());
         }
     }
 
@@ -335,7 +345,6 @@ public class Pet
     @Override
     public boolean equals(Object obj)
     {
-        index--;
         if (this == obj)
         {
             return true;
