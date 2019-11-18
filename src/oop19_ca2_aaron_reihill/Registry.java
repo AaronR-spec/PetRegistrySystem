@@ -146,10 +146,18 @@ public class Registry
         }
     }
 
-    public void displayOwners()
+    public void displayAllOwners()
     {
-        Owner o = new Owner();
-        o.displayAllOwners(owners);
+
+        for (Owner o : this.owners)
+        {
+            System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
+        }
+    }
+
+    public void displayOwner(Owner o)
+    {
+        System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
     }
 
     public void displayOwnersPet(int id)
@@ -182,11 +190,13 @@ public class Registry
         return ownerID;
     }
 
-    public void displayOwner(Owner o)
+    public void displayOwnerByName(String name)
     {
-        if (findOwnerID(o.getName()) != -1)
+
+        if (findOwnerID(name) != -1)
         {
-            o.displayOwner(o);
+            Owner o = this.owners.get(findOwnerID(name));
+            displayOwner(o);
         }
         else
         {
@@ -194,13 +204,41 @@ public class Registry
         }
     }
 
-    public void displayOwnerByName(String name)
+    public void displayOwnerByAddress(String address)
     {
 
-        if (findOwnerID(name) != -1)
+        if (findOwnerAddress(address) != -1)
         {
-            Owner o = this.owners.get(findOwnerID(name));
-            o.displayOwner(o);
+            Owner o = this.owners.get(findOwnerAddress(address));
+            displayOwner(o);
+        }
+        else
+        {
+            System.out.println("Owner Not Found");
+        }
+    }
+
+    public void displayOwnerByTelephone(String address)
+    {
+
+        if (findOwnerAddress(address) != -1)
+        {
+            Owner o = this.owners.get(findOwnerAddress(address));
+            displayOwner(o);
+        }
+        else
+        {
+            System.out.println("Owner Not Found");
+        }
+    }
+
+    public void displayOwnerByEmail(String email)
+    {
+
+        if (findOwnerEmail(email) != -1)
+        {
+            Owner o = this.owners.get(findOwnerAddress(email));
+            displayOwner(o);
         }
         else
         {
@@ -258,6 +296,103 @@ public class Registry
         while (!found && i < this.owners.size())
         {
             if (this.owners.get(i).getId() == id)
+            {
+                index = i;
+                found = true;
+            }
+            i++;
+        }
+        return index;
+    }
+
+    public void displayPetByID(int id)
+    {
+        boolean found = false;
+        int i = 0, j = 0;
+        while (!found && i < this.owners.size())
+        {
+            List<Pet> pets = this.owners.get(i).getPets();
+            while (j < pets.size())
+            {
+                if (pets.get(j).getPetID() == id)
+                {
+                    pets.get(j).displayPet(pets.get(j));
+                    found = true;
+                }
+                j++;
+            }
+            i++;
+        }
+        if (!found)
+        {
+            System.out.println("Pet Not Found");
+        }
+
+    }
+
+    public void displayPetByName(String name)
+    {
+        int i = 0, j = 0;
+        boolean found = false;
+        for (Owner o : this.owners)
+        {
+            List<Pet> pets = o.getPets();
+            //not while loop as there could be multiple pets with same name//
+            for (Pet p : pets)
+            {
+                if (p.getName().equalsIgnoreCase(name))
+                {
+                    p.displayPet(pets.get(j));
+                    found = true;
+                }
+            }
+        }
+        if (!found)
+        {
+            System.out.println("Pet Not Found");
+        }
+
+    }
+
+    public int findOwnerAddress(String address)
+    {
+        int index = -1, i = 0;
+        boolean found = false;
+        while (!found && i < this.owners.size())
+        {
+            if (this.owners.get(i).getAddress().equalsIgnoreCase(address))
+            {
+                index = i;
+                found = true;
+            }
+            i++;
+        }
+        return index;
+    }
+
+    public int findOwnerTelephone(String telephone)
+    {
+        int index = -1, i = 0;
+        boolean found = false;
+        while (!found && i < this.owners.size())
+        {
+            if (this.owners.get(i).getTelephone().equalsIgnoreCase(telephone))
+            {
+                index = i;
+                found = true;
+            }
+            i++;
+        }
+        return index;
+    }
+
+    public int findOwnerEmail(String email)
+    {
+        int index = -1, i = 0;
+        boolean found = false;
+        while (!found && i < this.owners.size())
+        {
+            if (this.owners.get(i).getEmail().equalsIgnoreCase(email))
             {
                 index = i;
                 found = true;
