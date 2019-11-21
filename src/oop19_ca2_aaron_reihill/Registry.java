@@ -350,7 +350,25 @@ public class Registry {
         }
         return ownerIndex;
     }
-
+    public void displayPetByType(String type)
+    {
+        boolean found = false;
+        for(Owner o: this.owners)
+        {
+            for(Pet p: o.getPets())
+            {
+                if(p.getType().equalsIgnoreCase(type))
+                {
+                    p.displayPet(p);
+                    found = true;
+                }
+            }
+        }
+        if(!found)
+        {
+            System.out.println("Animal Type Not Found");
+        }
+    }
     public void displayPetByCategory(String animal) {
         int category = 0;
         if (animal.equalsIgnoreCase("mammal")) {
