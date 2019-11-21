@@ -11,26 +11,40 @@ package oop19_ca2_aaron_reihill;
  */
 public class Mammal extends Pet
 {
+
     private boolean neutered;
 
-    public Mammal(String type, String breed, int age, String colour, String regDate,boolean neutered)
+    public Mammal(String type, String breed, int age, String colour, String regDate, boolean neutered)
     {
-        super(type,breed,age,colour,regDate);
+        super(type, breed, age, colour, regDate);
         this.neutered = neutered;
     }
-        public Mammal(int owner,String type, String breed, int age, String colour, String regDate,boolean neutered)
+
+    public Mammal(int owner, String type, String breed, int age, String colour, String regDate, boolean neutered)
     {
-        super(owner,type,breed,age,colour,regDate);
+        super(owner, type, breed, age, colour, regDate);
         this.neutered = neutered;
     }
-        public Mammal(String type, String name, String breed, int age, String colour, String gender, String regDate,boolean neutered)
+
+    public Mammal(String type, String name, String breed, int age, String colour, String gender, boolean neutered)
     {
-        super(type,name,breed,age,colour,gender,regDate);
+        super(type, name, breed, age, colour, gender);
         this.neutered = neutered;
     }
-     public Mammal(int owner,String type, String name, String breed, int age, String colour, String gender, String regDate,boolean neutered)
+    public Mammal(int owner,int petId,String type, String name, String breed, int age, String colour, String gender, boolean neutered)
     {
-        super(owner,type,name,breed,age,colour,gender,regDate);
+        super(owner,petId,type, name, breed, age, colour, gender);
+        this.neutered = neutered;
+    }
+
+    public Mammal(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, boolean neutered)
+    {
+        super(owner, type, name, breed, age, colour, gender, regDate);
+        this.neutered = neutered;
+    }
+    public Mammal(int owner, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
+    {
+        super(owner, type, name, breed, age, colour, gender);
         this.neutered = neutered;
     }
 
@@ -43,16 +57,16 @@ public class Mammal extends Pet
     {
         this.neutered = neutered;
     }
-    public static Pet createMammal(String type, String name, String breed, int age, String colour, String gender, String regDate,boolean neutered)
+
+    public static Pet createMammal(String type, String name, String breed, int age, String colour, String gender, String regDate, boolean neutered)
     {
-        return new Mammal(type,name,breed,age,colour,gender,regDate,neutered);
+        return new Mammal(type, name, breed, age, colour, gender,neutered);
     }
+
     @Override
     public String toString()
     {
-        return super.toString()+"{" + "neutered=" + neutered + '}';
+        return super.toString() + "{" + "neutered=" + neutered + '}';
     }
-        
-    
-    
+
 }
