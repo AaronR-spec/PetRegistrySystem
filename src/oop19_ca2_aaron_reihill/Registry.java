@@ -351,6 +351,51 @@ public class Registry {
         return ownerIndex;
     }
 
+    public void displayPetByCategory(String animal) {
+        int category = 0;
+        if (animal.equalsIgnoreCase("mammal")) {
+            category = 1;
+        } else if (animal.equalsIgnoreCase("fish")) {
+            category = 2;
+        } else if (animal.equalsIgnoreCase("bird")) {
+            category = 3;
+        }
+        if (category != 0 ){
+            for (Owner o : this.owners) 
+            {
+                for (Pet p : o.getPets()) 
+                {
+                    
+                    if (category == 1) 
+                    {
+                        if (p instanceof Mammal) 
+                        {
+                            p.displayPet(p);
+                        }
+                    }
+                    else if (category == 2)
+                    {
+                        if (p instanceof Fish) 
+                        {
+                            p.displayPet(p);
+                        }
+                    } 
+                    else if (category == 3) 
+                    {
+                        if(p instanceof Bird)
+                    {
+                        p.displayPet(p);
+                    }
+                    }
+                }
+
+            }
+        } else {
+            System.out.println("Animal Category Not Found");
+        }
+
+    }
+
     public void loadData(String file) {
         int maxIndex = 0;
         try {
@@ -374,7 +419,7 @@ public class Registry {
                         neutered = true;
                     }
                     maxIndex = id;
-                    this.owners.get(0).addPet(id,type, name, breed, age, colour, gender, neutered);
+                    this.owners.get(0).addPet(id, type, name, breed, age, colour, gender, neutered);
                 } else if (animal.equalsIgnoreCase("F")) {
                     id = sc.nextInt();
                     type = sc.next();
@@ -402,7 +447,7 @@ public class Registry {
                         fly = false;
                     }
                     maxIndex = id;
-                    this.owners.get(0).addPet(id,type, name, breed, age, colour, gender, wingspan, fly);
+                    this.owners.get(0).addPet(id, type, name, breed, age, colour, gender, wingspan, fly);
                 }
                 if (animal.equalsIgnoreCase("P")) {
                     id = sc.nextInt();
@@ -422,7 +467,7 @@ public class Registry {
         } catch (IOException e) {
             System.out.println("File Not Found. " + e.getLocalizedMessage());
         }
-        Pet.setIndex(maxIndex+ 1);
+        Pet.setIndex(maxIndex + 1);
     }
 
     @Override
