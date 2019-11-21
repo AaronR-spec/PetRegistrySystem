@@ -16,14 +16,16 @@ import java.util.Objects;
 public class Owner
 {
 
-    private String name;
+    private String name ="";
     private static int index = 0;
     private int id;
-    private String email;
-    private String telephone;
-    private String address;
+    private String email ="";
+    private String telephone ="";
+    private String address ="";
     private List<Pet> pets = new ArrayList<>();
-
+    private static String PET_ALREADY_REG = "Pet Already Registered";
+    private static String PET_NOT_FOUND = "Pet Not Found";
+    
     public Owner()
     {
     }
@@ -69,7 +71,8 @@ public class Owner
     public Owner(String name, String email, String telephone, String address)
     {
         this.name = name;
-        this.id = index++;
+        
+        this.id = this.index++;
         this.email = email;
         this.telephone = telephone;
         this.address = address;
@@ -153,7 +156,7 @@ public class Owner
         }
         else
         {
-            System.out.println("Pet Already Registered");
+            System.out.println(PET_ALREADY_REG);
         }
     }
 
@@ -161,25 +164,44 @@ public class Owner
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
         {
-            Pet p = new Pet();
-            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender));
+            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender));
         }
         else
         {
-            System.out.println("Pet Already Registered");
+            System.out.println(PET_ALREADY_REG);
         }
     }
-
+        public void addPet(int petId,String type, String name, String breed, int age, String colour, String gender)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
+            this.pets.add(Pet.createPet(this.id,petId, type, name, breed, age, colour, gender));
+        }
+        else
+        {
+            System.out.println(PET_ALREADY_REG);
+        }
+    }
+    public void addPet(int id,String type, String name, String breed, int age, String colour, String gender, String water)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
+            this.pets.add(Pet.createPet(this.id,id, type, name, breed, age, colour, gender, water));
+        }
+        else
+        {
+            System.out.println(PET_ALREADY_REG);
+        }
+    }
     public void addPet(String type, String name, String breed, int age, String colour, String gender, String water)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
         {
-            Pet p = new Pet();
-            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, water));
+            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender, water));
         }
         else
         {
-            System.out.println("Pet Already Registered");
+            System.out.println(PET_ALREADY_REG);
         }
     }
 
@@ -187,12 +209,11 @@ public class Owner
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
         {
-            Pet p = new Pet();
-            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, regDate, water));
+            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender, regDate, water));
         }
         else
         {
-            System.out.println("Pet Already Registered");
+            System.out.println(PET_ALREADY_REG);
         }
     }
 
@@ -200,12 +221,11 @@ public class Owner
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
         {
-            Pet p = new Pet();
-            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, regDate, neutered));
+            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender, regDate, neutered));
         }
         else
         {
-            System.out.println("Pet Already Registered");
+            System.out.println(PET_ALREADY_REG);
         }
     }
 
@@ -213,12 +233,22 @@ public class Owner
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
         {
-            Pet p = new Pet();
-            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, neutered));
+            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender, neutered));
         }
         else
         {
-            System.out.println("Pet Already Registered");
+            System.out.println(PET_ALREADY_REG);
+        }
+    }
+        public void addPet(int petId,String type, String name, String breed, int age, String colour, String gender, boolean neutered)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
+            this.pets.add(Pet.createPet(this.id,petId, type, name, breed, age, colour, gender, neutered));
+        }
+        else
+        {
+            System.out.println(PET_ALREADY_REG);
         }
     }
 
@@ -226,12 +256,11 @@ public class Owner
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
         {
-            Pet p = new Pet();
-            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, regDate, wingspan, fly));
+            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender, regDate, wingspan, fly));
         }
         else
         {
-            System.out.println("Pet Already Registered");
+            System.out.println(PET_ALREADY_REG);
         }
     }
 
@@ -239,15 +268,24 @@ public class Owner
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
         {
-            Pet p = new Pet();
-            this.pets.add(p.createPet(this.id, type, name, breed, age, colour, gender, wingspan, fly));
+            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender, wingspan, fly));
         }
         else
         {
-            System.out.println("Pet Already Registered");
+            System.out.println(PET_ALREADY_REG);
         }
     }
-
+    public void addPet(int petId,String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
+    {
+        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
+        {
+            this.pets.add(Pet.createPet(this.id,petId ,type, name, breed, age, colour, gender, wingspan, fly));
+        }
+        else
+        {
+            System.out.println(PET_ALREADY_REG);
+        }
+    }
     public void removePet(Pet p)
     {
         int petIndex = findPet(p.getPetID());
@@ -257,7 +295,7 @@ public class Owner
         }
         else
         {
-            System.out.println("Pet Not Found");
+            System.out.println(PET_NOT_FOUND);
         }
     }
 
@@ -270,8 +308,12 @@ public class Owner
         }
         else
         {
-            System.out.println("Pet Not Found");
+            System.out.println(PET_NOT_FOUND);
         }
+    }
+    public void removeAllPet()
+    {
+        this.pets.clear();
     }
 
     public void displayAllPets()
@@ -281,18 +323,7 @@ public class Owner
 
     }
 
-    public void displayAllOwners(List<Owner> owners)
-    {
-        for (Owner o : owners)
-        {
-            System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
-        }
-    }
-    public void displayOwner(Owner o)
-    {
-            System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
-    }
-
+   
     public int findPet(int id)
     {
         int petIndex = -1;
@@ -313,13 +344,19 @@ public class Owner
     private int CheckPetDup(String type, String name, String breed, int age, String colour, String gender)
     {
         Pet pet = new Pet();
+        pet.setType(type);
+        pet.setName(name);
+        pet.setBreed(breed);
+        pet.setAge(age);
+        pet.setColour(colour);
+        pet.setGender(gender);
         int petIndex = -1;
         boolean found = false;
         int i = 0;
         while (!found && i < this.pets.size())
         {
             Pet p = this.pets.get(i);
-            if (!p.equals(pet))
+            if (p.equals(pet))
             {
                 petIndex = i;
                 found = true;
@@ -345,7 +382,6 @@ public class Owner
     @Override
     public boolean equals(Object obj)
     {
-        this.index--;
         if (this == obj)
         {
             return true;
