@@ -19,16 +19,20 @@ public class Fish extends Pet
         super(type, breed, age, colour, regDate);
         this.water = this.water.UNKOWN;
     }
-
-    public Fish(int owner, String type,String name, String breed, int age, String colour,String gender, String water)
+    public Fish(int owner,int petId, String type, String name, String breed, int age, String colour, String gender, String water)
     {
-        super(owner, type,name, breed, age, colour,gender);
+        super(owner,petId, type, name, breed, age, colour, gender);
+        findWater(water);
+    }
+    public Fish(int owner, String type, String name, String breed, int age, String colour, String gender, String water)
+    {
+        super(owner, type, name, breed, age, colour, gender);
         findWater(water);
     }
 
-    public Fish(String type, String name, String breed, int age, String colour, String gender, String regDate, String water)
+    public Fish(String type, String name, String breed, int age, String colour, String gender, String water)
     {
-        super(type, name, breed, age, colour, gender, regDate);
+        super(type, name, breed, age, colour, gender);
         findWater(water);
     }
 
