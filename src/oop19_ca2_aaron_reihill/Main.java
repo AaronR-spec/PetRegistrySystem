@@ -592,6 +592,7 @@ public class Main
                 case 4:
                     System.out.print("\nType: ");
                     user = keyboard.next();
+                    r.displayPetByType(user);
                     break;
             }
             if (option > 4)
