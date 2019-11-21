@@ -352,16 +352,13 @@ public class Registry {
     }
 
     public void loadData(String file) {
-
+        int maxIndex = 0;
         try {
             Scanner sc = new Scanner(new File(file));
 
-// Delimiter: set the delimiter to be a comma character "," 
-//            or a carriage-return '\r', or a newline '\n'
             sc.useDelimiter("[/\r\n]+");
             String type, name, breed, colour, gender;
             int age, id;
-            // assuming file format: "name,age,mark" (e.g. Tom,18,65.50)
             while (sc.hasNext()) {
                 String animal = sc.next();
                 if (animal.equalsIgnoreCase("M")) {
@@ -376,6 +373,7 @@ public class Registry {
                     if (sc.next().equalsIgnoreCase("true")) {
                         neutered = true;
                     }
+                    maxIndex = id;
                     this.owners.get(0).addPet(id,type, name, breed, age, colour, gender, neutered);
                 } else if (animal.equalsIgnoreCase("F")) {
                     id = sc.nextInt();
@@ -386,6 +384,7 @@ public class Registry {
                     colour = sc.next();
                     gender = sc.next();
                     String water = sc.next();
+                    maxIndex = id;
                     this.owners.get(0).addPet(id, type, name, breed, age, colour, gender, water);
                 } else if (animal.equalsIgnoreCase("B")) {
                     id = sc.nextInt();
@@ -402,6 +401,7 @@ public class Registry {
                     } else {
                         fly = false;
                     }
+                    maxIndex = id;
                     this.owners.get(0).addPet(id,type, name, breed, age, colour, gender, wingspan, fly);
                 }
                 if (animal.equalsIgnoreCase("P")) {
@@ -412,17 +412,17 @@ public class Registry {
                     age = sc.nextInt();
                     colour = sc.next();
                     gender = sc.next();
+                    maxIndex = id;
                     this.owners.get(0).addPet(id, type, name, breed, age, colour, gender);
                 } else {
                     //error goes here
                 }
-
             }
             sc.close();
-
         } catch (IOException e) {
-            System.out.println("Exception thrown. " + e);
+            System.out.println("File Not Found. " + e.getLocalizedMessage());
         }
+        Pet.setIndex(maxIndex+ 1);
     }
 
     @Override
