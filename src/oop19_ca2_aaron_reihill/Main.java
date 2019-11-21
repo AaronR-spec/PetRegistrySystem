@@ -253,6 +253,7 @@ public class Main
             else if (gender.equalsIgnoreCase("UNKOWN"))
             {
                 gender = "UNKOWN";
+                picked = true;
             }
             else
             {
@@ -315,6 +316,7 @@ public class Main
             else if (gender.equalsIgnoreCase("UNKOWN"))
             {
                 gender = "UNKOWN";
+                picked = true;
             }
             else
             {
@@ -389,6 +391,7 @@ public class Main
             else if (gender.equalsIgnoreCase("UNKOWN"))
             {
                 gender = "UNKOWN";
+                picked = true;
             }
             else
             {
@@ -451,6 +454,7 @@ public class Main
             else if (gender.equalsIgnoreCase("other"))
             {
                 gender = "UNKOWN";
+                picked = true;
             }
             else
             {
@@ -583,6 +587,7 @@ public class Main
                 case 3:
                     System.out.print("\nAnimal Category: ");
                     user = keyboard.next();
+                    r.displayPetByCategory(user);
                     break;
                 case 4:
                     System.out.print("\nType: ");
