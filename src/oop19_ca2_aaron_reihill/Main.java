@@ -733,6 +733,6 @@ public class Main
     public static void fillReg()
     {
         r.addOwner("Greg");
-        r.loadData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\students.csv");
+        r.loadData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\pets.csv");
     }
 }
