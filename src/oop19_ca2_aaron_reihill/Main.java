@@ -18,7 +18,7 @@ public class Main
 
     static Scanner keyboard = new Scanner(System.in);
     static Registry r = new Registry();
-
+    
     public static void main(String[] args)
     {
         fillReg();
@@ -130,6 +130,7 @@ public class Main
             else if (yN.equalsIgnoreCase("n"))
             {
                 r.addOwner(name, telephone, address);
+                System.out.println(name + " added, Returning...");
                 added = true;
             }
             else
@@ -447,7 +448,7 @@ public class Main
                 gender = "FEMALE";
                 picked = true;
             }
-            else if (gender.equalsIgnoreCase("UNKOWN"))
+            else if (gender.equalsIgnoreCase("other"))
             {
                 gender = "UNKOWN";
             }
@@ -460,44 +461,12 @@ public class Main
         System.out.println("Pet " + name + " added");
     }
 
-    public static void displayOptions()
-    {
-        boolean back = false;
-        while (!back)
-        {
-            System.out.println("\nDisplay Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Display Owner(s)");
-            System.out.println("(2) Display Pet(s)");
-            System.out.print("Select an option:  ");
-            int option = keyboard.nextInt();
-            switch (option)
-            {
-                case 0:
-                    System.out.println("Returning...\n");
-                    back = true;
-                    break;
-                case 1:
-                    displayOwners();
-                    break;
-                case 2:
-                    displayPets();
-                    break;
-            }
-            if (option > 2)
-            {
-                System.out.println("Sorry There Is No Option " + option);
-                System.out.println("Please Choose Another Option From The List\n");
-            }
-        }
-    }
-
     public static void searchOptions()
     {
         boolean back = false;
         while (!back)
         {
-            System.out.println("\nDisplay Options");
+            System.out.println("\nSearch Options");
             System.out.println("(0) Back");
             System.out.println("(1) Find Owner");
             System.out.println("(2) Find Pet");
@@ -558,10 +527,18 @@ public class Main
                     r.displayOwnerByName(user);
                     break;
                 case 3:
+                    System.out.print("Address:");
+                    user = keyboard.next();
+                    r.displayOwnerByAddress(user);
                     break;
                 case 4:
+                    System.out.print("Telephone Number: ");
+                    user = keyboard.next();
+                    r.displayOwnerByTelephone(user);
                     break;
                 case 5:
+                    System.out.print("Email: ");
+                    r.displayOwnerByEmail(user);
                     break;
             }
             if (option > 5)
@@ -574,21 +551,87 @@ public class Main
 
     public static void petSearchOptions()
     {
-        System.out.println("(1) Find Pet By ID");
-        System.out.println("(2) Find Pet By Name");
-        System.out.println("(3) Find Pet By Animal Category");
-        System.out.println("(4) Find Pet By Type");
 
-    }
-
-    public static void displayList(Owner o)
-    {
-        o.displayAllPets();
+        String user = "";
+        boolean back = false;
+        while (!back)
+        {
+            System.out.println("\nOwner Search Options");
+            System.out.println("(0) Back");
+            System.out.println("(1) Find Pet By ID");
+            System.out.println("(2) Find Pet By Name");
+            System.out.println("(3) Find Pet By Animal Category");
+            System.out.println("(4) Find Pet By Type");
+            System.out.print("Select an option: ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...\n");
+                    back = true;
+                    break;
+                case 1:
+                    System.out.print("\nID: ");
+                    int id = keyboard.nextInt();
+                    r.displayPetByID(id);
+                    break;
+                case 2:
+                    System.out.print("\nName: ");
+                    user = keyboard.next();
+                    r.displayPetByName(user);
+                    break;
+                case 3:
+                    System.out.print("\nAnimal Category: ");
+                    user = keyboard.next();
+                    break;
+                case 4:
+                    System.out.print("\nType: ");
+                    user = keyboard.next();
+                    break;
+            }
+            if (option > 4)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
     }
 
     public static void displayOwners()
     {
-        r.displayOwners();
+        r.displayAllOwners();
+    }
+
+    public static void displayOptions()
+    {
+        boolean back = false;
+        while (!back)
+        {
+            System.out.println("\nDisplay Options");
+            System.out.println("(0) Back");
+            System.out.println("(1) Display Owner(s)");
+            System.out.println("(2) Display Pet(s)");
+            System.out.print("Select an option:  ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...\n");
+                    back = true;
+                    break;
+                case 1:
+                    displayOwners();
+                    break;
+                case 2:
+                    displayPets();
+                    break;
+            }
+            if (option > 2)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
     }
 
     public static void displayPets()
@@ -689,29 +732,7 @@ public class Main
 
     public static void fillReg()
     {
-        Pet p1 = new Mammal("Dog", "kevin", "Poddle", 2, "Black", "male", "4-22-10", true);
-        Pet p2 = new Bird("Cat", "sarah", "Poddle", 4, "Blue", "female", "20-20-10", 2, false);
-        Pet p3 = new Fish("Fish", "Kevin", "Poddle", 1, "Black", "male", "21-20-10", "freshwater");
-        Pet p4 = new Pet("GoldFish", "Poddle", 6, "Yellow", "20-20-10");
-        Pet p5 = new Mammal("Dog", "kevin", "Poddle", 2, "Black", "male", "4-22-10", true);
-        Pet p6 = new Bird("Cat", "sarah", "Poddle", 4, "Blue", "female", "20-20-10", 2, false);
-        Pet p7 = new Fish("Fish", "Kevin", "Poddle", 1, "Black", "male", "21-20-10", "freshwater");
-        Pet p8 = new Pet("GoldFish", "Poddle", 6, "Yellow", "20-20-10");
-
-        List<Pet> pets = new ArrayList<>();
-        pets.add(p1);
-        pets.add(p2);
-        pets.add(p4);
-        List<Pet> pets2 = new ArrayList<>();
-        pets.add(p5);
-        pets.add(p6);
-        List<Pet> pets3 = new ArrayList<>();
-        pets.add(p7);
-        pets.add(p6);
-        pets.add(p8);
-        r.addOwner("Greg", pets);
-        r.addOwner("Bob", pets2);
-        r.addOwner("Kevin", pets3);
-
+        r.addOwner("Greg");
+        r.loadData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\students.csv");
     }
 }
