@@ -11,5 +11,5 @@ package oop19_ca2_aaron_reihill;
  */
 public enum Gender
 {
-    MALE,FEMALE,UNKOWN
+    MALE, FEMALE, UNKOWN
 }
