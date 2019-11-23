@@ -6,7 +6,6 @@
 package oop19_ca2_aaron_reihill;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -18,7 +17,7 @@ public class Main
 
     static Scanner keyboard = new Scanner(System.in);
     static Registry r = new Registry();
-    
+
     public static void main(String[] args)
     {
         fillReg();
@@ -31,7 +30,7 @@ public class Main
         boolean exit = false;
         while (!exit)
         {
-            System.out.println("Dundalk Pet Registry");
+            System.out.println("\nDundalk Pet Registry");
             System.out.println("(0) Exit");
             System.out.println("(1) Add Options");
             System.out.println("(2) Search Options");
@@ -59,13 +58,15 @@ public class Main
                     removeOptions();
                     break;
                 case 4:
+                    System.out.println("Edit Option Selected...");
+                    editOptions();
                     break;
                 case 5:
                     System.out.println("Display Option Selected...");
                     displayOptions();
                     break;
             }
-            if (option > 5)
+            if (option > 5 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -98,7 +99,7 @@ public class Main
                     addPetOption();
                     break;
             }
-            if (option > 2)
+            if (option > 2 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -212,7 +213,7 @@ public class Main
                     }
                     break;
             }
-            if (option > 4)
+            if (option > 4 || option < 0)
             {
                 System.out.println("Option " + option + " Is Not Valid");
                 System.out.print("Please Enter Valid Option");
@@ -489,7 +490,7 @@ public class Main
                     petSearchOptions();
                     break;
             }
-            if (option > 2)
+            if (option > 2 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -545,7 +546,7 @@ public class Main
                     r.displayOwnerByEmail(user);
                     break;
             }
-            if (option > 5)
+            if (option > 5 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -595,7 +596,7 @@ public class Main
                     r.displayPetByType(user);
                     break;
             }
-            if (option > 4)
+            if (option > 4 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -632,7 +633,7 @@ public class Main
                     displayPets();
                     break;
             }
-            if (option > 2)
+            if (option > 2 && option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -668,7 +669,7 @@ public class Main
                     break;
 
             }
-            if (option > 2)
+            if (option > 2 && option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -728,7 +729,193 @@ public class Main
                     r.removePet(id, petID);
                     break;
             }
-            if (option > 2)
+            if (option > 2 && option < 0)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
+    }
+
+    public static void editOptions()
+    {
+        boolean back = false;
+
+        while (!back)
+        {
+            System.out.println("\nEdit Options");
+            System.out.println("(0) Back");
+            System.out.println("(1) Edit Owner");
+            System.out.println("(2) Edit Pet");
+            System.out.print("Select an Option: ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...");
+                    back = true;
+                    break;
+                case 1:
+                    editOwner();
+                    break;
+                case 2:
+                    editPet();
+                    break;
+            }
+            if (option > 2 || option < 0)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+
+        }
+    }
+
+    public static void editOwner()
+    {
+        availableOwners();
+        System.out.print("\nEnter Owner ID To Edit: ");
+        int id = keyboard.nextInt();
+        boolean back = false;
+        while (!back)
+        {
+            System.out.println("Edit Owner Options");
+            System.out.println("(0) Back");
+            System.out.println("(1) Name");
+            System.out.println("(2) Id");
+            System.out.println("(3) Telephone");
+            System.out.println("(4) Address");
+            System.out.println("(5) Email");
+            System.out.println("Select An Option: ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...");
+                    back = true;
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+            }
+            if (option > 5 || option < 0)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
+    }
+
+    public static void editPet()
+    {
+        String user;
+        int userInput = 0;
+        availableOwners();
+        System.out.print("\nEnter Pets Owner ID: ");
+        int id = keyboard.nextInt();
+        r.displayOwnersPet(id);
+        System.out.print("\nPet ID: ");
+        id = keyboard.nextInt();
+        boolean back = false;
+        Pet p = r.getPetById(id);
+        while (!back)
+        {
+            System.out.println("\nEdit Pet Options");
+            System.out.println("(0) Back");
+            System.out.println("(1) Animal Category");
+            System.out.println("(2) Name");
+            System.out.println("(3) Breed");
+            System.out.println("(4) Age");
+            System.out.println("(5) Next Page");
+            System.out.print("Select An Option: ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...");
+                    back = true;
+                    break;
+                case 1:
+                    System.out.println("\nCategory To Change To: ");
+                    user = keyboard.next();
+                    r.changePetAnimalCategory(id, user);
+                    break;
+                case 2:
+                    r.displayPetByID(id);
+                    System.out.print("\nChange Name To: ");
+                    user = keyboard.next();
+                    r.changePetName(id, user);
+                    break;
+                case 3:
+                    r.displayPetByID(id);
+                    System.out.print("\nChange Breed To: ");
+                    user = keyboard.next();
+                    r.changePetBreed(id, user);
+                    break;
+                case 4:
+                    r.displayPetByID(id);
+                    System.out.print("\nChange Age To: ");
+                    userInput = keyboard.nextInt();
+                    r.changePetAge(id, userInput);
+                    break;
+                case 5:
+                    editPetNextPage(id);
+                    break;
+            }
+            if (option > 5 || option < 0)
+            {
+                System.out.println("\nSorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
+    }
+    public static void editPetNextPage(int id)
+    {
+        String user;
+        int userInput = 0;
+        boolean back = false;
+        Pet p = r.getPetById(id);
+        while (!back)
+        {
+            System.out.println("\nSecond Page...");
+            System.out.println("(6) Back");
+            System.out.println("(7) Owner");
+            System.out.println("(8) Gender");
+            System.out.println("(9) Date Registered");
+            System.out.print("Select An Option: ");
+            int option = keyboard.nextInt();
+            switch (option)
+            {
+                case 6:
+                    System.out.println("Returning...");
+                    back = true;
+                    break;
+                case 7:
+                    r.displayPetByID(id);
+                    System.out.print("\nChange Owner Id To: ");
+                    userInput = keyboard.nextInt();
+                    r.changePetOwner(id, userInput);
+                    break;
+                case 8:
+                    r.displayPetByID(id);
+                    System.out.print("\nChange Gender To: ");
+                    user = keyboard.next();
+                    r.changePetGender(id, user);
+                    break;
+                case 9:
+                    /*
+                    @TODO Make change reg options
+                    */
+                    break;
+            }
+            if (option > 6 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -738,7 +925,25 @@ public class Main
 
     public static void fillReg()
     {
-        r.addOwner("Greg");
-        r.loadData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\pets.csv");
+        Owner greg = new Owner("Greg", "greg@gmail.com", "0853151", "Dundalk");
+        greg.addPet("bear", "bob", "fire", 404, "green", "male");
+        greg.addPet("goldfish", "goldy", "water", 4, "white", "other", "freshwater");
+        greg.addPet("cat", "tim", "fire", 224, "pink", "female", true);
+        greg.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
+
+        Owner kevin = new Owner("Kevin", "kevins@gmail.com", "0861415", "Dundalk,Ireland");
+        kevin.addPet("beadr", "bob", "fire", 404, "green", "male");
+        kevin.addPet("koda", "goldy", "water", 4, "white", "other", "freshwater");
+        kevin.addPet("thing", "tim", "fire", 224, "pink", "female", true);
+        kevin.addPet("bird", "bob", "fire", 44, "green", "other", 44, false);
+        kevin.addPet("beadsr", "bobe", "fire", 404, "green", "male");
+        kevin.addPet("koda", "goldy", "water", 4, "white", "other", "freshwater");
+        kevin.addPet("thin2g", "tim", "earth", 2224, "green", "female", true);
+        kevin.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
+        r.addOwner(greg);
+        r.addOwner(kevin);
+
+        //r.loadOwnerData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\OwnerData.csv");
+        //r.loadPetData("PetData.csv");
     }
 }
