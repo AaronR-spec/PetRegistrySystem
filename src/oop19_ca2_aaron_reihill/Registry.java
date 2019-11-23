@@ -886,6 +886,21 @@ public class Registry
             System.out.println("Valid Options (Male,Female,Unkown)");
         }
     }   
+    //#############################################################
+    //#############################################################
+    /*
+    @TODO make change reg date edit when local date is added to pet
+    */
+    //#############################################################
+    //#############################################################
+    public  void availableOwners()
+    {
+        System.out.println();
+        for (int i = 0; i < this.owners.size(); i++)
+        {
+            System.out.print("(ID: " + this.owners.get(i).getId() + ", Name: " + this.owners.get(i).getName() + " )\n");
+        }
+    }
     @Override
     public String toString()
     {
