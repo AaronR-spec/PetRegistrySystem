@@ -5,7 +5,6 @@
  */
 package oop19_ca2_aaron_reihill;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -157,7 +156,7 @@ public class Main
             System.out.print("Select an option: ");
             int option = keyboard.nextInt();
             System.out.println("Choose From ");
-            availableOwners();
+            r.availableOwners();
             switch (option)
             {
                 case 0:
@@ -557,7 +556,7 @@ public class Main
     public static void petSearchOptions()
     {
 
-        String user = "";
+        String user;
         boolean back = false;
         while (!back)
         {
@@ -604,11 +603,6 @@ public class Main
         }
     }
 
-    public static void displayOwners()
-    {
-        r.displayAllOwners();
-    }
-
     public static void displayOptions()
     {
         boolean back = false;
@@ -627,7 +621,7 @@ public class Main
                     back = true;
                     break;
                 case 1:
-                    displayOwners();
+                    r.displayAllOwners();
                     break;
                 case 2:
                     displayPets();
@@ -659,7 +653,7 @@ public class Main
                     break;
                 case 1:
                     System.out.println();
-                    availableOwners();
+                    r.availableOwners();
                     System.out.print("\nSelect An Owner(ID) To Display There Pets: ");
                     int id = keyboard.nextInt();
                     r.displayOwnersPet(id);
@@ -674,15 +668,6 @@ public class Main
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
-        }
-    }
-
-    public static void availableOwners()
-    {
-        System.out.println();
-        for (int i = 0; i < r.getOwners().size(); i++)
-        {
-            System.out.print("(ID: " + r.getOwners().get(i).getId() + ", Name: " + r.getOwners().get(i).getName() + " )\n");
         }
     }
 
@@ -705,7 +690,7 @@ public class Main
                     back = true;
                     break;
                 case 1:
-                    availableOwners();
+                    r.availableOwners();
                     System.out.print("Remove(ID):");
                     id = keyboard.nextInt();
                     if (r.findOwner(id) != -1)
@@ -719,7 +704,7 @@ public class Main
                     }
                     break;
                 case 2:
-                    availableOwners();
+                    r.availableOwners();
                     System.out.print("Select Pets Owner ID: ");
                     id = keyboard.nextInt();
                     r.displayOwnersPet(id);
@@ -773,20 +758,22 @@ public class Main
 
     public static void editOwner()
     {
-        availableOwners();
+        r.availableOwners();
         System.out.print("\nEnter Owner ID To Edit: ");
         int id = keyboard.nextInt();
+        int userInput;
+        String user;
         boolean back = false;
         while (!back)
         {
-            System.out.println("Edit Owner Options");
+            System.out.println("\nEdit Owner Options");
             System.out.println("(0) Back");
             System.out.println("(1) Name");
             System.out.println("(2) Id");
             System.out.println("(3) Telephone");
             System.out.println("(4) Address");
             System.out.println("(5) Email");
-            System.out.println("Select An Option: ");
+            System.out.print("Select An Option: ");
             int option = keyboard.nextInt();
             switch (option)
             {
@@ -795,14 +782,33 @@ public class Main
                     back = true;
                     break;
                 case 1:
+                    System.out.print("\nNew Name: ");
+                    user = keyboard.next();
+                    r.changeOwnerName(id, user);
                     break;
                 case 2:
+                    System.out.print("New Id: ");
+                    userInput = keyboard.nextInt();
+                    r.changeOwnerId(id, userInput);
+                    if(r.checkOwnerId(userInput))
+                    {
+                        id = userInput;
+                    }
                     break;
                 case 3:
+                    System.out.print("\nNew Telephone: ");
+                    user = keyboard.next();
+                    r.changeOwnerTelephone(id, user);
                     break;
                 case 4:
+                    System.out.print("New Address: ");
+                    user = keyboard.next();
+                    r.changeOwnerAddress(id, user);
                     break;
                 case 5:
+                    System.out.print("New Email: ");
+                    user = keyboard.next();
+                    r.changeOwnerEmail(id, user);
                     break;
             }
             if (option > 5 || option < 0)
@@ -816,8 +822,8 @@ public class Main
     public static void editPet()
     {
         String user;
-        int userInput = 0;
-        availableOwners();
+        int userInput;
+        r.availableOwners();
         System.out.print("\nEnter Pets Owner ID: ");
         int id = keyboard.nextInt();
         r.displayOwnersPet(id);
@@ -876,10 +882,11 @@ public class Main
             }
         }
     }
+
     public static void editPetNextPage(int id)
     {
         String user;
-        int userInput = 0;
+        int userInput;
         boolean back = false;
         Pet p = r.getPetById(id);
         while (!back)
@@ -910,9 +917,13 @@ public class Main
                     r.changePetGender(id, user);
                     break;
                 case 9:
+                    //###########################
+                    //###########################
                     /*
                     @TODO Make change reg options
-                    */
+                     */
+                    //###########################
+                    //###########################
                     break;
             }
             if (option > 6 || option < 0)
