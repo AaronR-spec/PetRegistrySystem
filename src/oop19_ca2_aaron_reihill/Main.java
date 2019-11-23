@@ -66,8 +66,7 @@ public class Main
                     displayOptions();
                     break;
                 case 6:
-                    System.out.println("Select A valid Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 6 || option < 0)
@@ -103,8 +102,7 @@ public class Main
                     addPetOption();
                     break;
                 case 3:
-                    System.out.println("Select A Valid Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 3 || option < 0)
@@ -117,34 +115,53 @@ public class Main
 
     public static void addOwner()
     {
-        System.out.print("\nName: ");
-        String name = keyboard.next();
-        System.out.print("Address: ");
-        String address = keyboard.next();
-        System.out.print("Telephone: ");
-        String telephone = keyboard.next();
-        System.out.print("Email? (Y/N): ");
-        boolean added = false;
-        while (!added)
+        boolean inValid = false;
+        while (!inValid)
         {
-            String yN = keyboard.next();
-            if (yN.equalsIgnoreCase("y"))
+            System.out.print("\nName: ");
+            String name = keyboard.next();
+            if (!checkUserInput(name))
             {
-                System.out.print("Email: ");
-                String email = keyboard.next();
-                r.addOwner(name, email, telephone, address);
-                System.out.println(name + " added, Returning...");
-                added = true;
+                System.out.println("Invalid Input\nReturning...");
+                return;
             }
-            else if (yN.equalsIgnoreCase("n"))
+            System.out.print("Address: ");
+            String address = keyboard.next();
+            if (!checkUserInput(address))
             {
-                r.addOwner(name, telephone, address);
-                System.out.println(name + " added, Returning...");
-                added = true;
+                System.out.println("Invalid Input\nReturning...");
+                return;
             }
-            else
+            System.out.print("Telephone: ");
+            String telephone = keyboard.next();
+            if (!checkUserInput(telephone))
             {
-                System.out.print("Please Enter Either Y or N: ");
+                System.out.println("Invalid Input\nReturning...");
+                return;
+            }
+            System.out.print("Email? (Y/N): ");
+            boolean added = false;
+            while (!added)
+            {
+                String yN = keyboard.next();
+                if (yN.equalsIgnoreCase("y"))
+                {
+                    System.out.print("Email: ");
+                    String email = keyboard.next();
+                    r.addOwner(name, email, telephone, address);
+                    System.out.println(name + " added, Returning...");
+                    added = true;
+                }
+                else if (yN.equalsIgnoreCase("n"))
+                {
+                    r.addOwner(name, telephone, address);
+                    System.out.println(name + " added, Returning...");
+                    added = true;
+                }
+                else
+                {
+                    System.out.print("Please Enter Either Y or N: ");
+                }
             }
         }
     }
@@ -221,8 +238,7 @@ public class Main
                     }
                     break;
                 case 5:
-                    System.out.println("Select A Valid Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 4 || option < 0)
@@ -502,8 +518,7 @@ public class Main
                     petSearchOptions();
                     break;
                 case 3:
-                    System.out.println("Select A Valid Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
             }
             if (option > 3 || option < 0)
             {
@@ -561,8 +576,7 @@ public class Main
                     r.displayOwnerByEmail(user);
                     break;
                 case 6:
-                    System.out.println("Select A Valid Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 6 || option < 0)
@@ -615,8 +629,7 @@ public class Main
                     r.displayPetByType(user);
                     break;
                 case 5:
-                    System.out.println("Select A Vaild Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 5 || option < 0)
@@ -651,8 +664,7 @@ public class Main
                     displayPets();
                     break;
                 case 3:
-                    System.out.println("Select A Vaild Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 3 && option < 0)
@@ -690,8 +702,7 @@ public class Main
                     r.displayAllPets();
                     break;
                 case 3:
-                    System.out.println("Select A Vaild Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
 
             }
@@ -746,8 +757,7 @@ public class Main
                     r.removePet(id, petID);
                     break;
                 case 3:
-                    System.out.println("Select A Vaild Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 3 && option < 0)
@@ -783,8 +793,7 @@ public class Main
                     editPet();
                     break;
                 case 3:
-                    System.out.println("Select A Vaild Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 3 || option < 0)
@@ -851,8 +860,7 @@ public class Main
                     r.changeOwnerEmail(id, user);
                     break;
                 case 6:
-                    System.out.println("Select A Vaild Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 6 || option < 0)
@@ -919,8 +927,7 @@ public class Main
                     editPetNextPage(id);
                     break;
                 case 6:
-                    System.out.println("Select A Vaild Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 6 || option < 0)
@@ -974,8 +981,7 @@ public class Main
                     //###########################
                     break;
                 case 10:
-                    System.out.println("Select A Vaild Option");
-                    keyboard.nextLine();
+                    clearInvalidMenu();
                     break;
             }
             if (option > 10 || option < 0)
@@ -1010,6 +1016,12 @@ public class Main
         //r.loadPetData("PetData.csv");
     }
 
+    private static void clearInvalidMenu()
+    {
+        System.out.println("Select A Vaild Option");
+        keyboard.nextLine();
+    }
+
     private static int checkUserInputMenu(int failOption)
     {
         int option;
@@ -1026,14 +1038,13 @@ public class Main
         return option;
     }
 
-    private static void checkUserInput(String input)
+    private static boolean checkUserInput(String input)
     {
-        try
+        boolean word = false;
+        if (input.matches("[a-zA-Z]{1,54}"))
         {
+            word = true;
         }
-        catch (InputMismatchException e)
-        {
-
-        }
+        return word;
     }
 }
