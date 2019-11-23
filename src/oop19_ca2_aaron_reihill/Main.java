@@ -5,6 +5,7 @@
  */
 package oop19_ca2_aaron_reihill;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -37,7 +38,7 @@ public class Main
             System.out.println("(4) Edit Options");
             System.out.println("(5) Display Options");
             System.out.print("Select an option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(6);
             switch (option)
             {
                 case 0:
@@ -64,8 +65,12 @@ public class Main
                     System.out.println("Display Option Selected...");
                     displayOptions();
                     break;
+                case 6:
+                    System.out.println("Select A valid Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 5 || option < 0)
+            if (option > 6 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -84,7 +89,7 @@ public class Main
             System.out.println("(1) Add Owner");
             System.out.println("(2) Add Pet");
             System.out.print("Select an option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(3);
             switch (option)
             {
                 case 0:
@@ -97,8 +102,12 @@ public class Main
                 case 2:
                     addPetOption();
                     break;
+                case 3:
+                    System.out.println("Select A Valid Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 2 || option < 0)
+            if (option > 3 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -154,7 +163,7 @@ public class Main
             System.out.println("(3) Bird");
             System.out.println("(4) Unkown");
             System.out.print("Select an option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(5);
             System.out.println("Choose From ");
             r.availableOwners();
             switch (option)
@@ -210,6 +219,10 @@ public class Main
                     {
                         System.out.println("Owner ID " + id + " Not Found");
                     }
+                    break;
+                case 5:
+                    System.out.println("Select A Valid Option");
+                    keyboard.nextLine();
                     break;
             }
             if (option > 4 || option < 0)
@@ -475,7 +488,7 @@ public class Main
             System.out.println("(1) Find Owner");
             System.out.println("(2) Find Pet");
             System.out.print("Select an option:  ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(3);
             switch (option)
             {
                 case 0:
@@ -488,8 +501,11 @@ public class Main
                 case 2:
                     petSearchOptions();
                     break;
+                case 3:
+                    System.out.println("Select A Valid Option");
+                    keyboard.nextLine();
             }
-            if (option > 2 || option < 0)
+            if (option > 3 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -512,7 +528,7 @@ public class Main
             System.out.println("(4) Find Owner By Telephone");
             System.out.println("(5) Find Owner By Email");
             System.out.print("Select an option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(6);
             switch (option)
             {
                 case 0:
@@ -544,8 +560,12 @@ public class Main
                     System.out.print("Email: ");
                     r.displayOwnerByEmail(user);
                     break;
+                case 6:
+                    System.out.println("Select A Valid Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 5 || option < 0)
+            if (option > 6 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -567,7 +587,7 @@ public class Main
             System.out.println("(3) Find Pet By Animal Category");
             System.out.println("(4) Find Pet By Type");
             System.out.print("Select an option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(5);
             switch (option)
             {
                 case 0:
@@ -594,8 +614,12 @@ public class Main
                     user = keyboard.next();
                     r.displayPetByType(user);
                     break;
+                case 5:
+                    System.out.println("Select A Vaild Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 4 || option < 0)
+            if (option > 5 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -613,7 +637,7 @@ public class Main
             System.out.println("(1) Display Owner(s)");
             System.out.println("(2) Display Pet(s)");
             System.out.print("Select an option:  ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(3);
             switch (option)
             {
                 case 0:
@@ -626,8 +650,12 @@ public class Main
                 case 2:
                     displayPets();
                     break;
+                case 3:
+                    System.out.println("Select A Vaild Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 2 && option < 0)
+            if (option > 3 && option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -644,7 +672,7 @@ public class Main
             System.out.println("(1) Display Pet By Owner ID");
             System.out.println("(2) Display All Pet(s) Registered");
             System.out.print("Select an option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(3);
             switch (option)
             {
                 case 0:
@@ -661,9 +689,13 @@ public class Main
                 case 2:
                     r.displayAllPets();
                     break;
+                case 3:
+                    System.out.println("Select A Vaild Option");
+                    keyboard.nextLine();
+                    break;
 
             }
-            if (option > 2 && option < 0)
+            if (option > 3 && option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -682,7 +714,7 @@ public class Main
             System.out.println("(1) Remove Owner");
             System.out.println("(2) Remove Pet");
             System.out.print("Select an option:  ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(3);
             switch (option)
             {
                 case 0:
@@ -713,8 +745,12 @@ public class Main
                     System.out.println(r.petsName(id, petID) + " Removed");
                     r.removePet(id, petID);
                     break;
+                case 3:
+                    System.out.println("Select A Vaild Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 2 && option < 0)
+            if (option > 3 && option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -733,7 +769,7 @@ public class Main
             System.out.println("(1) Edit Owner");
             System.out.println("(2) Edit Pet");
             System.out.print("Select an Option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(3);
             switch (option)
             {
                 case 0:
@@ -746,8 +782,12 @@ public class Main
                 case 2:
                     editPet();
                     break;
+                case 3:
+                    System.out.println("Select A Vaild Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 2 || option < 0)
+            if (option > 3 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -774,7 +814,7 @@ public class Main
             System.out.println("(4) Address");
             System.out.println("(5) Email");
             System.out.print("Select An Option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(6);
             switch (option)
             {
                 case 0:
@@ -790,7 +830,7 @@ public class Main
                     System.out.print("New Id: ");
                     userInput = keyboard.nextInt();
                     r.changeOwnerId(id, userInput);
-                    if(r.checkOwnerId(userInput))
+                    if (r.checkOwnerId(userInput))
                     {
                         id = userInput;
                     }
@@ -810,8 +850,12 @@ public class Main
                     user = keyboard.next();
                     r.changeOwnerEmail(id, user);
                     break;
+                case 6:
+                    System.out.println("Select A Vaild Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 5 || option < 0)
+            if (option > 6 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -841,7 +885,7 @@ public class Main
             System.out.println("(4) Age");
             System.out.println("(5) Next Page");
             System.out.print("Select An Option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(6);
             switch (option)
             {
                 case 0:
@@ -874,8 +918,12 @@ public class Main
                 case 5:
                     editPetNextPage(id);
                     break;
+                case 6:
+                    System.out.println("Select A Vaild Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 5 || option < 0)
+            if (option > 6 || option < 0)
             {
                 System.out.println("\nSorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -897,7 +945,7 @@ public class Main
             System.out.println("(8) Gender");
             System.out.println("(9) Date Registered");
             System.out.print("Select An Option: ");
-            int option = keyboard.nextInt();
+            int option = checkUserInputMenu(10);
             switch (option)
             {
                 case 6:
@@ -925,8 +973,12 @@ public class Main
                     //###########################
                     //###########################
                     break;
+                case 10:
+                    System.out.println("Select A Vaild Option");
+                    keyboard.nextLine();
+                    break;
             }
-            if (option > 6 || option < 0)
+            if (option > 10 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -956,5 +1008,32 @@ public class Main
 
         //r.loadOwnerData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\OwnerData.csv");
         //r.loadPetData("PetData.csv");
+    }
+
+    private static int checkUserInputMenu(int failOption)
+    {
+        int option;
+        try
+        {
+            option = keyboard.nextInt();
+
+        }
+        catch (InputMismatchException e)
+        {
+            System.out.println("\nInput Is Not A Number");
+            option = failOption;
+        }
+        return option;
+    }
+
+    private static void checkUserInput(String input)
+    {
+        try
+        {
+        }
+        catch (InputMismatchException e)
+        {
+
+        }
     }
 }
