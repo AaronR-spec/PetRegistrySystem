@@ -722,7 +722,8 @@ public class Registry
     {
         Pet p = getPetById(id);
         System.out.println("\n" + p.getOwnerID()+ " Changed To " + ownerId);
-        p.setOwnerID(id);
+        getOwnerByID(ownerId).addPet(p);
+        p.setOwnerID(ownerId);
     }
     public void changePetAnimalCategory(int id,String category)
     {
@@ -732,7 +733,6 @@ public class Registry
         boolean picked = false;
         boolean choice = false;
         Scanner input = new Scanner(System.in);
-        System.out.println("\n" + p.getClass().getSimpleName()+ " Changed To " + category);
         if(category.equalsIgnoreCase("Mammal"))
         {
             while(!picked)
@@ -755,8 +755,8 @@ public class Registry
             }
             }
             System.out.println(p.getClass().getSimpleName() + " Changed To " + category);
-            getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(),p.getBreed() , p.getAge(), p.getColour(), p.getGenderString(), choice));
             getOwnerByID(p.getOwnerID()).removePet(p);
+            getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(),p.getBreed() , p.getAge(), p.getColour(), p.getGenderString(), choice));
         }
         else if(category.equalsIgnoreCase("Bird"))
         {
@@ -787,8 +787,8 @@ public class Registry
             }
             }
             System.out.println(p.getClass().getSimpleName() + " Changed To " + category);
-            getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(),p.getBreed() , p.getAge(), p.getColour(), p.getGenderString(),userInput, choice));
             getOwnerByID(p.getOwnerID()).removePet(p);
+            getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(),p.getBreed() , p.getAge(), p.getColour(), p.getGenderString(),userInput, choice));
         }
         else if(category.equalsIgnoreCase("Fish"))
         {
@@ -825,8 +825,9 @@ public class Registry
             }
             }
             System.out.println(p.getClass().getSimpleName() + " Changed To " + category);
-            getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(),p.getBreed() , p.getAge(), p.getColour(), p.getGenderString(),user));
             getOwnerByID(p.getOwnerID()).removePet(p);
+            getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(),p.getBreed() , p.getAge(), p.getColour(), p.getGenderString(),user));
+            
         }
 
         else
