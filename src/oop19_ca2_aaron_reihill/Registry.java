@@ -724,6 +724,117 @@ public class Registry
         System.out.println("\n" + p.getOwnerID()+ " Changed To " + ownerId);
         p.setOwnerID(id);
     }
+    public void changePetAnimalCategory(int id,String category)
+    {
+        Pet p = getPetById(id);
+        String user = "";
+        int userInput =0;
+        boolean picked = false;
+        boolean choice = false;
+        Scanner input = new Scanner(System.in);
+        System.out.println("\n" + p.getClass().getSimpleName()+ " Changed To " + category);
+        if(category.equalsIgnoreCase("Mammal"))
+        {
+            while(!picked)
+            {
+            System.out.print("Is The Pet Neutered: ");
+            user = input.next();
+            if(user.equalsIgnoreCase("yes") || user.equalsIgnoreCase("true"))
+            {
+                choice = true;
+                picked = true;
+            }
+            else if(user.equalsIgnoreCase("no") || user.equalsIgnoreCase("false"))
+            {
+                choice = false;
+                picked = true;
+            }
+            else
+            {
+                System.out.println(user + " Is Not A Valid Input (Y/N)");
+            }
+            }
+            System.out.println(p.getClass().getSimpleName() + " Changed To " + category);
+            getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(),p.getBreed() , p.getAge(), p.getColour(), p.getGenderString(), choice));
+            getOwnerByID(p.getOwnerID()).removePet(p);
+        }
+        else if(category.equalsIgnoreCase("Bird"))
+        {
+        while(!picked)
+            {
+            System.out.print("\nWingspan(ft): ");
+            userInput = input.nextInt();
+            if(userInput < 0)
+            {
+                System.out.println("Invalid Input Defaulating To Zero...");
+                userInput = 0;
+            }
+                System.out.print("Can The Pet Fly: ");
+                user = input.next();
+            if(user.equalsIgnoreCase("no") || user.equalsIgnoreCase("false"))
+            {
+                choice = false;
+                picked = true;
+            }
+            else if(user.equalsIgnoreCase("yes") || user.equalsIgnoreCase("true"))
+            {
+                choice = true;
+                picked = true;
+            }
+            else
+            {
+                System.out.println(user + " Is Not A Valid Input (Y/N)");
+            }
+            }
+            System.out.println(p.getClass().getSimpleName() + " Changed To " + category);
+            getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(),p.getBreed() , p.getAge(), p.getColour(), p.getGenderString(),userInput, choice));
+            getOwnerByID(p.getOwnerID()).removePet(p);
+        }
+        else if(category.equalsIgnoreCase("Fish"))
+        {
+            while(!picked)
+            {
+            System.out.print("\nWingspan(ft): ");
+            userInput = input.nextInt();
+            if(userInput < 0)
+            {
+                System.out.println("Invalid Input Defaulating To Zero...");
+                userInput = 0;
+            }
+                System.out.print("Can The Pet Fly: ");
+                user = input.next();
+            if(user.equalsIgnoreCase("FRESHWATER"))
+            {
+                picked = true;
+            }
+            else if(user.equalsIgnoreCase("SEAWATER"))
+            {
+                picked = true;
+            }
+             else if(user.equalsIgnoreCase("BRACKISH"))
+            {
+                picked = true;
+            }
+            else if(user.equalsIgnoreCase("UNKOWN") || user.equalsIgnoreCase("Dont know") )
+            {
+                picked = true;
+            }
+            else
+            {
+                System.out.println(user + " Is Not A Valid Input (FRESHWATER, SEAWATER, BRACKISH, UNKOWN)");
+            }
+            }
+            System.out.println(p.getClass().getSimpleName() + " Changed To " + category);
+            getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(),p.getBreed() , p.getAge(), p.getColour(), p.getGenderString(),user));
+            getOwnerByID(p.getOwnerID()).removePet(p);
+        }
+
+        else
+        {
+            System.out.println("Category Not Found...");
+            System.out.println("\nValid Categories: (Mammal)(Bird)(Fish)");
+        }
+    }
     @Override
     public String toString()
     {
