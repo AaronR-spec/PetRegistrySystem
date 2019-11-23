@@ -328,7 +328,20 @@ public class Registry
         }
         return o;
     }
-
+   public boolean checkOwnerId(int id)
+    {
+        int i = 0;
+        boolean found = false;
+        while (!found && i < this.owners.size())
+        {
+            if (this.owners.get(i).getId() == id)
+            {
+                found = true;
+            }
+            i++;
+        }
+        return found;
+    }
     public int findOwner(int id)
     {
         int index = -1;
@@ -901,6 +914,67 @@ public class Registry
             System.out.print("(ID: " + this.owners.get(i).getId() + ", Name: " + this.owners.get(i).getName() + " )\n");
         }
     }
+    public void changeOwnerName(int id,String name)
+    {
+        if(checkOwnerId(id))
+        {
+            System.out.println("\nOwner's Name " +getOwnerByID(id).getName() + " Changed To " + name );
+            getOwnerByID(id).setName(name);
+        }
+        else
+        {
+            System.out.println(OWNER_NOT_FOUND);
+        }
+    }
+        public void changeOwnerTelephone(int id,String telephone)
+    {
+        if(checkOwnerId(id))
+        {
+            System.out.println("\nOwner's Telephone " +getOwnerByID(id).getTelephone() + " Changed To " + telephone );
+            getOwnerByID(id).setTelephone(telephone);
+        }
+        else
+        {
+            System.out.println(OWNER_NOT_FOUND);
+        }
+    }
+    public void changeOwnerEmail(int id,String email)
+    {
+        if(checkOwnerId(id))
+        {
+            System.out.println("\nOwner's Email " +getOwnerByID(id).getEmail() + " Changed To " + email );
+            getOwnerByID(id).setEmail(email);
+        }
+        else
+        {
+            System.out.println(OWNER_NOT_FOUND);
+        }
+    }
+            public void changeOwnerAddress(int id,String address)
+    {
+        if(checkOwnerId(id))
+        {
+            System.out.println("\nOwner's Address " +getOwnerByID(id).getAddress() + " Changed To " + address );
+            getOwnerByID(id).setTelephone(address);
+        }
+        else
+        {
+            System.out.println(OWNER_NOT_FOUND);
+        }
+    }
+    public void changeOwnerId(int id,int newId)
+    {
+        if(checkOwnerId(id) && !checkOwnerId(newId) )
+        {
+            System.out.println("\nOwner's Id " +getOwnerByID(id).getId() + " Changed To " + newId );
+            getOwnerByID(id).setId(newId);
+        }
+        else
+        {
+            System.out.println("Could Not Change Id To " + newId);
+        }
+    }
+                
     @Override
     public String toString()
     {
