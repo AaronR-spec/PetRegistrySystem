@@ -873,7 +873,19 @@ public class Registry
             System.out.println("\nValid Categories: (Mammal)(Bird)(Fish)");
         }
     }
-
+    public void changePetGender(int id, String gender)
+    {
+        String ogGender = getPetById(id).getGenderString();
+        if(getPetById(id).setGender(gender))
+        {
+            System.out.println(ogGender + " Changed To " + gender);
+        }
+        else
+        {
+            System.out.println("\n"+ gender + " Is Not A Valid Option");
+            System.out.println("Valid Options (Male,Female,Unkown)");
+        }
+    }   
     @Override
     public String toString()
     {
