@@ -1,27 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package oop19_ca2_aaron_reihill;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
+import java.util.Date;
+import java.util.Scanner;
 
 /**
  *
- * @author D00222467
+ * @author D00222467/Aaron Reihill
  */
 public class Pet
 {
 
     private String type = "";
     private String name = "";
-    private String breed = ""; 
+    private String breed = "";
     private int age = 0;
     private String colour = "";
     private Gender gender = Gender.UNKOWN;
-    private String regDate = "";
+    private Date regDate;
     private static int index = 0;
     private int petID = 0;
     private int ownerID;
@@ -30,16 +31,24 @@ public class Pet
     {
     }
 
-    public Pet(String type, String breed, int age, String colour, String regDate)
+    public Pet(String type, String breed, int age, String colour)
     {
         this.type = type;
         this.breed = breed;
         this.age = age;
         this.colour = colour;
-        this.regDate = regDate;
-        this.petID = this.index++;
+        this.regDate = new Date();
+        this.petID = Pet.index++;
     }
-
+    public Pet(String type, String breed, int age, String colour,String regDate)
+    {
+        this.type = type;
+        this.breed = breed;
+        this.age = age;
+        this.colour = colour;
+        this.setRegDate(regDate);
+        this.petID = Pet.index++;
+    }
     public Pet(String type, String name, String breed, int age, String colour, String gender)
     {
         this.type = type;
@@ -48,18 +57,7 @@ public class Pet
         this.age = age;
         this.colour = colour;
         findGender(gender);
-        this.petID = this.index++;
-    }
-
-    public Pet(int owner, String type, String breed, int age, String colour, String regDate)
-    {
-        this.ownerID = owner;
-        this.type = type;
-        this.breed = breed;
-        this.age = age;
-        this.colour = colour;
-        this.regDate = regDate;
-        this.petID = this.index++;
+        this.petID = Pet.index++;
     }
 
     public Pet(int owner, String type, String breed, int age, String colour)
@@ -69,9 +67,11 @@ public class Pet
         this.breed = breed;
         this.age = age;
         this.colour = colour;
-        this.petID = this.index++;
+        this.regDate = new Date();
+        this.petID = Pet.index++;
     }
-    public Pet(int owner,int petId, String type, String name, String breed, int age, String colour, String gender)
+
+    public Pet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender)
     {
         this.ownerID = owner;
         this.type = type;
@@ -80,6 +80,19 @@ public class Pet
         this.age = age;
         this.colour = colour;
         findGender(gender);
+        this.regDate = new Date();
+        this.petID = petId;
+    }
+    public Pet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender,String regDate)
+    {
+        this.ownerID = owner;
+        this.type = type;
+        this.name = name;
+        this.breed = breed;
+        this.age = age;
+        this.colour = colour;
+        findGender(gender);
+        this.setRegDate(regDate);
         this.petID = petId;
     }
     public Pet(int owner, String type, String name, String breed, int age, String colour, String gender)
@@ -90,8 +103,9 @@ public class Pet
         this.breed = breed;
         this.age = age;
         this.colour = colour;
+        this.regDate = new Date();
         findGender(gender);
-        this.petID = this.index++;
+        this.petID = Pet.index++;
     }
 
     public Pet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate)
@@ -103,8 +117,8 @@ public class Pet
         this.age = age;
         this.colour = colour;
         findGender(gender);
-        this.regDate = regDate;
-        this.petID = this.index++;
+        this.setRegDate(regDate);
+        this.petID = Pet.index++;
     }
 
     public String getType()
@@ -120,6 +134,11 @@ public class Pet
     public String getBreed()
     {
         return breed;
+    }
+
+    public Date getRegDate()
+    {
+        return regDate;
     }
 
     public int getAge()
@@ -144,26 +163,28 @@ public class Pet
 
     public String getGenderString()
     {
-        String gender = "";
-        if (this.gender == this.gender.MALE)
+        String petGender;
+        if (null == this.gender)
         {
-            gender = "Male";
-        }
-        else if (this.gender == this.gender.FEMALE)
-        {
-            gender = "Female";
+            petGender = "Unkown";
         }
         else
         {
-            gender = "Unkown";
+            switch (this.gender)
+            {
+                case MALE:
+                    petGender = "Male";
+                    break;
+                case FEMALE:
+                    petGender = "Female";
+                    break;
+                default:
+                    petGender = "Unkown";
+                    break;
+            }
         }
-        return gender;
+        return petGender;
 
-    }
-
-    public String getRegDate()
-    {
-        return regDate;
     }
 
     public int getPetID()
@@ -205,25 +226,46 @@ public class Pet
     {
         this.gender = gender;
     }
-    public void setGender(String gender)
+
+    public boolean setGender(String gender)
     {
+        boolean changed = false;
         if (gender.equalsIgnoreCase("male"))
         {
-            this.gender = this.gender.MALE;
+            this.gender = Gender.MALE;
+            changed = true;
         }
         else if (gender.equalsIgnoreCase("female"))
         {
-            this.gender = this.gender.FEMALE;
+            this.gender = Gender.FEMALE;
+            changed = true;
         }
-        else
+        else if (gender.equalsIgnoreCase("female"))
         {
-            this.gender = this.gender.UNKOWN;
+            this.gender = Gender.UNKOWN;
+            changed = true;
         }
+        return changed;
+    }
+
+    public void setRegDate(Date regDate)
+    {
+        this.regDate = regDate;
     }
 
     public void setRegDate(String regDate)
     {
-        this.regDate = regDate;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = null;
+        try
+        {
+            date = dateFormat.parse(regDate);
+        }
+        catch (ParseException e)
+        {
+            System.out.println("Date In Wrong Format");
+        }
+        this.regDate = date;
     }
 
     public static void setIndex(int index)
@@ -240,9 +282,10 @@ public class Pet
     {
         this.ownerID = ownerID;
     }
-    public static Pet createPet(int owner,int petId, String type, String name, String breed, int age, String colour, String gender, String water)
+
+    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, String water)
     {
-        return new Fish(owner,petId, type, name, breed, age, colour, gender, water);
+        return new Fish(owner, petId, type, name, breed, age, colour, gender, water);
     }
 
     public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String water)
@@ -264,9 +307,10 @@ public class Pet
     {
         return new Mammal(owner, type, name, breed, age, colour, gender, neutered);
     }
-    public static Pet createPet(int owner,int petId, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
+
+    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
     {
-        return new Mammal(owner,petId, type, name, breed, age, colour, gender, neutered);
+        return new Mammal(owner, petId, type, name, breed, age, colour, gender, neutered);
     }
 
     public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, int wingspan, boolean fly)
@@ -278,20 +322,29 @@ public class Pet
     {
         return new Bird(owner, type, name, breed, age, colour, gender, wingspan, fly);
     }
-    public static Pet createPet(int owner,int petId, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
+
+    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
     {
-        return new Bird(owner,petId, type, name, breed, age, colour, gender, wingspan, fly);
+        return new Bird(owner, petId, type, name, breed, age, colour, gender, wingspan, fly);
     }
 
     public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender)
     {
         return new Pet(owner, type, name, breed, age, colour, gender);
     }
-        public static Pet createPet(int owner, int petId,String type, String name, String breed, int age, String colour, String gender)
+
+    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender)
     {
-        return new Pet(owner,petId,type, name, breed, age, colour, gender);
+        return new Pet(owner, petId, type, name, breed, age, colour, gender);
     }
-//override in class (mammal... etc)
+    //#####################################
+    //#####################################
+
+    /*
+        @TODO override in class (mammal... etc)
+     */
+    //#####################################
+    //#####################################
     public void displayAllPets(List<Pet> pets)
     {
         for (Pet p : pets)
@@ -300,19 +353,19 @@ public class Pet
             if (p instanceof Mammal)
             {
                 Mammal m = (Mammal) p;
-                System.out.println("\n("+m.getClass().getSimpleName() + ") PetID:" + m.getPetID() + ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age: " + m.getAge() + ", Breed: " + m.getBreed() + ", Colour: " + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate() + ", Neutered: " + m.isNeutered());
+                System.out.println("\n(" + m.getClass().getSimpleName() + ") PetID: " + m.getPetID() + ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age: " + m.getAge() + ", Breed: " + m.getBreed() + ", Colour: " + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate() + ", Neutered: " + m.isNeutered());
 
             }
             else if (p instanceof Bird)
             {
                 Bird b = (Bird) p;
-                System.out.println("\n("+b.getClass().getSimpleName() + ") PetID:" + b.getPetID() + ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age: " + b.getAge() + ", Breed: " + b.getBreed() + ", Colour: " + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate() + ", Wingspan: " + b.getWingspan() + "ft" + ", Fly: " + b.isFly());
+                System.out.println("\n(" + b.getClass().getSimpleName() + ") PetID: " + b.getPetID() + ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age: " + b.getAge() + ", Breed: " + b.getBreed() + ", Colour: " + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate() + ", Wingspan: " + b.getWingspan() + "ft" + ", Fly: " + b.isFly());
 
             }
             else if (p instanceof Fish)
             {
                 Fish f = (Fish) p;
-                System.out.println("\n("+f.getClass().getSimpleName() + ") PetID:" + f.getPetID() + ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age: " + f.getAge() + ", Breed: " + f.getBreed() + ", Colour: " + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate() + ", Water Type: " + f.getWater());
+                System.out.println("\n(" + f.getClass().getSimpleName() + ") PetID: " + f.getPetID() + ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age: " + f.getAge() + ", Breed: " + f.getBreed() + ", Colour: " + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate() + ", Water Type: " + f.getWater());
 
             }
             else
@@ -327,19 +380,19 @@ public class Pet
         if (p instanceof Mammal)
         {
             Mammal m = (Mammal) p;
-            System.out.println("\n("+m.getClass().getSimpleName() + ") PetID:" + m.getPetID() + ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age: " + m.getAge() + ", Breed: " + m.getBreed() + ", Colour: " + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate() + ", Neutered: " + m.isNeutered());
+            System.out.println("\n(" + m.getClass().getSimpleName() + ") PetID: " + m.getPetID() + ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age: " + m.getAge() + ", Breed: " + m.getBreed() + ", Colour: " + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate() + ", Neutered: " + m.isNeutered());
 
         }
         else if (p instanceof Bird)
         {
             Bird b = (Bird) p;
-            System.out.println("\n*("+b.getClass().getSimpleName() + ") PetID:" + b.getPetID() + ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age: " + b.getAge() + ", Breed: " + b.getBreed() + ", Colour: " + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate() + ", Wingspan: " + b.getWingspan() + "ft" + ", Fly: " + b.isFly());
+            System.out.println("\n*(" + b.getClass().getSimpleName() + ") PetID: " + b.getPetID() + ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age: " + b.getAge() + ", Breed: " + b.getBreed() + ", Colour: " + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate() + ", Wingspan: " + b.getWingspan() + "ft" + ", Fly: " + b.isFly());
 
         }
         else if (p instanceof Fish)
         {
             Fish f = (Fish) p;
-            System.out.println("\n("+f.getClass().getSimpleName() + ") PetID:" + f.getPetID() + ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age: " + f.getAge() + ", Breed: " + f.getBreed() + ", Colour: " + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate() + ", Water Type: " + f.getWater());
+            System.out.println("\n(" + f.getClass().getSimpleName() + ") PetID: " + f.getPetID() + ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age: " + f.getAge() + ", Breed: " + f.getBreed() + ", Colour: " + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate() + ", Water Type: " + f.getWater());
 
         }
         else
@@ -352,15 +405,15 @@ public class Pet
     {
         if (g.equalsIgnoreCase("male"))
         {
-            this.gender = this.gender.MALE;
+            this.gender = Gender.MALE;
         }
         else if (g.equalsIgnoreCase("female"))
         {
-            this.gender = this.gender.FEMALE;
+            this.gender = Gender.FEMALE;
         }
         else
         {
-            this.gender = this.gender.UNKOWN;
+            this.gender = Gender.UNKOWN;
         }
     }
 
@@ -368,15 +421,10 @@ public class Pet
     public int hashCode()
     {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.type);
-        hash = 59 * hash + Objects.hashCode(this.name);
-        hash = 59 * hash + Objects.hashCode(this.breed);
-        hash = 59 * hash + this.age;
-        hash = 59 * hash + Objects.hashCode(this.colour);
-        hash = 59 * hash + Objects.hashCode(this.gender);
-        hash = 59 * hash + Objects.hashCode(this.regDate);
-        hash = 59 * hash + this.petID;
-        hash = 59 * hash + this.ownerID;
+        hash = 37 * hash + Objects.hashCode(this.name);
+        hash = 37 * hash + Objects.hashCode(this.regDate);
+        hash = 37 * hash + this.petID;
+        hash = 37 * hash + this.ownerID;
         return hash;
     }
 
