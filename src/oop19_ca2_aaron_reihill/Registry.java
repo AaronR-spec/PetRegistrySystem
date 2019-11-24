@@ -1,4 +1,3 @@
-
 package oop19_ca2_aaron_reihill;
 
 import java.io.File;
@@ -982,10 +981,54 @@ public class Registry
         }
     }
 
+    public void displayMammals()
+    {
+        for (Owner o : this.owners)
+        {
+            List<Pet> pets = o.getPets();
+            for (Pet p : pets)
+            {
+                if (p instanceof Mammal)
+                {
+                    p.displayPet(p);
+                }
+            }
+        }
+    }
+
+    public void displayFish()
+    {
+        for (Owner o : this.owners)
+        {
+            List<Pet> pets = o.getPets();
+            for (Pet p : pets)
+            {
+                if (p instanceof Fish)
+                {
+                    p.displayPet(p);
+                }
+            }
+        }
+    }
+
+    public void displayBirds()
+    {
+        for (Owner o : this.owners)
+        {
+            List<Pet> pets = o.getPets();
+            for (Pet p : pets)
+            {
+                if (p instanceof Bird)
+                {
+                    p.displayPet(p);
+                }
+            }
+        }
+    }
+
     @Override
     public String toString()
     {
         return "Registry{" + "owners=" + owners + '}';
     }
-
 }
