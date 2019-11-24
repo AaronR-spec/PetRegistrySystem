@@ -16,9 +16,11 @@ public class Main
     public static void main(String[] args)
     {
         fillReg();
+        r.petStatistics();
         displayMenu();
     }
 
+    
     public static void displayMenu()
     {
         System.out.println("Aaron Reihill CA2 (OOP)");
@@ -32,7 +34,7 @@ public class Main
             System.out.println("(3) Remove Options");
             System.out.println("(4) Edit Options");
             System.out.println("(5) Display Options");
-            System.out.print("Select an option: ");
+            System.out.print("Select An Option: ");
             int option = checkUserInputMenu(6);
             switch (option)
             {
@@ -82,7 +84,7 @@ public class Main
             System.out.println("(0) Back");
             System.out.println("(1) Add Owner");
             System.out.println("(2) Add Pet");
-            System.out.print("Select an option: ");
+            System.out.print("Select An Option: ");
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -114,7 +116,7 @@ public class Main
         System.out.print("\nName: ");
         name = checkUserInput("Name");
         System.out.print("Address: ");
-        address = checkUserInput("Address");
+        address = keyboard.next();
         System.out.print("Telephone: ");
         telephone = checkTelephone();
         System.out.print("Email? (Y/N): ");
@@ -158,7 +160,7 @@ public class Main
             System.out.println("(2) Fish");
             System.out.println("(3) Bird");
             System.out.println("(4) Unkown");
-            System.out.print("Select an option: ");
+            System.out.print("Select An Option: ");
             int option = checkUserInputMenu(5);
             System.out.println("Choose From ");
             r.availableOwners();
@@ -483,7 +485,7 @@ public class Main
             System.out.println("(0) Back");
             System.out.println("(1) Find Owner");
             System.out.println("(2) Find Pet");
-            System.out.print("Select an option:  ");
+            System.out.print("Select An Option:  ");
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -522,7 +524,7 @@ public class Main
             System.out.println("(3) Find Owner By Address");
             System.out.println("(4) Find Owner By Telephone");
             System.out.println("(5) Find Owner By Email");
-            System.out.print("Select an option: ");
+            System.out.print("Select An Option: ");
             int option = checkUserInputMenu(6);
             switch (option)
             {
@@ -543,7 +545,7 @@ public class Main
                     break;
                 case 3:
                     System.out.print("Address:");
-                    user = checkUserInput("Address");
+                    user = keyboard.next();
                     r.displayOwnerByAddress(user);
                     break;
                 case 4:
@@ -581,7 +583,7 @@ public class Main
             System.out.println("(2) Find Pet By Name");
             System.out.println("(3) Find Pet By Animal Category");
             System.out.println("(4) Find Pet By Type");
-            System.out.print("Select an option: ");
+            System.out.print("Select An Option: ");
             int option = checkUserInputMenu(5);
             switch (option)
             {
@@ -664,8 +666,9 @@ public class Main
             System.out.println("\n(0) Back");
             System.out.println("(1) Display Pet By Owner ID");
             System.out.println("(2) Display All Pet(s) Registered");
-            System.out.print("Select an option: ");
-            int option = checkUserInputMenu(3);
+            System.out.println("(3) Display By Animal Category");
+            System.out.print("Select An Option: ");
+            int option = checkUserInputMenu(4);
             switch (option)
             {
                 case 0:
@@ -683,16 +686,60 @@ public class Main
                     r.displayAllPets();
                     break;
                 case 3:
+                    displayByAnimalCategory();
+                    break;
+                case 4:
                     clearInvalidMenu();
                     break;
 
             }
-            if (option > 3 && option < 0)
+            if (option > 4 && option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
+    }
+
+    public static void displayByAnimalCategory()
+    {
+        boolean back = false;
+        while (!back)
+        {
+            System.out.println("\nAnimalCategory");
+            System.out.println("(0) Back");
+            System.out.println("(1) Mammal");
+            System.out.println("(2) Fish");
+            System.out.println("(3) Bird");
+            System.out.print("Select A Category: ");
+            int option = checkUserInputMenu(4);
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...");
+                    back = true;
+                    break;
+                case 1:
+                    r.displayMammals();
+                    break;
+                case 2:
+                    r.displayFish();
+                    break;
+                case 3:
+                    r.displayBirds();
+                    break;
+                case 4:
+                    clearInvalidMenu();
+                    break;
+
+            }
+            if (option > 4 && option < 0)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
+
     }
 
     public static void removeOptions()
@@ -832,7 +879,7 @@ public class Main
                     break;
                 case 4:
                     System.out.print("New Address: ");
-                    user = checkUserInput("New Address");
+                    user = keyboard.next();
                     r.changeOwnerAddress(id, user);
                     break;
                 case 5:
