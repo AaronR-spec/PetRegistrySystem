@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package oop19_ca2_aaron_reihill;
 
 import java.io.File;
@@ -328,7 +324,8 @@ public class Registry
         }
         return o;
     }
-   public boolean checkOwnerId(int id)
+
+    public boolean checkOwnerId(int id)
     {
         int i = 0;
         boolean found = false;
@@ -342,6 +339,7 @@ public class Registry
         }
         return found;
     }
+
     public int findOwner(int id)
     {
         int index = -1;
@@ -566,26 +564,28 @@ public class Registry
                 for (Pet p : o.getPets())
                 {
 
-                    if (category == 1)
+                    switch (category)
                     {
-                        if (p instanceof Mammal)
-                        {
-                            p.displayPet(p);
-                        }
-                    }
-                    else if (category == 2)
-                    {
-                        if (p instanceof Fish)
-                        {
-                            p.displayPet(p);
-                        }
-                    }
-                    else if (category == 3)
-                    {
-                        if (p instanceof Bird)
-                        {
-                            p.displayPet(p);
-                        }
+                        case 1:
+                            if (p instanceof Mammal)
+                            {
+                                p.displayPet(p);
+                            }
+                            break;
+                        case 2:
+                            if (p instanceof Fish)
+                            {
+                                p.displayPet(p);
+                            }
+                            break;
+                        case 3:
+                            if (p instanceof Bird)
+                            {
+                                p.displayPet(p);
+                            }
+                            break;
+                        default:
+                            break;
                     }
                 }
 
@@ -886,27 +886,29 @@ public class Registry
             System.out.println("\nValid Categories: (Mammal)(Bird)(Fish)");
         }
     }
+
     public void changePetGender(int id, String gender)
     {
         String ogGender = getPetById(id).getGenderString();
-        if(getPetById(id).setGender(gender))
+        if (getPetById(id).setGender(gender))
         {
             System.out.println(ogGender + " Changed To " + gender);
         }
         else
         {
-            System.out.println("\n"+ gender + " Is Not A Valid Option");
+            System.out.println("\n" + gender + " Is Not A Valid Option");
             System.out.println("Valid Options (Male,Female,Unkown)");
         }
-    }   
-    //#############################################################
-    //#############################################################
-    /*
-    @TODO make change reg date edit when local date is added to pet
-    */
-    //#############################################################
-    //#############################################################
-    public  void availableOwners()
+    }
+
+    public void changePetRegDate(int id, String reg)
+    {
+        String ogReg = getPetById(id).getRegDate().toString();
+        getPetById(id).setRegDate(reg);
+        System.out.println(ogReg + " Changed To " + getPetById(id).getRegDate());
+    }
+
+    public void availableOwners()
     {
         System.out.println();
         for (int i = 0; i < this.owners.size(); i++)
@@ -914,11 +916,12 @@ public class Registry
             System.out.print("(ID: " + this.owners.get(i).getId() + ", Name: " + this.owners.get(i).getName() + " )\n");
         }
     }
-    public void changeOwnerName(int id,String name)
+
+    public void changeOwnerName(int id, String name)
     {
-        if(checkOwnerId(id))
+        if (checkOwnerId(id))
         {
-            System.out.println("\nOwner's Name " +getOwnerByID(id).getName() + " Changed To " + name );
+            System.out.println("\nOwner's Name " + getOwnerByID(id).getName() + " Changed To " + name);
             getOwnerByID(id).setName(name);
         }
         else
@@ -926,11 +929,12 @@ public class Registry
             System.out.println(OWNER_NOT_FOUND);
         }
     }
-        public void changeOwnerTelephone(int id,String telephone)
+
+    public void changeOwnerTelephone(int id, String telephone)
     {
-        if(checkOwnerId(id))
+        if (checkOwnerId(id))
         {
-            System.out.println("\nOwner's Telephone " +getOwnerByID(id).getTelephone() + " Changed To " + telephone );
+            System.out.println("\nOwner's Telephone " + getOwnerByID(id).getTelephone() + " Changed To " + telephone);
             getOwnerByID(id).setTelephone(telephone);
         }
         else
@@ -938,11 +942,12 @@ public class Registry
             System.out.println(OWNER_NOT_FOUND);
         }
     }
-    public void changeOwnerEmail(int id,String email)
+
+    public void changeOwnerEmail(int id, String email)
     {
-        if(checkOwnerId(id))
+        if (checkOwnerId(id))
         {
-            System.out.println("\nOwner's Email " +getOwnerByID(id).getEmail() + " Changed To " + email );
+            System.out.println("\nOwner's Email " + getOwnerByID(id).getEmail() + " Changed To " + email);
             getOwnerByID(id).setEmail(email);
         }
         else
@@ -950,11 +955,12 @@ public class Registry
             System.out.println(OWNER_NOT_FOUND);
         }
     }
-            public void changeOwnerAddress(int id,String address)
+
+    public void changeOwnerAddress(int id, String address)
     {
-        if(checkOwnerId(id))
+        if (checkOwnerId(id))
         {
-            System.out.println("\nOwner's Address " +getOwnerByID(id).getAddress() + " Changed To " + address );
+            System.out.println("\nOwner's Address " + getOwnerByID(id).getAddress() + " Changed To " + address);
             getOwnerByID(id).setTelephone(address);
         }
         else
@@ -962,11 +968,12 @@ public class Registry
             System.out.println(OWNER_NOT_FOUND);
         }
     }
-    public void changeOwnerId(int id,int newId)
+
+    public void changeOwnerId(int id, int newId)
     {
-        if(checkOwnerId(id) && !checkOwnerId(newId) )
+        if (checkOwnerId(id) && !checkOwnerId(newId))
         {
-            System.out.println("\nOwner's Id " +getOwnerByID(id).getId() + " Changed To " + newId );
+            System.out.println("\nOwner's Id " + getOwnerByID(id).getId() + " Changed To " + newId);
             getOwnerByID(id).setId(newId);
         }
         else
@@ -974,7 +981,7 @@ public class Registry
             System.out.println("Could Not Change Id To " + newId);
         }
     }
-                
+
     @Override
     public String toString()
     {
