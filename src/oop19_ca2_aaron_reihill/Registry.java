@@ -1026,6 +1026,78 @@ public class Registry
         }
     }
 
+    public void petStatistics()
+    {
+        int maxAge = 0;
+        String oldestPet = "";
+        int minAge = 100;
+        String youngestPet = "";
+        int averageAge = 0;
+        int mammalCount = 0;
+        int birdCount = 0;
+        int fishCount = 0;
+        int petCount = 0;
+        int ownerPetCount = 0;
+        int ownerPetCountMax = 0;
+        String mostPetReg = "";
+        for (Owner o : this.owners)
+        {
+            List<Pet> pets = o.getPets();
+            for (Pet p : pets)
+            {
+                ownerPetCount++;
+                petCount++;
+                averageAge += p.getAge();
+                if (p.getAge() > maxAge)
+                {
+                    maxAge = p.getAge();
+                    oldestPet = p.getName();
+                }
+                if (p.getAge() < minAge)
+                {
+                    minAge = p.getAge();
+                    youngestPet = p.getName();
+                }
+                if (p instanceof Mammal)
+                {
+                    mammalCount++;
+                }
+                if (p instanceof Bird)
+                {
+                    birdCount++;
+                }
+                if (p instanceof Fish)
+                {
+                    fishCount++;
+                }
+                if(ownerPetCount >ownerPetCountMax )
+                {
+                    mostPetReg = o.getName();
+                }
+            }
+            ownerPetCountMax = ownerPetCount;
+            ownerPetCount = 0;
+        }
+        /*
+        @TODO perecent is not working
+        */
+        double mammalPercent = (mammalCount/petCount)*100;
+        double fishPercent = (fishCount/petCount)*100;
+        double birdPercent = (birdCount/petCount)*100;
+        System.out.println("Number Of Total Pets " + petCount);
+        System.out.println("Number Of Them Mammals " + mammalCount + ", Fish: " + fishCount + ", Birds: " + birdCount);
+        System.out.printf("Percentage Of Pets Registered As Mammals:%.2f " ,mammalPercent);
+        System.out.print("%");
+        System.out.printf("\nPercentage Of Pets Registered As Birds:%.2f " ,birdPercent);
+        System.out.print("%");
+        System.out.printf("\nPercentage Of Pets Registered As Fish:%.2f " ,fishPercent);
+        System.out.print("%");
+        System.out.println("\n"+ mostPetReg + " Has The Most Pets Registered With " + ownerPetCountMax);
+        System.out.println("Oldest Registered Pet " +oldestPet +" Aged " + maxAge);
+        System.out.println("Youngest Registered Pet " + youngestPet+ " Aged " + minAge);
+        System.out.println("Average Age: " + averageAge/petCount);
+    }
+
     @Override
     public String toString()
     {
