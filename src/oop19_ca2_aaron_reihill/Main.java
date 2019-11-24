@@ -115,30 +115,14 @@ public class Main
 
     public static void addOwner()
     {
+        String telephone ="", address, name, email;
         boolean inValid = false;
-        while (!inValid)
-        {
             System.out.print("\nName: ");
-            String name = keyboard.next();
-            if (!checkUserInput(name))
-            {
-                System.out.println("Invalid Input\nReturning...");
-                return;
-            }
+            name = checkUserInput("Name");
             System.out.print("Address: ");
-            String address = keyboard.next();
-            if (!checkUserInput(address))
-            {
-                System.out.println("Invalid Input\nReturning...");
-                return;
-            }
+            address = checkUserInput("Address");
             System.out.print("Telephone: ");
-            String telephone = keyboard.next();
-            if (!checkUserInput(telephone))
-            {
-                System.out.println("Invalid Input\nReturning...");
-                return;
-            }
+            telephone = checkTelephone();
             System.out.print("Email? (Y/N): ");
             boolean added = false;
             while (!added)
@@ -147,16 +131,18 @@ public class Main
                 if (yN.equalsIgnoreCase("y"))
                 {
                     System.out.print("Email: ");
-                    String email = keyboard.next();
+                    email = keyboard.next();
                     r.addOwner(name, email, telephone, address);
-                    System.out.println(name + " added, Returning...");
+                    System.out.println("\n"+name + " added, Returning...");
                     added = true;
+                    inValid= true;
                 }
                 else if (yN.equalsIgnoreCase("n"))
                 {
                     r.addOwner(name, telephone, address);
-                    System.out.println(name + " added, Returning...");
+                    System.out.println("\n"+name + " added, Returning...");
                     added = true;
+                    inValid = true;
                 }
                 else
                 {
@@ -164,7 +150,6 @@ public class Main
                 }
             }
         }
-    }
 
     public static void addPetOption()
     {
@@ -255,38 +240,18 @@ public class Main
         int age;
         boolean neutered = false;
         System.out.print("\nType: ");
-        type = keyboard.next();
-        if (!checkUserInput(type))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        type = checkUserInput("Type");
         System.out.print("Name: ");
-        name = keyboard.next();
-        if (!checkUserInput(name))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        name = checkUserInput("Name");
         System.out.print("Breed: ");
-        breed = keyboard.next();
-        if (!checkUserInput(breed))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        breed = checkUserInput("Breed");
         System.out.print("Age: ");
         /*
         @TODO make validation check for age
          */
         age = keyboard.nextInt();
         System.out.print("Colour: ");
-        colour = keyboard.next();
-        if (!checkUserInput(colour))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        colour = checkUserInput("Colour");
         System.out.print("Gender (Male/Female/Other): ");
         boolean picked = false;
         while (!picked)
@@ -333,7 +298,7 @@ public class Main
             }
         }
         r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, neutered);
-        System.out.println("Pet " + name + " added");
+        System.out.println("\nPet " + name + " added");
     }
 
     public static void addFish(int id)
@@ -341,39 +306,18 @@ public class Main
         String type, name, breed, colour, gender = "", water = "";
         int age;
         System.out.print("\nType: ");
-        type = keyboard.next();
-        if (!checkUserInput(type))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        type = checkUserInput("Type");
         System.out.print("Name: ");
-        name = keyboard.next();
-        if (!checkUserInput(name))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        name = checkUserInput("Name");
         System.out.print("Breed: ");
-        breed = keyboard.next();
-        if (!checkUserInput(breed))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        breed = checkUserInput("Breed");
         System.out.print("Age: ");
         /*
         @TODO make int validation check here
          */
         age = keyboard.nextInt();
         System.out.print("Colour: ");
-
-        colour = keyboard.next();
-        if (!checkUserInput(colour))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        colour = checkUserInput("Colour");
         System.out.print("Gender (Male/Female/Other): ");
         boolean picked = false;
         while (!picked)
@@ -430,6 +374,7 @@ public class Main
             }
         }
         r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, water);
+        System.out.println("\nPet " + name + " added");
     }
 
     public static void addBird(int id)
@@ -438,26 +383,11 @@ public class Main
         int age, wingspan;
         boolean fly = false;
         System.out.print("\nType: ");
-        type = keyboard.next();
-        if (!checkUserInput(type))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        type = checkUserInput("Type");
         System.out.print("Name: ");
-        name = keyboard.next();
-        if (!checkUserInput(name))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        name = checkUserInput("Name");
         System.out.print("Breed: ");
-        breed = keyboard.next();
-        if (!checkUserInput(breed))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        breed = checkUserInput("Breed");
         /*
         @TODO input validation here
          */
@@ -466,12 +396,7 @@ public class Main
         System.out.print("Wingspan(ft): ");
         wingspan = keyboard.nextInt();
         System.out.print("Colour: ");
-        colour = keyboard.next();
-        if (!checkUserInput(colour))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        colour = checkUserInput("Colour");
         System.out.print("Gender (Male/Female/Other): ");
         boolean picked = false;
         while (!picked)
@@ -518,7 +443,7 @@ public class Main
             }
         }
         r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender, wingspan, fly);
-        System.out.println("Pet " + name + " added");
+        System.out.println("\nPet " + name + " added");
     }
 
     public static void addPet(int id)
@@ -526,35 +451,15 @@ public class Main
         String type, name, breed, colour, gender = "";
         int age;
         System.out.print("\nType: ");
-        type = keyboard.next();
-        if (!checkUserInput(type))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        type = checkUserInput("Type");
         System.out.print("Name: ");
-        name = keyboard.next();
-        if (!checkUserInput(name))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        name = checkUserInput("Name");
         System.out.print("Breed: ");
-        breed = keyboard.next();
-        if (!checkUserInput(breed))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        breed = checkUserInput("Breed");
         System.out.print("Age: ");
         age = keyboard.nextInt();
         System.out.print("Colour: ");
-        colour = keyboard.next();
-        if (!checkUserInput(colour))
-        {
-            System.out.println("Invalid Input\nReturning...");
-            return;
-        }
+        colour = checkUserInput("Colour");
         System.out.print("Gender (Male/Female/Other): ");
         boolean picked = false;
         while (!picked)
@@ -581,7 +486,7 @@ public class Main
             }
         }
         r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender);
-        System.out.println("Pet " + name + " added");
+        System.out.println("\nPet " + name + " added");
     }
 
     public static void searchOptions()
@@ -621,7 +526,7 @@ public class Main
 
     public static void ownerSearchOptions()
     {
-        String user = "";
+        String user;
         boolean back = false;
         while (!back)
         {
@@ -648,42 +553,22 @@ public class Main
                     break;
                 case 2:
                     System.out.print("Name: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Name");
                     r.displayOwnerByName(user);
                     break;
                 case 3:
                     System.out.print("Address:");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Address");
                     r.displayOwnerByAddress(user);
                     break;
                 case 4:
-                    System.out.print("Telephone Number: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    System.out.print("Telephone: ");
+                    user = checkTelephone();
                     r.displayOwnerByTelephone(user);
                     break;
                 case 5:
                     System.out.print("Email: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Email");
                     r.displayOwnerByEmail(user);
                     break;
                 case 6:
@@ -726,32 +611,17 @@ public class Main
                     break;
                 case 2:
                     System.out.print("\nName: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Name");
                     r.displayPetByName(user);
                     break;
                 case 3:
                     System.out.print("\nAnimal Category: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Animal Category");
                     r.displayPetByCategory(user);
                     break;
                 case 4:
                     System.out.print("\nType: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Type");
                     r.displayPetByType(user);
                     break;
                 case 5:
@@ -846,7 +716,7 @@ public class Main
         int id;
         while (!back)
         {
-            System.out.println("\nDisplay Options");
+            System.out.println("\nRemove Options");
             System.out.println("(0) Back");
             System.out.println("(1) Remove Owner");
             System.out.println("(2) Remove Pet");
@@ -937,7 +807,7 @@ public class Main
         System.out.print("\nEnter Owner ID To Edit: ");
         int id = keyboard.nextInt();
         int userInput;
-        String user;
+        String user ;
         boolean back = false;
         while (!back)
         {
@@ -958,12 +828,7 @@ public class Main
                     break;
                 case 1:
                     System.out.print("\nNew Name: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("New Name");
                     r.changeOwnerName(id, user);
                     break;
                 case 2:
@@ -977,32 +842,17 @@ public class Main
                     break;
                 case 3:
                     System.out.print("\nNew Telephone: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkTelephone();
                     r.changeOwnerTelephone(id, user);
                     break;
                 case 4:
                     System.out.print("New Address: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("New Address");
                     r.changeOwnerAddress(id, user);
                     break;
                 case 5:
                     System.out.print("New Email: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("New Email");
                     r.changeOwnerEmail(id, user);
                     break;
                 case 6:
@@ -1048,34 +898,19 @@ public class Main
                     break;
                 case 1:
                     System.out.println("\nCategory To Change To: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Category To Change To");
                     r.changePetAnimalCategory(id, user);
                     break;
                 case 2:
                     r.displayPetByID(id);
                     System.out.print("\nChange Name To: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Change Name To");
                     r.changePetName(id, user);
                     break;
                 case 3:
                     r.displayPetByID(id);
                     System.out.print("\nChange Breed To: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Change Breed To");
                     r.changePetBreed(id, user);
                     break;
                 case 4:
@@ -1129,12 +964,7 @@ public class Main
                 case 8:
                     r.displayPetByID(id);
                     System.out.print("\nChange Gender To: ");
-                    user = keyboard.next();
-                    if (!checkUserInput(user))
-                    {
-                        System.out.println("Invalid Input\nReturning...");
-                        return;
-                    }
+                    user = checkUserInput("Change Gender To");
                     r.changePetGender(id, user);
                     break;
                 case 9:
@@ -1204,22 +1034,42 @@ public class Main
         return option;
     }
 
-    private static boolean checkUserInput(String input)
+    private static String checkUserInput(String message)
     {
         boolean word = false;
+        String input = keyboard.next();
+        while(!word){
         if (input.matches("[a-zA-Z]{1,54}"))
         {
             word = true;
         }
-        return word;
-    }
-    private static boolean checkTelephone(String input)
-    {
-        boolean phone = false;
-        if (input.matches("[0-9]{10}"))
+        else
         {
-            phone = true;
+        System.out.println("Invalid Input Try Again");
+        System.out.print("\n"+message+": ");
+        input = keyboard.next();
         }
-        return phone;
+        }
+        return input;
+    }
+
+    private static String checkTelephone()
+    {
+        String telephone = "";
+        boolean telephoneValid = false;
+        while (!telephoneValid)
+            {
+                telephone = keyboard.next();
+                if (telephone.matches("[0-9]{10}"))
+                {
+                    telephoneValid = true;
+                }
+                else
+                {
+                    System.out.println("Input Is Not A Valid Telephone Number");
+                    System.out.print("Telephone: ");
+                }
+            }
+        return telephone;
     }
 }
