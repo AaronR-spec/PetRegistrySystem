@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package oop19_ca2_aaron_reihill;
 
 import java.util.InputMismatchException;
@@ -10,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author D00222467
+ * @author D00222467/Aaron Reihill
  */
 public class Main
 {
@@ -116,39 +111,39 @@ public class Main
     public static void addOwner()
     {
         String telephone, address, name, email;
-            System.out.print("\nName: ");
-            name = checkUserInput("Name");
-            System.out.print("Address: ");
-            address = checkUserInput("Address");
-            System.out.print("Telephone: ");
-            telephone = checkTelephone();
-            System.out.print("Email? (Y/N): ");
-            boolean added = false;
-            while (!added)
+        System.out.print("\nName: ");
+        name = checkUserInput("Name");
+        System.out.print("Address: ");
+        address = checkUserInput("Address");
+        System.out.print("Telephone: ");
+        telephone = checkTelephone();
+        System.out.print("Email? (Y/N): ");
+        boolean added = false;
+        while (!added)
+        {
+            String yN = keyboard.next();
+            if (yN.equalsIgnoreCase("y"))
             {
-                String yN = keyboard.next();
-                if (yN.equalsIgnoreCase("y"))
-                {
-                    System.out.print("Email: ");
-                    email = keyboard.next();
-                    r.addOwner(name, email, telephone, address);
-                    System.out.println("\n"+name + " added, Returning...");
-                    added = true;
-                    
-                }
-                else if (yN.equalsIgnoreCase("n"))
-                {
-                    r.addOwner(name, telephone, address);
-                    System.out.println("\n"+name + " added, Returning...");
-                    added = true;
-                    
-                }
-                else
-                {
-                    System.out.print("Please Enter Either Y or N: ");
-                }
+                System.out.print("Email: ");
+                email = checkEmail();
+                r.addOwner(name, email, telephone, address);
+                System.out.println("\n" + name + " added, Returning...");
+                added = true;
+
+            }
+            else if (yN.equalsIgnoreCase("n"))
+            {
+                r.addOwner(name, telephone, address);
+                System.out.println("\n" + name + " added, Returning...");
+                added = true;
+
+            }
+            else
+            {
+                System.out.print("Please Enter Either Y or N: ");
             }
         }
+    }
 
     public static void addPetOption()
     {
@@ -797,7 +792,7 @@ public class Main
         System.out.print("\nEnter Owner ID To Edit: ");
         int id = checkUserInputInt("Enter Owner ID To Edit");
         int userInput;
-        String user ;
+        String user;
         boolean back = false;
         while (!back)
         {
@@ -842,7 +837,7 @@ public class Main
                     break;
                 case 5:
                     System.out.print("New Email: ");
-                    user = checkUserInput("New Email");
+                    user = checkEmail();
                     r.changeOwnerEmail(id, user);
                     break;
                 case 6:
@@ -857,6 +852,9 @@ public class Main
         }
     }
 
+    /*
+    @TODO Make animal things editable like water and nutered and fly and wingspan
+     */
     public static void editPet()
     {
         String user;
@@ -956,13 +954,10 @@ public class Main
                     r.changePetGender(id, user);
                     break;
                 case 9:
-                    //###########################
-                    //###########################
-                    /*
-                    @TODO Make change reg options
-                     */
-                    //###########################
-                    //###########################
+                    r.displayPetByID(id);
+                    System.out.print("\nChange Registered Date To: ");
+                    user = keyboard.next();
+                    r.changePetRegDate(id, user);
                     break;
                 case 10:
                     clearInvalidMenu();
@@ -1026,17 +1021,18 @@ public class Main
     {
         boolean word = false;
         String input = keyboard.next();
-        while(!word){
-        if (input.matches("[a-zA-Z]{1,54}"))
+        while (!word)
         {
-            word = true;
-        }
-        else
-        {
-        System.out.println("Invalid Input Try Again");
-        System.out.print("\n"+message+": ");
-        input = keyboard.next();
-        }
+            if (input.matches("[a-zA-Z]{1,54}"))
+            {
+                word = true;
+            }
+            else
+            {
+                System.out.println("Invalid Input Try Again");
+                System.out.print("\n" + message + ": ");
+                input = keyboard.next();
+            }
         }
         return input;
     }
@@ -1046,37 +1042,60 @@ public class Main
         String telephone = "";
         boolean telephoneValid = false;
         while (!telephoneValid)
+        {
+            telephone = keyboard.next();
+            if (telephone.matches("[0-9]{10}"))
             {
-                telephone = keyboard.next();
-                if (telephone.matches("[0-9]{10}"))
-                {
-                    telephoneValid = true;
-                }
-                else
-                {
-                    System.out.println("Input Is Not A Valid Telephone Number");
-                    System.out.print("Telephone: ");
-                }
+                telephoneValid = true;
             }
+            else
+            {
+                System.out.println("Input Is Not A Valid Telephone Number");
+                System.out.print("Telephone: ");
+            }
+        }
         return telephone;
     }
+
     private static int checkUserInputInt(String message)
     {
         boolean number = false;
         int input = 0;
-        while(!number){
-            try{
-                 input = keyboard.nextInt();
-                 number = true;
-            }
-            catch(InputMismatchException e)
+        while (!number)
+        {
+            try
             {
-                    System.out.println("Invalid Input Try Again");
-                    System.out.print("\n"+message+": ");
-                    keyboard.nextLine();
+                input = keyboard.nextInt();
+                number = true;
+            }
+            catch (InputMismatchException e)
+            {
+                System.out.println("Invalid Input Try Again");
+                System.out.print("\n" + message + ": ");
+                keyboard.nextLine();
             }
         }
         return input;
+    }
+
+    private static String checkEmail()
+    {
+        String email = "";
+        boolean emailValid = false;
+        while (!emailValid)
+        {
+            email = keyboard.next();
+            if (email.matches("^(.+)@(.+)$"))
+            {
+                emailValid = true;
+            }
+            else
+            {
+                System.out.println("Input Is Not A Valid Telephone Number");
+                System.out.print("Email: ");
+            }
+        }
+        return email;
     }
 
 }
