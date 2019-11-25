@@ -817,6 +817,7 @@ public class Main
         r.displayOwnersPet(id);
         System.out.print("\nPet ID: ");
         id = checkUserInputInt("Pet ID");
+
         boolean back = false;
         while (!back)
         {
@@ -857,7 +858,23 @@ public class Main
                     r.changePetAge(id, userInput);
                     break;
                 case 5:
+                    Pet p = r.getPetById(id);
+                    if (p instanceof Mammal)
+                    {
+                        editMammal(id);
+                    }
+                    else if (p instanceof Fish)
+                    {
+
+                    }
+                    else if (p instanceof Bird)
+                    {
+
+                    }
+                    else
+                    {
                     editPetNextPage(id);
+                    }
                     break;
                 case 6:
                     clearInvalidMenu();
@@ -914,6 +931,62 @@ public class Main
                     break;
             }
             if (option > 10 || option < 0)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
+    }
+
+    public static void editMammal(int id)
+    {
+        String user;
+        int userInput;
+        boolean back = false;
+        while (!back)
+        {
+            System.out.println("\nSecond Page...");
+            System.out.println("(6) Back");
+            System.out.println("(7) Owner");
+            System.out.println("(8) Gender");
+            System.out.println("(9) Date Registered");
+            System.out.println("(10) Neutered");
+            System.out.print("Select An Option: ");
+            int option = checkUserInputMenu(11);
+            switch (option)
+            {
+                case 6:
+                    System.out.println("Returning...");
+                    back = true;
+                    break;
+                case 7:
+                    r.displayPetByID(id);
+                    System.out.print("\nChange Owner Id To: ");
+                    userInput = checkUserInputInt("Change Owner Id To");
+                    r.changePetOwner(id, userInput);
+                    break;
+                case 8:
+                    r.displayPetByID(id);
+                    System.out.print("\nChange Gender To: ");
+                    user = checkUserInput("Change Gender To");
+                    r.changePetGender(id, user);
+                    break;
+                case 9:
+                    r.displayPetByID(id);
+                    System.out.print("\nChange Registered Date To: ");
+                    user = keyboard.next();
+                    r.changePetRegDate(id, user);
+                    break;
+                case 10:
+                    System.out.print("\nChange Neutered Status To: ");
+                    user = checkUserInput("Change Neutered Status To");
+                    r.changePetNeutered(id,user);
+                    break;
+                case 11:
+                    clearInvalidMenu();
+                    break;
+            }
+            if (option > 11 || option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
