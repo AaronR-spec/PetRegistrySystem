@@ -1122,6 +1122,19 @@ public class Registry
         b.setWingspan(ft);
         System.out.print("\nWingspan Changed From " + ogWing +"ft To " +b.getWingspan() +"ft");
     }
+    public void changeFly(int id, String fly)
+    {
+        Bird b = (Bird)getPetById(id);
+        boolean ogfly = b.isFly();
+        if(b.setFly(fly))
+        {
+            System.out.println("\nAbility To Fly Changed From " +ogfly  +" To " + b.isFly());
+        }
+        else
+        {
+            System.out.println("Invalid Option Could Not Change Fly Ability");
+        }
+    }
     @Override
     public String toString()
     {
