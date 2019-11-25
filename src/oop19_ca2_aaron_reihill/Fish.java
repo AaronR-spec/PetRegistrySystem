@@ -12,12 +12,11 @@ package oop19_ca2_aaron_reihill;
 public class Fish extends Pet
 {
 
-    private Water water;
+    private Water water = Water.UNKOWN;
 
     public Fish(String type, String breed, int age, String colour, String regDate)
     {
         super(type, breed, age, colour, regDate);
-        this.water = this.water.UNKOWN;
     }
     public Fish(int owner,int petId, String type, String name, String breed, int age, String colour, String gender, String water)
     {
@@ -51,7 +50,12 @@ public class Fish extends Pet
     {
         this.water = water;
     }
+    @Override
+    public void displayPet()
+    {
+       System.out.println("\n(" + this.getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate() + ", Water Type: " + getWater());
 
+    }
     private void findWater(String w)
     {
         if (w.equalsIgnoreCase("FRESHWATER"))
