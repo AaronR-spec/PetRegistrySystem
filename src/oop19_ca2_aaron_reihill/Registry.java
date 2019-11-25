@@ -1099,8 +1099,21 @@ public class Registry
     {
         Mammal m = (Mammal)getPetById(id);
         System.out.print("\nStatus Changed From " + m.isNeutered() +" To ");
-        m.setNeuteredString(n);
+        m.setNeutered(n);
         System.out.print(m.isNeutered());
+    }
+    public void changePetWaterType(int id,String w)
+    {
+        Fish f = (Fish)getPetById(id);
+        String ogWater = f.getWater().toString();
+        if(f.setWater(w))
+        {
+            System.out.print("\nStatus Changed From " + f.getWater() +" To " + ogWater);
+        }
+        else
+        {
+            System.out.println("Invalid Option Could Not Change Water Type");
+        }
     }
     
     @Override
