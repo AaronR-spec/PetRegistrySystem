@@ -21,24 +21,24 @@ public class Fish extends Pet
     public Fish(int owner,int petId, String type, String name, String breed, int age, String colour, String gender, String water)
     {
         super(owner,petId, type, name, breed, age, colour, gender);
-        findWater(water);
+        setWater(water);
     }
     public Fish(int owner, String type, String name, String breed, int age, String colour, String gender, String water)
     {
         super(owner, type, name, breed, age, colour, gender);
-        findWater(water);
+        setWater(water);
     }
 
     public Fish(String type, String name, String breed, int age, String colour, String gender, String water)
     {
         super(type, name, breed, age, colour, gender);
-        findWater(water);
+        setWater(water);
     }
 
     public Fish(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, String water)
     {
         super(owner, type, name, breed, age, colour, gender, regDate);
-        findWater(water);
+        setWater(water);
     }
 
     public Water getWater()
@@ -56,23 +56,33 @@ public class Fish extends Pet
        System.out.println("\n(" + this.getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate() + ", Water Type: " + getWater());
 
     }
-    private void findWater(String w)
+    public boolean setWater(String w)
     {
+        boolean set;
         if (w.equalsIgnoreCase("FRESHWATER"))
         {
-            this.water = this.water.FRESHWATER;
+            this.water = Water.FRESHWATER;
+            set = true;
         }
         else if (w.equalsIgnoreCase("BRACKISH"))
         {
-            this.water = this.water.BRACKISH;
+            this.water = Water.BRACKISH;
+            set = true;
         }
         else if (w.equalsIgnoreCase("SEAWATER"))
         {
-            this.water = this.water.SEAWATER;
+            this.water = Water.SEAWATER;
+            set = true;
+        }
+        else if(w.equalsIgnoreCase("UNKOWN")||w.equalsIgnoreCase("Other"))
+        {
+            this.water = Water.UNKOWN;
+            set = true;
         }
         else
         {
-            this.water = this.water.UNKOWN;
+            set = false;
         }
+        return set;
     }
 }
