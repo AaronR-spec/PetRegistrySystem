@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package oop19_ca2_aaron_reihill;
 
 import java.util.ArrayList;
@@ -23,8 +19,8 @@ public class Owner
     private String telephone ="";
     private String address ="";
     private List<Pet> pets = new ArrayList<>();
-    private static String PET_ALREADY_REG = "Pet Already Registered";
-    private static String PET_NOT_FOUND = "Pet Not Found";
+    private static final String PET_ALREADY_REG = "Pet Already Registered";
+    private static final String PET_NOT_FOUND = "Pet Not Found";
     
     public Owner()
     {
@@ -67,12 +63,19 @@ public class Owner
         this.address = address;
         this.id = index++;
     }
+    public Owner(int id,String name, String telephone, String address)
+    {
+        this.name = name;
+        this.telephone = telephone;
+        this.address = address;
+        this.id = id;
+    }
 
     public Owner(String name, String email, String telephone, String address)
     {
         this.name = name;
         
-        this.id = this.index++;
+        this.id = Owner.index++;
         this.email = email;
         this.telephone = telephone;
         this.address = address;
@@ -370,12 +373,12 @@ public class Owner
     public int hashCode()
     {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.name);
-        hash = 53 * hash + this.id;
-        hash = 53 * hash + Objects.hashCode(this.email);
-        hash = 53 * hash + Objects.hashCode(this.telephone);
-        hash = 53 * hash + Objects.hashCode(this.address);
-        hash = 53 * hash + Objects.hashCode(this.pets);
+        hash = 13 * hash + Objects.hashCode(this.name);
+        hash = 13 * hash + this.id;
+        hash = 13 * hash + Objects.hashCode(this.email);
+        hash = 13 * hash + Objects.hashCode(this.telephone);
+        hash = 13 * hash + Objects.hashCode(this.address);
+        hash = 13 * hash + Objects.hashCode(this.pets);
         return hash;
     }
 
