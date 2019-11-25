@@ -22,13 +22,6 @@ public class Bird extends Pet
         this.fly = fly;
     }
 
-    public Bird(int owner, String type, String breed, int age, String colour, String regDate, int wingspan, boolean fly)
-    {
-        super(owner, type, breed, age, colour, regDate);
-        this.wingspan = wingspan;
-        this.fly = fly;
-    }
-
     public Bird(String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
     {
         super(type, name, breed, age, colour, gender);
@@ -75,7 +68,12 @@ public class Bird extends Pet
     {
         this.fly = fly;
     }
+    @Override
+    public void displayPet()
+    {
+      System.out.println("\n(" + this.getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate() + ", Wingspan: " + getWingspan() + "ft" + ", Fly: " + isFly());
 
+    }
     @Override
     public String toString()
     {
