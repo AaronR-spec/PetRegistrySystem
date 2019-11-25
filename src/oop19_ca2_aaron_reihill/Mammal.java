@@ -50,7 +50,7 @@ public class Mammal extends Pet
     {
         this.neutered = neutered;
     }
-    public void setNeuteredString(String neutered)
+    public void setNeutered(String neutered)
     {
         if(neutered.equalsIgnoreCase("True")|| neutered.equalsIgnoreCase("Yes")){
         this.neutered = true;
