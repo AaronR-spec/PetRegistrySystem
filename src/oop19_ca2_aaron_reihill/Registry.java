@@ -1094,7 +1094,15 @@ public class Registry
         System.out.println("Youngest Registered Pet " + youngestPet+ " Aged " + minAge);
         System.out.println("Average Age: " + averageAge/petCount);
     }
-
+    
+    public void changePetNeutered(int id,String n)
+    {
+        Mammal m = (Mammal)getPetById(id);
+        System.out.print("\nStatus Changed From " + m.isNeutered() +" To ");
+        m.setNeuteredString(n);
+        System.out.print(m.isNeutered());
+    }
+    
     @Override
     public String toString()
     {
