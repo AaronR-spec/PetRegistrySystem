@@ -28,9 +28,10 @@ public class Bird extends Pet
         this.wingspan = wingspan;
         this.fly = fly;
     }
-        public Bird(int owner,int petId,String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
+
+    public Bird(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
     {
-        super(owner,petId,type, name, breed, age, colour, gender);
+        super(owner, petId, type, name, breed, age, colour, gender);
         this.wingspan = wingspan;
         this.fly = fly;
     }
@@ -68,12 +69,35 @@ public class Bird extends Pet
     {
         this.fly = fly;
     }
+
+    public boolean setFly(String fly)
+    {
+        boolean set;
+        if (fly.equalsIgnoreCase("true") || fly.equalsIgnoreCase("yes"))
+        {
+            this.fly = true;
+            set = true;
+
+        }
+        else if (fly.equalsIgnoreCase("false") || fly.equalsIgnoreCase("no"))
+        {
+            this.fly = true;
+            set = true;
+        }
+        else
+        {
+            set = false;
+        }
+        return set;
+    }
+
     @Override
     public void displayPet()
     {
-      System.out.println("\n(" + this.getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate() + ", Wingspan: " + getWingspan() + "ft" + ", Fly: " + isFly());
+        System.out.println("\n(" + this.getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate() + ", Wingspan: " + getWingspan() + "ft" + ", Fly: " + isFly());
 
     }
+
     @Override
     public String toString()
     {
