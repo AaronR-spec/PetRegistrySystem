@@ -1108,14 +1108,20 @@ public class Registry
         String ogWater = f.getWater().toString();
         if(f.setWater(w))
         {
-            System.out.print("\nStatus Changed From " + f.getWater() +" To " + ogWater);
+            System.out.print("\nStatus Changed From " +ogWater  +" To " + f.getWater());
         }
         else
         {
             System.out.println("Invalid Option Could Not Change Water Type");
         }
     }
-    
+    public void changeWingspan(int id, int ft)
+    {
+        Bird b = (Bird)getPetById(id);
+        int ogWing = b.getWingspan();
+        b.setWingspan(ft);
+        System.out.print("\nWingspan Changed From " + ogWing +"ft To " +b.getWingspan() +"ft");
+    }
     @Override
     public String toString()
     {
