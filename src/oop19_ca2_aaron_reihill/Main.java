@@ -16,11 +16,9 @@ public class Main
     public static void main(String[] args)
     {
         fillReg();
-        r.petStatistics();
         displayMenu();
     }
 
-    
     public static void displayMenu()
     {
         System.out.println("Aaron Reihill CA2 (OOP)");
@@ -28,13 +26,11 @@ public class Main
         while (!exit)
         {
             System.out.println("\nDundalk Pet Registry");
-            System.out.println("(0) Exit");
-            System.out.println("(1) Add Options");
-            System.out.println("(2) Search Options");
-            System.out.println("(3) Remove Options");
-            System.out.println("(4) Edit Options");
-            System.out.println("(5) Display Options");
-            System.out.print("Select An Option: ");
+            String[] menuList =
+            {
+                "Exit", "Add Options", "Search Options", "Remove Options", "Edit Options", "Display Options"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(6);
             switch (option)
             {
@@ -81,10 +77,11 @@ public class Main
         while (!exit)
         {
             System.out.println("\nAdd Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Add Owner");
-            System.out.println("(2) Add Pet");
-            System.out.print("Select An Option: ");
+            String[] menuList =
+            {
+                "Back", "Add Owner", "Add Pet"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -155,12 +152,11 @@ public class Main
         while (!back)
         {
             System.out.println("\nOptions");
-            System.out.println("(0) Back");
-            System.out.println("(1) Mammal");
-            System.out.println("(2) Fish");
-            System.out.println("(3) Bird");
-            System.out.println("(4) Unkown");
-            System.out.print("Select An Option: ");
+            String[] menuList =
+            {
+                "Back", "Mammal", "Fish", "Bird", "Unkown"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(5);
             System.out.println("Choose From ");
             r.availableOwners();
@@ -232,7 +228,7 @@ public class Main
 
     public static void addMammal(int id)
     {
-        String type, name, breed, colour, gender = "";
+        String type, name, breed, colour, gender;
         int age;
         boolean neutered = false;
         System.out.print("\nType: ");
@@ -246,31 +242,8 @@ public class Main
         System.out.print("Colour: ");
         colour = checkUserInput("Colour");
         System.out.print("Gender (Male/Female/Other): ");
+        gender = selectGender();
         boolean picked = false;
-        while (!picked)
-        {
-            gender = keyboard.next();
-            if (gender.equalsIgnoreCase("male"))
-            {
-                gender = "MALE";
-                picked = true;
-            }
-            else if (gender.equalsIgnoreCase("female"))
-            {
-                gender = "FEMALE";
-                picked = true;
-            }
-            else if (gender.equalsIgnoreCase("UNKOWN"))
-            {
-                gender = "UNKOWN";
-                picked = true;
-            }
-            else
-            {
-                System.out.print("Please Select A Valid Option:");
-            }
-        }
-        picked = false;
         System.out.print("Neutered(Y/N): ");
         while (!picked)
         {
@@ -296,7 +269,7 @@ public class Main
 
     public static void addFish(int id)
     {
-        String type, name, breed, colour, gender = "", water = "";
+        String type, name, breed, colour, gender, water = "";
         int age;
         System.out.print("\nType: ");
         type = checkUserInput("Type");
@@ -309,31 +282,8 @@ public class Main
         System.out.print("Colour: ");
         colour = checkUserInput("Colour");
         System.out.print("Gender (Male/Female/Other): ");
+        gender = selectGender();
         boolean picked = false;
-        while (!picked)
-        {
-            gender = keyboard.next();
-            if (gender.equalsIgnoreCase("male"))
-            {
-                gender = "MALE";
-                picked = true;
-            }
-            else if (gender.equalsIgnoreCase("female"))
-            {
-                gender = "FEMALE";
-                picked = true;
-            }
-            else if (gender.equalsIgnoreCase("UNKOWN"))
-            {
-                gender = "UNKOWN";
-                picked = true;
-            }
-            else
-            {
-                System.out.print("Please Select A Valid Option:");
-            }
-        }
-        picked = false;
         System.out.print("Water(Freshwater/Seawater/Brackish/Unkown): ");
         while (!picked)
         {
@@ -385,31 +335,8 @@ public class Main
         System.out.print("Colour: ");
         colour = checkUserInput("Colour");
         System.out.print("Gender (Male/Female/Other): ");
+        gender = selectGender();
         boolean picked = false;
-        while (!picked)
-        {
-            gender = keyboard.next();
-            if (gender.equalsIgnoreCase("male"))
-            {
-                gender = "MALE";
-                picked = true;
-            }
-            else if (gender.equalsIgnoreCase("female"))
-            {
-                gender = "FEMALE";
-                picked = true;
-            }
-            else if (gender.equalsIgnoreCase("UNKOWN"))
-            {
-                gender = "UNKOWN";
-                picked = true;
-            }
-            else
-            {
-                System.out.print("Please Select A Valid Option:");
-            }
-        }
-        picked = false;
         System.out.print("Able To Fly(Y/N): ");
         while (!picked)
         {
@@ -435,7 +362,7 @@ public class Main
 
     public static void addPet(int id)
     {
-        String type, name, breed, colour, gender = "";
+        String type, name, breed, colour, gender;
         int age;
         System.out.print("\nType: ");
         type = checkUserInput("Type");
@@ -448,30 +375,7 @@ public class Main
         System.out.print("Colour: ");
         colour = checkUserInput("Colour");
         System.out.print("Gender (Male/Female/Other): ");
-        boolean picked = false;
-        while (!picked)
-        {
-            gender = keyboard.next();
-            if (gender.equalsIgnoreCase("male"))
-            {
-                gender = "MALE";
-                picked = true;
-            }
-            else if (gender.equalsIgnoreCase("female"))
-            {
-                gender = "FEMALE";
-                picked = true;
-            }
-            else if (gender.equalsIgnoreCase("other"))
-            {
-                gender = "UNKOWN";
-                picked = true;
-            }
-            else
-            {
-                System.out.print("Please Select A Valid Option:");
-            }
-        }
+        gender = selectGender();
         r.getOwnerByID(id).addPet(type, name, breed, age, colour, gender);
         System.out.println("\nPet " + name + " added");
     }
@@ -482,10 +386,11 @@ public class Main
         while (!back)
         {
             System.out.println("\nSearch Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Find Owner");
-            System.out.println("(2) Find Pet");
-            System.out.print("Select An Option:  ");
+            String[] menuList =
+            {
+                "Back", "Find Owner", "Find Pet"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -518,13 +423,11 @@ public class Main
         while (!back)
         {
             System.out.println("\nOwner Search Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Find Owner By ID");
-            System.out.println("(2) Find Owner By Name");
-            System.out.println("(3) Find Owner By Address");
-            System.out.println("(4) Find Owner By Telephone");
-            System.out.println("(5) Find Owner By Email");
-            System.out.print("Select An Option: ");
+            String[] menuList =
+            {
+                "Back", "Find Owner By ID", "Find Owner By Name", "Find Owner By Address", "Find Owner By Telephone", "Find Owner By Email"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(6);
             switch (option)
             {
@@ -578,12 +481,11 @@ public class Main
         while (!back)
         {
             System.out.println("\nOwner Search Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Find Pet By ID");
-            System.out.println("(2) Find Pet By Name");
-            System.out.println("(3) Find Pet By Animal Category");
-            System.out.println("(4) Find Pet By Type");
-            System.out.print("Select An Option: ");
+            String[] menuList =
+            {
+                "Back", "Find Pet By ID", "Find Pet By Name", "Find Pet By Animal Category", "Find Pet By Type"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(5);
             switch (option)
             {
@@ -629,10 +531,11 @@ public class Main
         while (!back)
         {
             System.out.println("\nDisplay Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Display Owner(s)");
-            System.out.println("(2) Display Pet(s)");
-            System.out.print("Select an option:  ");
+            String[] menuList =
+            {
+                "Back", "Display Owner(s)", "Display Pet(s)"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -663,11 +566,12 @@ public class Main
         boolean back = false;
         while (!back)
         {
-            System.out.println("\n(0) Back");
-            System.out.println("(1) Display Pet By Owner ID");
-            System.out.println("(2) Display All Pet(s) Registered");
-            System.out.println("(3) Display By Animal Category");
-            System.out.print("Select An Option: ");
+            System.out.println("\nPet Display");
+            String[] menuList =
+            {
+                "Back", "Display Pet By Owner ID", "Display All Pet(s) Registered", "Display By Animal Category"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(4);
             switch (option)
             {
@@ -707,11 +611,11 @@ public class Main
         while (!back)
         {
             System.out.println("\nAnimalCategory");
-            System.out.println("(0) Back");
-            System.out.println("(1) Mammal");
-            System.out.println("(2) Fish");
-            System.out.println("(3) Bird");
-            System.out.print("Select A Category: ");
+            String[] menuList =
+            {
+                "Back", "Mammal", "Fish", "Bird"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(4);
             switch (option)
             {
@@ -749,10 +653,11 @@ public class Main
         while (!back)
         {
             System.out.println("\nRemove Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Remove Owner");
-            System.out.println("(2) Remove Pet");
-            System.out.print("Select an option:  ");
+            String[] menuList =
+            {
+                "Back", "Remove Owner", "Remove Pet"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -803,10 +708,11 @@ public class Main
         while (!back)
         {
             System.out.println("\nEdit Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Edit Owner");
-            System.out.println("(2) Edit Pet");
-            System.out.print("Select an Option: ");
+            String[] menuList =
+            {
+                "Back", "Edit Owner", "Edit Pet"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -843,14 +749,13 @@ public class Main
         boolean back = false;
         while (!back)
         {
+
             System.out.println("\nEdit Owner Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Name");
-            System.out.println("(2) Id");
-            System.out.println("(3) Telephone");
-            System.out.println("(4) Address");
-            System.out.println("(5) Email");
-            System.out.print("Select An Option: ");
+            String[] menuList =
+            {
+                "Back", "Name", "Id", "Telephone", "Address", "Email"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(6);
             switch (option)
             {
@@ -916,13 +821,11 @@ public class Main
         while (!back)
         {
             System.out.println("\nEdit Pet Options");
-            System.out.println("(0) Back");
-            System.out.println("(1) Animal Category");
-            System.out.println("(2) Name");
-            System.out.println("(3) Breed");
-            System.out.println("(4) Age");
-            System.out.println("(5) Next Page");
-            System.out.print("Select An Option: ");
+            String[] menuList =
+            {
+                "Back", "Animal Category", "Name", "Breed", "Age", "Next Page"
+            };
+            displayMenuItems(menuList);
             int option = checkUserInputMenu(6);
             switch (option)
             {
@@ -1023,7 +926,7 @@ public class Main
         Owner greg = new Owner("Greg", "greg@gmail.com", "0853151", "Dundalk");
         greg.addPet("bear", "bob", "fire", 404, "green", "male");
         greg.addPet("goldfish", "goldy", "water", 4, "white", "other", "freshwater");
-        greg.addPet("cat", "tim", "fire", 224, "pink", "female", true);
+        greg.addPet("cat", "tim", "fire", 224, "pink", "female", false);
         greg.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
 
         Owner kevin = new Owner("Kevin", "kevins@gmail.com", "0861415", "Dundalk,Ireland");
@@ -1145,4 +1048,39 @@ public class Main
         return email;
     }
 
+    private static void displayMenuItems(String[] list)
+    {
+        for (int i = 0; i < list.length; i++)
+        {
+            System.out.println("(" + i + ") " + list[i]);
+        }
+        System.out.print("Select An Option: ");
+    }
+
+    public static String selectGender()
+    {
+        String gender = "";
+        boolean picked = false;
+        while (!picked)
+        {
+            gender = keyboard.next();
+            if (gender.equalsIgnoreCase("male"))
+            {
+                picked = true;
+            }
+            else if (gender.equalsIgnoreCase("female"))
+            {
+                picked = true;
+            }
+            else if (gender.equalsIgnoreCase("UNKOWN"))
+            {
+                picked = true;
+            }
+            else
+            {
+                System.out.print("Please Select A Valid Option:");
+            }
+        }
+        return gender;
+    }
 }
