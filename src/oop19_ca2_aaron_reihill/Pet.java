@@ -1,13 +1,11 @@
 package oop19_ca2_aaron_reihill;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Objects;
 import java.util.Date;
-import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  *
@@ -201,7 +199,6 @@ public class Pet
     {
         this.type = type;
     }
-
     public void setName(String name)
     {
         this.name = name;
@@ -214,7 +211,13 @@ public class Pet
 
     public void setAge(int age)
     {
+        try{
         this.age = age;
+        }
+        catch(InputMismatchException e)
+        {
+            System.out.println("Error Age Can Not Be String");
+        }
     }
 
     public void setColour(String colour)
@@ -230,17 +233,17 @@ public class Pet
     public boolean setGender(String gender)
     {
         boolean changed = false;
-        if (gender.equalsIgnoreCase("male"))
+        if (gender.equalsIgnoreCase("MALE"))
         {
             this.gender = Gender.MALE;
             changed = true;
         }
-        else if (gender.equalsIgnoreCase("female"))
+        else if (gender.equalsIgnoreCase("FEMALE"))
         {
             this.gender = Gender.FEMALE;
             changed = true;
         }
-        else if (gender.equalsIgnoreCase("female"))
+        else if (gender.equalsIgnoreCase("UNKOWN")||gender.equalsIgnoreCase("Other"))
         {
             this.gender = Gender.UNKOWN;
             changed = true;
@@ -270,17 +273,36 @@ public class Pet
 
     public static void setIndex(int index)
     {
+        try{
         Pet.index = index;
+        }
+        catch(InputMismatchException e)
+        {
+            System.out.println("Error Index Can Not Be String");
+        }
     }
+        
 
     public void setPetID(int petID)
     {
+        try{
         this.petID = petID;
+                }
+        catch(InputMismatchException e)
+        {
+            System.out.println("Error Pet Id Can Not Be String");
+        }
     }
 
     public void setOwnerID(int ownerID)
     {
+        try{
         this.ownerID = ownerID;
+                       }
+        catch(InputMismatchException e)
+        {
+            System.out.println("Error Pet Id Can Not Be String");
+        }
     }
 
     public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, String water)
@@ -337,68 +359,17 @@ public class Pet
     {
         return new Pet(owner, petId, type, name, breed, age, colour, gender);
     }
-    //#####################################
-    //#####################################
-
-    /*
-        @TODO override in class (mammal... etc)
-     */
-    //#####################################
-    //#####################################
     public void displayAllPets(List<Pet> pets)
     {
         for (Pet p : pets)
         {
-
-            if (p instanceof Mammal)
-            {
-                Mammal m = (Mammal) p;
-                System.out.println("\n(" + m.getClass().getSimpleName() + ") PetID: " + m.getPetID() + ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age: " + m.getAge() + ", Breed: " + m.getBreed() + ", Colour: " + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate() + ", Neutered: " + m.isNeutered());
-
-            }
-            else if (p instanceof Bird)
-            {
-                Bird b = (Bird) p;
-                System.out.println("\n(" + b.getClass().getSimpleName() + ") PetID: " + b.getPetID() + ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age: " + b.getAge() + ", Breed: " + b.getBreed() + ", Colour: " + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate() + ", Wingspan: " + b.getWingspan() + "ft" + ", Fly: " + b.isFly());
-
-            }
-            else if (p instanceof Fish)
-            {
-                Fish f = (Fish) p;
-                System.out.println("\n(" + f.getClass().getSimpleName() + ") PetID: " + f.getPetID() + ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age: " + f.getAge() + ", Breed: " + f.getBreed() + ", Colour: " + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate() + ", Water Type: " + f.getWater());
-
-            }
-            else
-            {
-                System.out.println("\n(" + getClass().getSimpleName() + ") PetID: " + p.getPetID() + ", OwnerID: " + p.getOwnerID() + ", Type: " + p.getType() + ", Name: " + p.getName() + ", Age: " + p.getAge() + ", Breed: " + p.getBreed() + ", Colour: " + p.getColour() + ", Gender: " + p.getGender() + ", DateReg: " + p.getRegDate());
-            }
+            p.displayPet();
         }
     }
 
-    public void displayPet(Pet p)
+    public void displayPet()
     {
-        if (p instanceof Mammal)
-        {
-            Mammal m = (Mammal) p;
-            System.out.println("\n(" + m.getClass().getSimpleName() + ") PetID: " + m.getPetID() + ", OwnerID: " + m.getOwnerID() + ", Type: " + m.getType() + ", Name: " + m.getName() + ", Age: " + m.getAge() + ", Breed: " + m.getBreed() + ", Colour: " + m.getColour() + ", Gender: " + m.getGender() + ", DateReg: " + m.getRegDate() + ", Neutered: " + m.isNeutered());
-
-        }
-        else if (p instanceof Bird)
-        {
-            Bird b = (Bird) p;
-            System.out.println("\n*(" + b.getClass().getSimpleName() + ") PetID: " + b.getPetID() + ", OwnerID: " + b.getOwnerID() + ", Type: " + b.getType() + ", Name: " + b.getName() + ", Age: " + b.getAge() + ", Breed: " + b.getBreed() + ", Colour: " + b.getColour() + ", Gender: " + b.getGender() + ", DateReg: " + b.getRegDate() + ", Wingspan: " + b.getWingspan() + "ft" + ", Fly: " + b.isFly());
-
-        }
-        else if (p instanceof Fish)
-        {
-            Fish f = (Fish) p;
-            System.out.println("\n(" + f.getClass().getSimpleName() + ") PetID: " + f.getPetID() + ", OwnerID: " + f.getOwnerID() + ", Type: " + f.getType() + ", Name: " + f.getName() + ", Age: " + f.getAge() + ", Breed: " + f.getBreed() + ", Colour: " + f.getColour() + ", Gender: " + f.getGender() + ", DateReg: " + f.getRegDate() + ", Water Type: " + f.getWater());
-
-        }
-        else
-        {
-            System.out.println("\n(" + getClass().getSimpleName() + ") PetID: " + p.getPetID() + ", OwnerID: " + p.getOwnerID() + ", Type: " + p.getType() + ", Name: " + p.getName() + ", Age: " + p.getAge() + ", Breed: " + p.getBreed() + ", Colour: " + p.getColour() + ", Gender: " + p.getGender() + ", DateReg: " + p.getRegDate());
-        }
+        System.out.println("\n(" + getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate());
     }
 
     private void findGender(String g)
