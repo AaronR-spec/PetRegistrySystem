@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package oop19_ca2_aaron_reihill;
 
 /**
@@ -14,15 +10,12 @@ public class Mammal extends Pet
 
     private boolean neutered;
 
+    public Mammal()
+    {
+    }
     public Mammal(String type, String breed, int age, String colour, String regDate, boolean neutered)
     {
         super(type, breed, age, colour, regDate);
-        this.neutered = neutered;
-    }
-
-    public Mammal(int owner, String type, String breed, int age, String colour, String regDate, boolean neutered)
-    {
-        super(owner, type, breed, age, colour, regDate);
         this.neutered = neutered;
     }
 
@@ -57,7 +50,12 @@ public class Mammal extends Pet
     {
         this.neutered = neutered;
     }
+    @Override
+    public void displayPet()
+    {
+       System.out.println("\n(" + this.getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate() + ", Neutered: " + isNeutered());
 
+    }
     public static Pet createMammal(String type, String name, String breed, int age, String colour, String gender, String regDate, boolean neutered)
     {
         return new Mammal(type, name, breed, age, colour, gender,neutered);
