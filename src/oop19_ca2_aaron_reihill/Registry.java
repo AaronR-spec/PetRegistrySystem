@@ -367,7 +367,7 @@ public class Registry
             {
                 if (pets.get(j).getPetID() == id)
                 {
-                    pets.get(j).displayPet(pets.get(j));
+                    pets.get(j).displayPet();
                     found = true;
                 }
                 j++;
@@ -439,7 +439,7 @@ public class Registry
             {
                 if (pets.get(j).getName().equalsIgnoreCase(name))
                 {
-                    pets.get(j).displayPet(pets.get(j));
+                    pets.get(j).displayPet();
                     found = true;
                 }
                 j++;
@@ -530,7 +530,7 @@ public class Registry
             {
                 if (p.getType().equalsIgnoreCase(type))
                 {
-                    p.displayPet(p);
+                    p.displayPet();
                     found = true;
                 }
             }
@@ -568,19 +568,19 @@ public class Registry
                         case 1:
                             if (p instanceof Mammal)
                             {
-                                p.displayPet(p);
+                                p.displayPet();
                             }
                             break;
                         case 2:
                             if (p instanceof Fish)
                             {
-                                p.displayPet(p);
+                                p.displayPet();
                             }
                             break;
                         case 3:
                             if (p instanceof Bird)
                             {
-                                p.displayPet(p);
+                                p.displayPet();
                             }
                             break;
                         default:
@@ -891,7 +891,7 @@ public class Registry
         String ogGender = getPetById(id).getGenderString();
         if (getPetById(id).setGender(gender))
         {
-            System.out.println(ogGender + " Changed To " + gender);
+            System.out.println(ogGender + " Changed To " + getPetById(id).getGender());
         }
         else
         {
@@ -990,7 +990,7 @@ public class Registry
             {
                 if (p instanceof Mammal)
                 {
-                    p.displayPet(p);
+                    p.displayPet();
                 }
             }
         }
@@ -1005,7 +1005,7 @@ public class Registry
             {
                 if (p instanceof Fish)
                 {
-                    p.displayPet(p);
+                    p.displayPet();
                 }
             }
         }
@@ -1020,7 +1020,7 @@ public class Registry
             {
                 if (p instanceof Bird)
                 {
-                    p.displayPet(p);
+                    p.displayPet();
                 }
             }
         }
@@ -1078,20 +1078,17 @@ public class Registry
             ownerPetCountMax = ownerPetCount;
             ownerPetCount = 0;
         }
-        /*
-        @TODO perecent is not working
-        */
-        double mammalPercent = (mammalCount/petCount)*100;
-        double fishPercent = (fishCount/petCount)*100;
-        double birdPercent = (birdCount/petCount)*100;
+        double mammalPercent = ((double)mammalCount/petCount)*100;
+        double fishPercent = ((double)fishCount/petCount)*100;
+        double birdPercent = ((double)birdCount/petCount)*100;
         System.out.println("Number Of Total Pets " + petCount);
         System.out.println("Number Of Them Mammals " + mammalCount + ", Fish: " + fishCount + ", Birds: " + birdCount);
         System.out.printf("Percentage Of Pets Registered As Mammals:%.2f " ,mammalPercent);
-        System.out.print("%");
+        System.out.print("%\n");
         System.out.printf("\nPercentage Of Pets Registered As Birds:%.2f " ,birdPercent);
-        System.out.print("%");
+        System.out.print("%\n");
         System.out.printf("\nPercentage Of Pets Registered As Fish:%.2f " ,fishPercent);
-        System.out.print("%");
+        System.out.print("%\n");
         System.out.println("\n"+ mostPetReg + " Has The Most Pets Registered With " + ownerPetCountMax);
         System.out.println("Oldest Registered Pet " +oldestPet +" Aged " + maxAge);
         System.out.println("Youngest Registered Pet " + youngestPet+ " Aged " + minAge);
