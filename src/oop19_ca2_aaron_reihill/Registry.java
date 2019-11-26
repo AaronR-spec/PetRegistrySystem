@@ -1191,6 +1191,13 @@ public class Registry
             o.displayAllPetsById();
         }
     }
+    public void displayPetsOrderByGender()
+    {
+        for(Owner o : this.owners)
+        {
+            o.displayAllPetsByGender();
+        }
+    }
         public void displayPetsOrderByAge(int id)
     {
         for(Owner o : this.owners)
@@ -1200,6 +1207,13 @@ public class Registry
     }
     
     public void displayPetsOrderById(int id)
+    {
+        for(Owner o : this.owners)
+        {
+            o.displayAllPetsById();
+        }
+    }
+        public void displayPetsOrderByGender(int id)
     {
         for(Owner o : this.owners)
         {
