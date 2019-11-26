@@ -600,9 +600,7 @@ public class Main
                     r.displayPetsOrderByAge();
                     break;
                 case 6:
-                    /*
-                    @TODO Make gender order and registered (last first) in display all pets option(1)
-                    */
+                    r.displayPetsOrderByGender();
                     break;
                 case 7:
                     clearInvalidMenu();
