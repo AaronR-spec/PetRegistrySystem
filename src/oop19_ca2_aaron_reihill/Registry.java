@@ -1182,6 +1182,13 @@ public class Registry
             o.displayAllPetsByAge();
         }
     }
+    public void displayPetsById()
+    {
+        for(Owner o : this.owners)
+        {
+            o.displayAllPetsById();
+        }
+    }
     @Override
     public String toString()
     {
