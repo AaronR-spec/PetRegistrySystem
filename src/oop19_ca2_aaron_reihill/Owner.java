@@ -333,23 +333,30 @@ public class Owner implements Serializable
         Pet.displayAllPets(this.pets);
 
     }
-    public void displayAllPetsByAge()
+    public static void displayAllPetsByAge(List<Pet> p)
     {
         PetAgeComparator ageComparator = new PetAgeComparator();
-        Collections.sort(this.pets, ageComparator);
-        Pet.displayAllPets(this.pets);
+        Collections.sort(p, ageComparator);
+        Pet.displayAllPets(p);
     }
-    public void displayAllPetsById()
+    public static void displayAllPetsById(List<Pet> p)
     {
         PetIdComparator idComparator = new PetIdComparator();
-        Collections.sort(this.pets, idComparator);
-        Pet.displayAllPets(this.pets);
+        Collections.sort(p, idComparator);
+        Pet.displayAllPets(p);
     }
-    public void displayAllPetsByGender()
+    public static void displayAllPetsByGender(List<Pet> p)
     {
         PetGenderComparator genderComparator = new PetGenderComparator();
-        Collections.sort(this.pets, genderComparator);
-        Pet.displayAllPets(this.pets);
+        Collections.sort(p, genderComparator);
+        Pet.displayAllPets(p);
+    }
+    public static void displayAllPetsByRegDate(List<Pet> p )
+    {
+        PetRegDateComparator regComparator = new PetRegDateComparator();
+        Collections.sort(p, regComparator);
+        Collections.reverse(p);
+        Pet.displayAllPets(p);
     }
     public int findPet(int id)
     {
