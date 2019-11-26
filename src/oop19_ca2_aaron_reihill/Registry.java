@@ -684,8 +684,8 @@ public class Registry
                     //error goes here
                 }
             }
-                sc.close();
-            }
+            sc.close();
+        }
         catch (IOException e)
         {
             System.out.println("File Not Found. " + e.getLocalizedMessage());
@@ -701,7 +701,7 @@ public class Registry
             Scanner sc = new Scanner(new File(file));
 
             sc.useDelimiter("[/\r\n]+");
-            String  name, telephone, address,email;
+            String name, telephone, address, email;
             int id;
             while (sc.hasNext())
             {
@@ -709,7 +709,7 @@ public class Registry
                 name = sc.next();
                 telephone = sc.next();
                 address = sc.next();
-                if(sc.hasNext())
+                if (sc.hasNext())
                 {
                     email = sc.next();
                     maxIndex = id;
@@ -717,8 +717,8 @@ public class Registry
                 }
                 else
                 {
-                maxIndex = id;
-                addOwner(id, name, telephone, address);
+                    maxIndex = id;
+                    addOwner(id, name, telephone, address);
                 }
             }
             sc.close();
@@ -727,7 +727,7 @@ public class Registry
         {
             System.out.println("File Not Found. " + e.getLocalizedMessage());
         }
-        catch(InputMismatchException e)
+        catch (InputMismatchException e)
         {
             System.out.println("Format Is Wrong" + e.getLocalizedMessage());
         }
@@ -1157,69 +1157,71 @@ public class Registry
         }
     }
 
-    public void storeData(String file )
+    public void storeData(String file)
     {
-         try {
- 
+        try
+        {
+
             FileOutputStream store = new FileOutputStream(file);
             ObjectOutputStream storedObject = new ObjectOutputStream(store);
             storedObject.writeObject(this.owners);
             storedObject.close();
             System.out.println("The Object  was succesfully written to a file");
- 
-        } catch (FileNotFoundException e) {
-             System.out.println("File Not Found " +e.getLocalizedMessage());
+
         }
-         catch(IOException e)
-         {
-             System.out.println("IOException" + e.getLocalizedMessage());
-         }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("File Not Found " + e.getLocalizedMessage());
+        }
+        catch (IOException e)
+        {
+            System.out.println("IOException" + e.getLocalizedMessage());
+        }
     }
-    
+
     public void displayPetsOrderByAge()
     {
-        for(Owner o : this.owners)
+        List<Pet> p = new ArrayList<>();
+        for (Owner o : this.owners)
         {
-            o.displayAllPetsByAge();
+           p.addAll(o.getPets());
         }
+        Owner.displayAllPetsByAge(p);
     }
-    
+
     public void displayPetsOrderById()
     {
-        for(Owner o : this.owners)
+        List<Pet> p = new ArrayList<>();
+        for (Owner o : this.owners)
         {
-            o.displayAllPetsById();
+            p.addAll(o.getPets());
         }
+        Owner.displayAllPetsById(p);
     }
+
     public void displayPetsOrderByGender()
     {
-        for(Owner o : this.owners)
+        List<Pet> p = new ArrayList<>();
+        for (Owner o : this.owners)
         {
-            o.displayAllPetsByGender();
+            p.addAll(o.getPets());
         }
+        Owner.displayAllPetsByGender(p);
     }
-        public void displayPetsOrderByAge(int id)
+
+    public void displayPetsOrderByRegDate()
     {
-        for(Owner o : this.owners)
+        List<Pet> p = new ArrayList<>();
+        for (Owner o : this.owners)
         {
-            o.displayAllPetsByAge();
+           p.addAll(o.getPets());
         }
+        Owner.displayAllPetsByRegDate(p);
     }
-    
-    public void displayPetsOrderById(int id)
-    {
-        for(Owner o : this.owners)
-        {
-            o.displayAllPetsById();
-        }
-    }
-        public void displayPetsOrderByGender(int id)
-    {
-        for(Owner o : this.owners)
-        {
-            o.displayAllPetsById();
-        }
-    }
+
+    /*
+    TODO make display for each owners pets
+     */
     @Override
     public String toString()
     {
