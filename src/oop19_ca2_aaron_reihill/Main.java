@@ -332,7 +332,7 @@ public class Main
         System.out.print("Age: ");
         age = checkUserInputInt("Age");
         System.out.print("Wingspan(ft): ");
-        wingspan = keyboard.nextInt();
+        wingspan = checkUserInputInt("Wingspan(ft)");
         System.out.print("Colour: ");
         colour = checkUserInput("Colour");
         System.out.print("Gender (Male/Female/Other): ");
@@ -570,10 +570,10 @@ public class Main
             System.out.println("\nPet Display");
             String[] menuList =
             {
-                "Back", "Display Pet By Owner ID", "Display All Pet(s) Registered", "Display By Animal Category","Display By Id" , "Display By Age","Display By Gender"
+                "Back", "Display Pet By Owner ID", "Display All Pet(s) Registered", "Display By Animal Category","Display By Id" , "Display By Age","Display By Gender","Display By Registered Date"
             };
             printMenuItems(menuList);
-            int option = checkUserInputMenu(7);
+            int option = checkUserInputMenu(8);
             switch (option)
             {
                 case 0:
@@ -603,11 +603,14 @@ public class Main
                     r.displayPetsOrderByGender();
                     break;
                 case 7:
+                    r.displayPetsOrderByRegDate();
+                    break;
+                case 8:
                     clearInvalidMenu();
                     break;
 
             }
-            if (option > 7 && option < 0)
+            if (option > 8 && option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -1274,7 +1277,7 @@ public class Main
             {
                 picked = true;
             }
-            else if (gender.equalsIgnoreCase("UNKOWN"))
+            else if (gender.equalsIgnoreCase("UNKOWN")||gender.equalsIgnoreCase("Other"))
             {
                 picked = true;
             }
