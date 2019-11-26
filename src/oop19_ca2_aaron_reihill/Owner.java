@@ -1,5 +1,6 @@
 package oop19_ca2_aaron_reihill;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.Objects;
  *
  * @author D00222467
  */
-public class Owner
+public class Owner implements Serializable
 {
 
     private String name = "";
@@ -334,9 +335,15 @@ public class Owner
     }
     public void displayAllPetsByAge()
     {
-        PetAgeComparator age = new PetAgeComparator();
-        Pet.displayAllPets(Collections.sort(this.pets,age));
-
+        PetAgeComparator ageComparator = new PetAgeComparator();
+        Collections.sort(this.pets, ageComparator);
+        Pet.displayAllPets(this.pets);
+    }
+    public void displayAllPetsById()
+    {
+        PetIdComparator idComparator = new PetIdComparator();
+        Collections.sort(this.pets, idComparator);
+        Pet.displayAllPets(this.pets);
     }
     public int findPet(int id)
     {
