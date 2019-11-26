@@ -1,5 +1,6 @@
 package oop19_ca2_aaron_reihill;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.InputMismatchException;
  *
  * @author D00222467/Aaron Reihill
  */
-public class Pet
+public class Pet implements Serializable
 {
 
     private String type = "";
@@ -359,7 +360,7 @@ public class Pet
     {
         return new Pet(owner, petId, type, name, breed, age, colour, gender);
     }
-    public void displayAllPets(List<Pet> pets)
+    public static void displayAllPets(List<Pet> pets)
     {
         for (Pet p : pets)
         {
