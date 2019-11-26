@@ -345,6 +345,12 @@ public class Owner implements Serializable
         Collections.sort(this.pets, idComparator);
         Pet.displayAllPets(this.pets);
     }
+    public void displayAllPetsByGender()
+    {
+        PetGenderComparator genderComparator = new PetGenderComparator();
+        Collections.sort(this.pets, genderComparator);
+        Pet.displayAllPets(this.pets);
+    }
     public int findPet(int id)
     {
         int petIndex = -1;
