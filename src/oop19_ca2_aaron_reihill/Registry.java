@@ -1,10 +1,15 @@
 package oop19_ca2_aaron_reihill;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -679,8 +684,8 @@ public class Registry
                     //error goes here
                 }
             }
-            sc.close();
-        }
+                sc.close();
+            }
         catch (IOException e)
         {
             System.out.println("File Not Found. " + e.getLocalizedMessage());
@@ -696,7 +701,7 @@ public class Registry
             Scanner sc = new Scanner(new File(file));
 
             sc.useDelimiter("[/\r\n]+");
-            String type, name, telephone, address;
+            String  name, telephone, address,email;
             int id;
             while (sc.hasNext())
             {
@@ -704,14 +709,27 @@ public class Registry
                 name = sc.next();
                 telephone = sc.next();
                 address = sc.next();
+                if(sc.hasNext())
+                {
+                    email = sc.next();
+                    maxIndex = id;
+                    addOwner(id, name, telephone, address);
+                }
+                else
+                {
                 maxIndex = id;
                 addOwner(id, name, telephone, address);
+                }
             }
             sc.close();
         }
         catch (IOException e)
         {
             System.out.println("File Not Found. " + e.getLocalizedMessage());
+        }
+        catch(InputMismatchException e)
+        {
+            System.out.println("Format Is Wrong" + e.getLocalizedMessage());
         }
         Owner.setIndex(maxIndex + 1);
     }
@@ -1070,7 +1088,7 @@ public class Registry
                 {
                     fishCount++;
                 }
-                if(ownerPetCount >ownerPetCountMax )
+                if (ownerPetCount > ownerPetCountMax)
                 {
                     mostPetReg = o.getName();
                 }
@@ -1078,61 +1096,90 @@ public class Registry
             ownerPetCountMax = ownerPetCount;
             ownerPetCount = 0;
         }
-        double mammalPercent = ((double)mammalCount/petCount)*100;
-        double fishPercent = ((double)fishCount/petCount)*100;
-        double birdPercent = ((double)birdCount/petCount)*100;
+        double mammalPercent = ((double) mammalCount / petCount) * 100;
+        double fishPercent = ((double) fishCount / petCount) * 100;
+        double birdPercent = ((double) birdCount / petCount) * 100;
         System.out.println("Number Of Total Pets " + petCount);
         System.out.println("Number Of Them Mammals " + mammalCount + ", Fish: " + fishCount + ", Birds: " + birdCount);
-        System.out.printf("Percentage Of Pets Registered As Mammals:%.2f " ,mammalPercent);
+        System.out.printf("Percentage Of Pets Registered As Mammals:%.2f ", mammalPercent);
         System.out.print("%\n");
-        System.out.printf("\nPercentage Of Pets Registered As Birds:%.2f " ,birdPercent);
+        System.out.printf("\nPercentage Of Pets Registered As Birds:%.2f ", birdPercent);
         System.out.print("%\n");
-        System.out.printf("\nPercentage Of Pets Registered As Fish:%.2f " ,fishPercent);
+        System.out.printf("\nPercentage Of Pets Registered As Fish:%.2f ", fishPercent);
         System.out.print("%\n");
-        System.out.println("\n"+ mostPetReg + " Has The Most Pets Registered With " + ownerPetCountMax);
-        System.out.println("Oldest Registered Pet " +oldestPet +" Aged " + maxAge);
-        System.out.println("Youngest Registered Pet " + youngestPet+ " Aged " + minAge);
-        System.out.println("Average Age: " + averageAge/petCount);
+        System.out.println("\n" + mostPetReg + " Has The Most Pets Registered With " + ownerPetCountMax);
+        System.out.println("Oldest Registered Pet " + oldestPet + " Aged " + maxAge);
+        System.out.println("Youngest Registered Pet " + youngestPet + " Aged " + minAge);
+        System.out.println("Average Age: " + averageAge / petCount);
     }
-    
-    public void changePetNeutered(int id,String n)
+
+    public void changePetNeutered(int id, String n)
     {
-        Mammal m = (Mammal)getPetById(id);
-        System.out.print("\nStatus Changed From " + m.isNeutered() +" To ");
+        Mammal m = (Mammal) getPetById(id);
+        System.out.print("\nStatus Changed From " + m.isNeutered() + " To ");
         m.setNeutered(n);
         System.out.print(m.isNeutered());
     }
-    public void changePetWaterType(int id,String w)
+
+    public void changePetWaterType(int id, String w)
     {
-        Fish f = (Fish)getPetById(id);
+        Fish f = (Fish) getPetById(id);
         String ogWater = f.getWater().toString();
-        if(f.setWater(w))
+        if (f.setWater(w))
         {
-            System.out.print("\nStatus Changed From " +ogWater  +" To " + f.getWater());
+            System.out.print("\nStatus Changed From " + ogWater + " To " + f.getWater());
         }
         else
         {
             System.out.println("Invalid Option Could Not Change Water Type");
         }
     }
+
     public void changeWingspan(int id, int ft)
     {
-        Bird b = (Bird)getPetById(id);
+        Bird b = (Bird) getPetById(id);
         int ogWing = b.getWingspan();
         b.setWingspan(ft);
-        System.out.print("\nWingspan Changed From " + ogWing +"ft To " +b.getWingspan() +"ft");
+        System.out.print("\nWingspan Changed From " + ogWing + "ft To " + b.getWingspan() + "ft");
     }
+
     public void changeFly(int id, String fly)
     {
-        Bird b = (Bird)getPetById(id);
+        Bird b = (Bird) getPetById(id);
         boolean ogfly = b.isFly();
-        if(b.setFly(fly))
+        if (b.setFly(fly))
         {
-            System.out.println("\nAbility To Fly Changed From " +ogfly  +" To " + b.isFly());
+            System.out.println("\nAbility To Fly Changed From " + ogfly + " To " + b.isFly());
         }
         else
         {
             System.out.println("Invalid Option Could Not Change Fly Ability");
+        }
+    }
+
+    public void storeData(String file )
+    {
+         try {
+ 
+            FileOutputStream store = new FileOutputStream(file);
+            ObjectOutputStream storedObject = new ObjectOutputStream(store);
+            storedObject.writeObject(this.owners);
+            storedObject.close();
+            System.out.println("The Object  was succesfully written to a file");
+ 
+        } catch (FileNotFoundException e) {
+             System.out.println("File Not Found " +e.getLocalizedMessage());
+        }
+         catch(IOException e)
+         {
+             System.out.println("IOException" + e.getLocalizedMessage());
+         }
+    }
+    public void displayPetsByAge()
+    {
+        for(Owner o : this.owners)
+        {
+            o.displayAllPetsByAge();
         }
     }
     @Override
