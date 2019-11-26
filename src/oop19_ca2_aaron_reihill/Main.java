@@ -30,11 +30,12 @@ public class Main
             {
                 "Exit", "Add Options", "Search Options", "Remove Options", "Edit Options", "Display Options"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(6);
             switch (option)
             {
                 case 0:
+                    r.storeData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\store.dat");
                     System.out.println("GoodBye...");
                     exit = true;
                     break;
@@ -81,7 +82,7 @@ public class Main
             {
                 "Back", "Add Owner", "Add Pet"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -156,7 +157,7 @@ public class Main
             {
                 "Back", "Mammal", "Fish", "Bird", "Unkown"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(5);
             System.out.println("Choose From ");
             r.availableOwners();
@@ -390,7 +391,7 @@ public class Main
             {
                 "Back", "Find Owner", "Find Pet"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -427,7 +428,7 @@ public class Main
             {
                 "Back", "Find Owner By ID", "Find Owner By Name", "Find Owner By Address", "Find Owner By Telephone", "Find Owner By Email"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(6);
             switch (option)
             {
@@ -485,7 +486,7 @@ public class Main
             {
                 "Back", "Find Pet By ID", "Find Pet By Name", "Find Pet By Animal Category", "Find Pet By Type"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(5);
             switch (option)
             {
@@ -535,7 +536,7 @@ public class Main
             {
                 "Back", "Display Owner(s)", "Display Pet(s)"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -569,10 +570,10 @@ public class Main
             System.out.println("\nPet Display");
             String[] menuList =
             {
-                "Back", "Display Pet By Owner ID", "Display All Pet(s) Registered", "Display By Animal Category"
+                "Back", "Display Pet By Owner ID", "Display All Pet(s) Registered", "Display By Animal Category","Display By Id" , "Display By Age","Display By Gender"
             };
-            displayMenuItems(menuList);
-            int option = checkUserInputMenu(4);
+            printMenuItems(menuList);
+            int option = checkUserInputMenu(7);
             switch (option)
             {
                 case 0:
@@ -582,7 +583,7 @@ public class Main
                 case 1:
                     System.out.println();
                     r.availableOwners();
-                    System.out.print("\nSelect An Owner(ID) To Display There Pets: ");
+                    System.out.print("\nSelect An Owner(ID) To Display Their Pets: ");
                     int id = checkUserInputInt("Select An Owner(ID) To Display There Pets");
                     r.displayOwnersPet(id);
                     break;
@@ -592,12 +593,23 @@ public class Main
                 case 3:
                     displayByAnimalCategory();
                     break;
-                case 4:
+               case 4:
+                    r.displayPetsOrderById();
+                    break;
+                case 5:
+                    r.displayPetsOrderByAge();
+                    break;
+                case 6:
+                    /*
+                    @TODO Make gender order and registered (last first) in display all pets option(1)
+                    */
+                    break;
+                case 7:
                     clearInvalidMenu();
                     break;
 
             }
-            if (option > 4 && option < 0)
+            if (option > 7 && option < 0)
             {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
@@ -615,7 +627,7 @@ public class Main
             {
                 "Back", "Mammal", "Fish", "Bird"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(4);
             switch (option)
             {
@@ -657,7 +669,7 @@ public class Main
             {
                 "Back", "Remove Owner", "Remove Pet"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -712,7 +724,7 @@ public class Main
             {
                 "Back", "Edit Owner", "Edit Pet"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(3);
             switch (option)
             {
@@ -755,7 +767,7 @@ public class Main
             {
                 "Back", "Name", "Id", "Telephone", "Address", "Email"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(6);
             switch (option)
             {
@@ -804,9 +816,6 @@ public class Main
         }
     }
 
-    /*
-    @TODO Make animal things editable like water and nutered and fly and wingspan
-     */
     public static void editPet()
     {
         String user;
@@ -826,7 +835,7 @@ public class Main
             {
                 "Back", "Animal Category", "Name", "Breed", "Age", "Next Page"
             };
-            displayMenuItems(menuList);
+            printMenuItems(menuList);
             int option = checkUserInputMenu(6);
             switch (option)
             {
@@ -1119,25 +1128,25 @@ public class Main
     public static void fillReg()
     {
         Owner greg = new Owner("Greg", "greg@gmail.com", "0853151", "Dundalk");
-        greg.addPet("bear", "bob", "fire", 404, "green", "male");
-        greg.addPet("goldfish", "goldy", "water", 4, "white", "other", "freshwater");
-        greg.addPet("cat", "tim", "fire", 224, "pink", "female", false);
-        greg.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
-
+//        greg.addPet("bear", "bob", "fire", 404, "green", "male");
+//        greg.addPet("goldfish", "goldy", "water", 4, "white", "other", "freshwater");
+//        greg.addPet("cat", "tim", "fire", 224, "pink", "female", false);
+//        greg.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
+//
         Owner kevin = new Owner("Kevin", "kevins@gmail.com", "0861415", "Dundalk,Ireland");
-        kevin.addPet("beadr", "bob", "fire", 404, "green", "male");
-        kevin.addPet("koda", "goldy", "water", 4, "white", "other", "freshwater");
-        kevin.addPet("thing", "tim", "fire", 224, "pink", "female", true);
-        kevin.addPet("bird", "bob", "fire", 44, "green", "other", 44, false);
-        kevin.addPet("beadsr", "bobe", "fire", 404, "green", "male");
-        kevin.addPet("koda", "goldy", "water", 4, "white", "other", "freshwater");
-        kevin.addPet("thin2g", "tim", "earth", 2224, "green", "female", true);
-        kevin.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
-        r.addOwner(greg);
-        r.addOwner(kevin);
+//        kevin.addPet("beadr", "bob", "fire", 404, "green", "male");
+//        kevin.addPet("koda", "goldy", "water", 4, "white", "other", "freshwater");
+//        kevin.addPet("thing", "tim", "fire", 224, "pink", "female", true);
+//        kevin.addPet("bird", "bob", "fire", 44, "green", "other", 44, false);
+//        kevin.addPet("beadsr", "bobe", "fire", 404, "green", "male");
+//        kevin.addPet("koda", "goldy", "water", 4, "white", "other", "freshwater");
+//        kevin.addPet("thin2g", "tim", "earth", 2224, "green", "female", true);
+//        kevin.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
+    //    r.addOwner(greg);
+     //   r.addOwner(kevin);
 
-        //r.loadOwnerData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\OwnerData.csv");
-        //r.loadPetData("PetData.csv");
+        r.loadOwnerData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\OwnerData.csv");
+        r.loadPetData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\PetData.csv");
     }
 
     private static void clearInvalidMenu()
@@ -1243,7 +1252,7 @@ public class Main
         return email;
     }
 
-    private static void displayMenuItems(String[] list)
+    private static void printMenuItems(String[] list)
     {
         for (int i = 0; i < list.length; i++)
         {
