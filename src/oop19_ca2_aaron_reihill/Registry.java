@@ -1175,14 +1175,31 @@ public class Registry
              System.out.println("IOException" + e.getLocalizedMessage());
          }
     }
-    public void displayPetsByAge()
+    
+    public void displayPetsOrderByAge()
     {
         for(Owner o : this.owners)
         {
             o.displayAllPetsByAge();
         }
     }
-    public void displayPetsById()
+    
+    public void displayPetsOrderById()
+    {
+        for(Owner o : this.owners)
+        {
+            o.displayAllPetsById();
+        }
+    }
+        public void displayPetsOrderByAge(int id)
+    {
+        for(Owner o : this.owners)
+        {
+            o.displayAllPetsByAge();
+        }
+    }
+    
+    public void displayPetsOrderById(int id)
     {
         for(Owner o : this.owners)
         {
