@@ -1099,18 +1099,14 @@ public class Registry
         double mammalPercent = ((double) mammalCount / petCount) * 100;
         double fishPercent = ((double) fishCount / petCount) * 100;
         double birdPercent = ((double) birdCount / petCount) * 100;
-        System.out.println("Number Of Total Pets " + petCount);
+        System.out.println("\nNumber Of Total Pets " + petCount);
         System.out.println("Number Of Them Mammals " + mammalCount + ", Fish: " + fishCount + ", Birds: " + birdCount);
-        System.out.printf("Percentage Of Pets Registered As Mammals:%.2f ", mammalPercent);
-        System.out.print("%\n");
-        System.out.printf("\nPercentage Of Pets Registered As Birds:%.2f ", birdPercent);
-        System.out.print("%\n");
-        System.out.printf("\nPercentage Of Pets Registered As Fish:%.2f ", fishPercent);
-        System.out.print("%\n");
-        System.out.println("\n" + mostPetReg + " Has The Most Pets Registered With " + ownerPetCountMax);
+        System.out.println("\nPercentage Of Pets Registered\nMammals\tFish\t  Bird");
+        System.out.printf("%.2f%%\t %.2f%%\t%.2f%%",mammalPercent ,fishPercent,birdPercent);
+        System.out.println("\n\n" + mostPetReg + " Has The Most Pets Registered With " + ownerPetCountMax);
         System.out.println("Oldest Registered Pet " + oldestPet + " Aged " + maxAge);
         System.out.println("Youngest Registered Pet " + youngestPet + " Aged " + minAge);
-        System.out.println("Average Age: " + averageAge / petCount);
+        System.out.println("Average Age Of All Pets: " + averageAge / petCount);
     }
 
     public void changePetNeutered(int id, String n)
