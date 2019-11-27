@@ -817,6 +817,9 @@ public class Main
         }
     }
 
+    /*
+    @TODO fix pet id
+    */
     public static void editPet()
     {
         String user;
@@ -827,7 +830,11 @@ public class Main
         r.displayOwnersPet(id);
         System.out.print("\nPet ID: ");
         id = checkUserInputInt("Pet ID");
-
+        if(!r.checkPetIdDup(id))
+        {
+            System.out.println("Pet Not Found");
+        }
+        else{
         boolean back = false;
         while (!back)
         {
@@ -895,6 +902,7 @@ public class Main
                 System.out.println("\nSorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
+        }
         }
     }
 
@@ -1128,13 +1136,13 @@ public class Main
 
     public static void fillReg()
     {
-        Owner greg = new Owner("Greg", "greg@gmail.com", "0853151", "Dundalk");
+      //  Owner greg = new Owner("Greg", "greg@gmail.com", "0853151", "Dundalk");
 //        greg.addPet("bear", "bob", "fire", 404, "green", "male");
 //        greg.addPet("goldfish", "goldy", "water", 4, "white", "other", "freshwater");
 //        greg.addPet("cat", "tim", "fire", 224, "pink", "female", false);
 //        greg.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
 //
-        Owner kevin = new Owner("Kevin", "kevins@gmail.com", "0861415", "Dundalk,Ireland");
+       // Owner kevin = new Owner("Kevin", "kevins@gmail.com", "0861415", "Dundalk,Ireland");
 //        kevin.addPet("beadr", "bob", "fire", 404, "green", "male");
 //        kevin.addPet("koda", "goldy", "water", 4, "white", "other", "freshwater");
 //        kevin.addPet("thing", "tim", "fire", 224, "pink", "female", true);
