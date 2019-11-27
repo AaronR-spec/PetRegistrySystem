@@ -1214,10 +1214,47 @@ public class Registry
         }
         Owner.displayAllPetsByRegDate(p);
     }
+    public void displayPetsOrderByRegDate(int ownerId)
+    {
+        for (Owner o : this.owners)
+        {
+           if(o.getId() == ownerId)
+           {
+               Owner.displayAllPetsByRegDate(o.getPets());
+           }
+        }
+    }
+        public void displayPetsOrderByGender(int ownerId)
+    {
+        for (Owner o : this.owners)
+        {
+           if(o.getId() == ownerId)
+           {
+               Owner.displayAllPetsByGender(o.getPets());
+           }
+        }
+    }
+    public void displayPetsOrderById(int ownerId)
+    {
+        for (Owner o : this.owners)
+        {
+           if(o.getId() == ownerId)
+           {
+               Owner.displayAllPetsById(o.getPets());
+           }
+        }
+    }
+        public void displayPetsOrderByAge(int ownerId)
+    {
+        for (Owner o : this.owners)
+        {
+           if(o.getId() == ownerId)
+           {
+               Owner.displayAllPetsByAge(o.getPets());
+           }
+        }
+    }
 
-    /*
-    TODO make display for each owners pets
-     */
     @Override
     public String toString()
     {
