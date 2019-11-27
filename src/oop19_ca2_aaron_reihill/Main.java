@@ -7,30 +7,35 @@ import java.util.Scanner;
  *
  * @author D00222467/Aaron Reihill
  */
-public class Main {
+public class Main
+{
 
     static Scanner keyboard = new Scanner(System.in);
     static Registry r = new Registry();
 
-    public static void main(String[] args) {
-        fillReg();
+    public static void main(String[] args)
+    {
         displayMenu();
     }
 
-    public static void displayMenu() {
+    public static void displayMenu()
+    {
         System.out.println("Aaron Reihill CA2 (OOP)");
         boolean exit = false;
-        while (!exit) {
+        while (!exit)
+        {
             System.out.println("\nDundalk Pet Registry");
             String[] menuList
-                    = {
-                        "Exit", "Add Options", "Search Options", "Remove Options", "Edit Options", "Display Options"
+                    =
+                    {
+                        "Exit", "Add Options", "Search Options", "Remove Options", "Edit Options", "Display Options", "Load Options"
                     };
             printMenuItems(menuList);
-            int option = checkUserInputMenu(6);
-            switch (option) {
+            int option = checkUserInputMenu(7);
+            switch (option)
+            {
                 case 0:
-                    r.storeData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\store.dat");
+                    r.storeRegistry("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\store.dat");
                     System.out.println("GoodBye...");
                     exit = true;
                     break;
@@ -55,10 +60,15 @@ public class Main {
                     displayOptions();
                     break;
                 case 6:
+                    System.out.println("Load Option Selected...");
+                    loadOption();
+                    break;
+                case 7:
                     clearInvalidMenu();
                     break;
             }
-            if (option > 6 || option < 0) {
+            if (option > 7 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
@@ -66,17 +76,21 @@ public class Main {
 
     }
 
-    public static void addOptions() {
+    public static void addOptions()
+    {
         boolean exit = false;
-        while (!exit) {
+        while (!exit)
+        {
             System.out.println("\nAdd Options");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Add Owner", "Add Pet"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(3);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...\n");
                     exit = true;
@@ -91,14 +105,16 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 3 || option < 0) {
+            if (option > 3 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void addOwner() {
+    public static void addOwner()
+    {
         String telephone, address, name, email;
         System.out.print("\nName: ");
         name = checkUserInput("Name");
@@ -108,44 +124,51 @@ public class Main {
         telephone = checkTelephone();
         System.out.print("Email? (Y/N): ");
         boolean added = false;
-        while (!added) {
+        while (!added)
+        {
             String yN = keyboard.next();
-            if (yN.equalsIgnoreCase("y")) {
+            if (yN.equalsIgnoreCase("y"))
+            {
                 System.out.print("Email: ");
                 email = checkEmail();
                 r.addOwner(name, email, telephone, address);
                 System.out.println("\n" + name + " added, Returning...");
                 added = true;
 
-            } else if (yN.equalsIgnoreCase("n")) {
+            }
+            else if (yN.equalsIgnoreCase("n"))
+            {
                 r.addOwner(name, telephone, address);
                 System.out.println("\n" + name + " added, Returning...");
                 added = true;
 
-            } else {
+            }
+            else
+            {
                 System.out.print("Please Enter Either Y or N: ");
             }
         }
     }
-    /*
-     @TODO make check owner a method in main
-     */
 
-    public static void addPetOption() {
+    public static void addPetOption()
+    {
         boolean back = false;
         int id;
 
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nOptions");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Mammal", "Fish", "Bird", "Unkown"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(5);
             System.out.println("Choose From ");
             r.availableOwners();
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...");
                     back = true;
@@ -153,36 +176,48 @@ public class Main {
                 case 1:
                     System.out.print("Owner ID: ");
                     id = checkUserInputInt("Owner ID");
-                    if (r.checkOwnerId(id)) {
+                    if (r.checkOwnerId(id))
+                    {
                         addMammal(id);
-                    } else {
+                    }
+                    else
+                    {
                         System.out.println("Owner ID " + id + " Not Found");
                     }
                     break;
                 case 2:
                     System.out.print("Owner ID: ");
                     id = checkUserInputInt("Owner ID");
-                    if (r.checkOwnerId(id)) {
+                    if (r.checkOwnerId(id))
+                    {
                         addFish(id);
-                    } else {
+                    }
+                    else
+                    {
                         System.out.println("Owner ID " + id + " Not Found");
                     }
                     break;
                 case 3:
                     System.out.print("Owner ID: ");
                     id = checkUserInputInt("Owner ID");
-                    if (r.checkOwnerId(id)) {
+                    if (r.checkOwnerId(id))
+                    {
                         addBird(id);
-                    } else {
+                    }
+                    else
+                    {
                         System.out.println("Owner ID " + id + " Not Found");
                     }
                     break;
                 case 4:
                     System.out.print("Owner ID: ");
                     id = checkUserInputInt("Owner ID");
-                    if (r.checkOwnerId(id)) {
+                    if (r.checkOwnerId(id))
+                    {
                         addPet(id);
-                    } else {
+                    }
+                    else
+                    {
                         System.out.println("Owner ID " + id + " Not Found");
                     }
                     break;
@@ -190,14 +225,16 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 5 || option < 0) {
+            if (option > 5 || option < 0)
+            {
                 System.out.println("Option " + option + " Is Not Valid");
                 System.out.print("Please Enter Valid Option");
             }
         }
     }
 
-    public static void addMammal(int id) {
+    public static void addMammal(int id)
+    {
         String type, name, breed, colour, gender;
         int age;
         boolean neutered = false;
@@ -215,15 +252,21 @@ public class Main {
         gender = selectGender();
         boolean picked = false;
         System.out.print("Neutered(Y/N): ");
-        while (!picked) {
+        while (!picked)
+        {
             String option = keyboard.next();
-            if (option.equalsIgnoreCase("y")) {
+            if (option.equalsIgnoreCase("y"))
+            {
                 neutered = true;
                 picked = true;
-            } else if (option.equalsIgnoreCase("n")) {
+            }
+            else if (option.equalsIgnoreCase("n"))
+            {
                 neutered = false;
                 picked = true;
-            } else {
+            }
+            else
+            {
                 System.out.print("Please Select A Valid Option:");
             }
         }
@@ -231,7 +274,8 @@ public class Main {
         System.out.println("\nPet " + name + " added");
     }
 
-    public static void addFish(int id) {
+    public static void addFish(int id)
+    {
         String type, name, breed, colour, gender, water = "";
         int age;
         System.out.print("\nType: ");
@@ -248,21 +292,31 @@ public class Main {
         gender = selectGender();
         boolean picked = false;
         System.out.print("Water(Freshwater/Seawater/Brackish/Unkown): ");
-        while (!picked) {
+        while (!picked)
+        {
             String option = keyboard.next();
-            if (option.equalsIgnoreCase("FRESHWATER")) {
+            if (option.equalsIgnoreCase("FRESHWATER"))
+            {
                 water = option;
                 picked = true;
-            } else if (option.equalsIgnoreCase("SEAWATER")) {
+            }
+            else if (option.equalsIgnoreCase("SEAWATER"))
+            {
                 water = option;
                 picked = true;
-            } else if (option.equalsIgnoreCase("BRACKISH")) {
+            }
+            else if (option.equalsIgnoreCase("BRACKISH"))
+            {
                 water = option;
                 picked = true;
-            } else if (option.equalsIgnoreCase("UNKOWN")) {
+            }
+            else if (option.equalsIgnoreCase("UNKOWN"))
+            {
                 water = option;
                 picked = true;
-            } else {
+            }
+            else
+            {
                 System.out.print("Please Select A Valid Option:");
             }
         }
@@ -270,8 +324,9 @@ public class Main {
         System.out.println("\nPet " + name + " added");
     }
 
-    public static void addBird(int id) {
-        String type, name, breed, colour, gender = "";
+    public static void addBird(int id)
+    {
+        String type, name, breed, colour, gender;
         int age, wingspan;
         boolean fly = false;
         System.out.print("\nType: ");
@@ -290,15 +345,21 @@ public class Main {
         gender = selectGender();
         boolean picked = false;
         System.out.print("Able To Fly(Y/N): ");
-        while (!picked) {
+        while (!picked)
+        {
             String option = keyboard.next();
-            if (option.equalsIgnoreCase("y")) {
+            if (option.equalsIgnoreCase("y"))
+            {
                 fly = true;
                 picked = true;
-            } else if (option.equalsIgnoreCase("n")) {
+            }
+            else if (option.equalsIgnoreCase("n"))
+            {
                 fly = false;
                 picked = true;
-            } else {
+            }
+            else
+            {
                 System.out.print("Please Select A Valid Option:");
             }
         }
@@ -306,7 +367,8 @@ public class Main {
         System.out.println("\nPet " + name + " added");
     }
 
-    public static void addPet(int id) {
+    public static void addPet(int id)
+    {
         String type, name, breed, colour, gender;
         int age;
         System.out.print("\nType: ");
@@ -325,17 +387,21 @@ public class Main {
         System.out.println("\nPet " + name + " added");
     }
 
-    public static void searchOptions() {
+    public static void searchOptions()
+    {
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nSearch Options");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Find Owner", "Find Pet"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(3);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...\n");
                     back = true;
@@ -349,7 +415,8 @@ public class Main {
                 case 3:
                     clearInvalidMenu();
             }
-            if (option > 3 || option < 0) {
+            if (option > 3 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
@@ -357,18 +424,22 @@ public class Main {
 
     }
 
-    public static void ownerSearchOptions() {
+    public static void ownerSearchOptions()
+    {
         String user;
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nOwner Search Options");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Find Owner By ID", "Find Owner By Name", "Find Owner By Address", "Find Owner By Telephone", "Find Owner By Email"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(6);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...\n");
                     back = true;
@@ -403,26 +474,31 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 6 || option < 0) {
+            if (option > 6 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void petSearchOptions() {
+    public static void petSearchOptions()
+    {
 
         String user;
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nOwner Search Options");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Find Pet By ID", "Find Pet By Name", "Find Pet By Animal Category", "Find Pet By Type"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(5);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...\n");
                     back = true;
@@ -451,24 +527,29 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 5 || option < 0) {
+            if (option > 5 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void displayOptions() {
+    public static void displayOptions()
+    {
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nDisplay Options");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Display Owner(s)", "Display Pet(s)", "Display Pet Statistics"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(4);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...\n");
                     back = true;
@@ -486,76 +567,79 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 4 && option < 0) {
+            if (option > 4 && option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void displayPets() {
+    public static void displayPets()
+    {
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nPet Display");
             String[] menuList
-                    = {
-                        "Back", "Display Pet By Owner ID", "Display All Pets Registered", "Display All By Animal Category", "Display All By Id", "Display All By Age", "Display All By Gender", "Display All By Registered Date"
+                    =
+                    {
+                        "Back", "Display All Pets Registered", "Display All By Animal Category", "Display All By Id", "Display All By Age", "Display All By Gender", "Display All By Registered Date"
                     };
             printMenuItems(menuList);
-            int option = checkUserInputMenu(8);
-            switch (option) {
+            int option = checkUserInputMenu(7);
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...");
                     back = true;
                     break;
                 case 1:
-                    System.out.println();
-                    r.availableOwners();
-                    System.out.print("\nSelect An Owner(ID) To Display Their Pets: ");
-                    int id = checkUserInputInt("Select An Owner(ID) To Display There Pets");
-                    r.displayOwnersPet(id);
-                    break;
-                case 2:
                     r.displayAllPets();
                     break;
-                case 3:
+                case 2:
                     displayByAnimalCategory();
                     break;
-                case 4:
+                case 3:
                     r.displayPetsOrderById();
                     break;
-                case 5:
+                case 4:
                     r.displayPetsOrderByAge();
                     break;
-                case 6:
+                case 5:
                     r.displayPetsOrderByGender();
                     break;
-                case 7:
+                case 6:
                     r.displayPetsOrderByRegDate();
                     break;
-                case 8:
+                case 7:
                     clearInvalidMenu();
                     break;
 
             }
-            if (option > 8 && option < 0) {
+            if (option > 7 && option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void displayOwners() {
+    public static void displayOwners()
+    {
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nOwner Options");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Display All Owner(s)", "Display Owners Pets"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(3);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...\n");
                     back = true;
@@ -570,30 +654,38 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 3 && option < 0) {
+            if (option > 3 && option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void ownerPetsDisplay() {
+    public static void ownerPetsDisplay()
+    {
         r.availableOwners();
         System.out.print("Owner Id:");
         int id = checkUserInputInt("Owner ID");
-        if (!r.checkOwnerId(id)) {
+        if (!r.checkOwnerId(id))
+        {
             System.out.println("Owner Not Found");
-        } else {
+        }
+        else
+        {
             boolean back = false;
-            while (!back) {
+            while (!back)
+            {
                 System.out.println("\nOwners Pet Options");
                 String[] menuList
-                        = {
+                        =
+                        {
                             "Back", "Display Pets By Gender", "Display Pets By Id", "Display Pets By Registered Date", "Display Pets By Age"
                         };
                 printMenuItems(menuList);
                 int option = checkUserInputMenu(5);
-                switch (option) {
+                switch (option)
+                {
                     case 0:
                         System.out.println("Returning...\n");
                         back = true;
@@ -614,7 +706,8 @@ public class Main {
                         clearInvalidMenu();
                         break;
                 }
-                if (option > 5 && option < 0) {
+                if (option > 5 && option < 0)
+                {
                     System.out.println("Sorry There Is No Option " + option);
                     System.out.println("Please Choose Another Option From The List\n");
                 }
@@ -622,17 +715,21 @@ public class Main {
         }
     }
 
-    public static void displayByAnimalCategory() {
+    public static void displayByAnimalCategory()
+    {
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nAnimalCategory");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Mammal", "Fish", "Bird"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(4);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...");
                     back = true;
@@ -651,7 +748,8 @@ public class Main {
                     break;
 
             }
-            if (option > 4 && option < 0) {
+            if (option > 4 && option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
@@ -659,18 +757,22 @@ public class Main {
 
     }
 
-    public static void removeOptions() {
+    public static void removeOptions()
+    {
         boolean back = false;
         int id;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nRemove Options");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Remove Owner", "Remove Pet"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(3);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...\n");
                     back = true;
@@ -679,10 +781,13 @@ public class Main {
                     r.availableOwners();
                     System.out.print("Remove(ID):");
                     id = checkUserInputInt("Remove(ID)");
-                    if (r.findOwner(id) != -1) {
+                    if (r.findOwner(id) != -1)
+                    {
                         System.out.println("Owner " + r.getOwnerByID(id).getName() + " removed");
                         r.removeOwner(id);
-                    } else {
+                    }
+                    else
+                    {
                         System.out.println("Owner ID " + id + " Not Found");
                     }
                     break;
@@ -700,25 +805,30 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 3 && option < 0) {
+            if (option > 3 && option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void editOptions() {
+    public static void editOptions()
+    {
         boolean back = false;
 
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nEdit Options");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Edit Owner", "Edit Pet"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(3);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...");
                     back = true;
@@ -733,7 +843,8 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 3 || option < 0) {
+            if (option > 3 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
@@ -741,23 +852,27 @@ public class Main {
         }
     }
 
-    public static void editOwner() {
+    public static void editOwner()
+    {
         r.availableOwners();
         System.out.print("\nEnter Owner ID To Edit: ");
         int id = checkUserInputInt("Enter Owner ID To Edit");
         int userInput;
         String user;
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
 
             System.out.println("\nEdit Owner Options");
             String[] menuList
-                    = {
+                    =
+                    {
                         "Back", "Name", "Id", "Telephone", "Address", "Email"
                     };
             printMenuItems(menuList);
             int option = checkUserInputMenu(6);
-            switch (option) {
+            switch (option)
+            {
                 case 0:
                     System.out.println("Returning...");
                     back = true;
@@ -771,7 +886,8 @@ public class Main {
                     System.out.print("New Id: ");
                     userInput = checkUserInputInt("New Id");
                     r.changeOwnerId(id, userInput);
-                    if (r.checkOwnerId(userInput)) {
+                    if (r.checkOwnerId(userInput))
+                    {
                         id = userInput;
                     }
                     break;
@@ -794,14 +910,16 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 6 || option < 0) {
+            if (option > 6 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void editPet() {
+    public static void editPet()
+    {
         String user;
         int userInput;
         r.availableOwners();
@@ -810,19 +928,25 @@ public class Main {
         r.displayOwnersPet(id);
         System.out.print("\nPet ID: ");
         id = checkUserInputInt("Pet ID");
-        if (!r.checkPetIdDup(id)) {
+        if (!r.checkPetIdDup(id))
+        {
             System.out.println("Pet Not Found");
-        } else {
+        }
+        else
+        {
             boolean back = false;
-            while (!back) {
+            while (!back)
+            {
                 System.out.println("\nEdit Pet Options");
                 String[] menuList
-                        = {
+                        =
+                        {
                             "Back", "Animal Category", "Name", "Breed", "Age", "Next Page"
                         };
                 printMenuItems(menuList);
                 int option = checkUserInputMenu(6);
-                switch (option) {
+                switch (option)
+                {
                     case 0:
                         System.out.println("Returning...");
                         back = true;
@@ -852,13 +976,20 @@ public class Main {
                         break;
                     case 5:
                         Pet p = r.getPetById(id);
-                        if (p instanceof Mammal) {
+                        if (p instanceof Mammal)
+                        {
                             editMammal(id);
-                        } else if (p instanceof Fish) {
+                        }
+                        else if (p instanceof Fish)
+                        {
                             editFish(id);
-                        } else if (p instanceof Bird) {
+                        }
+                        else if (p instanceof Bird)
+                        {
                             editBird(id);
-                        } else {
+                        }
+                        else
+                        {
                             editPetNextPage(id);
                         }
                         break;
@@ -866,7 +997,8 @@ public class Main {
                         clearInvalidMenu();
                         break;
                 }
-                if (option > 6 || option < 0) {
+                if (option > 6 || option < 0)
+                {
                     System.out.println("\nSorry There Is No Option " + option);
                     System.out.println("Please Choose Another Option From The List\n");
                 }
@@ -874,11 +1006,13 @@ public class Main {
         }
     }
 
-    public static void editPetNextPage(int id) {
+    public static void editPetNextPage(int id)
+    {
         String user;
         int userInput;
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nSecond Page...");
             System.out.println("(6) Back");
             System.out.println("(7) Owner");
@@ -886,7 +1020,8 @@ public class Main {
             System.out.println("(9) Date Registered");
             System.out.print("Select An Option: ");
             int option = checkUserInputMenu(10);
-            switch (option) {
+            switch (option)
+            {
                 case 6:
                     System.out.println("Returning...");
                     back = true;
@@ -913,18 +1048,21 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 10 || option < 0) {
+            if (option > 10 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void editMammal(int id) {
+    public static void editMammal(int id)
+    {
         String user;
         int userInput;
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nSecond Page...");
             System.out.println("(6) Back");
             System.out.println("(7) Owner");
@@ -933,7 +1071,8 @@ public class Main {
             System.out.println("(10) Neutered");
             System.out.print("Select An Option: ");
             int option = checkUserInputMenu(11);
-            switch (option) {
+            switch (option)
+            {
                 case 6:
                     System.out.println("Returning...");
                     back = true;
@@ -966,18 +1105,21 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 11 || option < 0) {
+            if (option > 11 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void editFish(int id) {
+    public static void editFish(int id)
+    {
         String user;
         int userInput;
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nSecond Page...");
             System.out.println("(6) Back");
             System.out.println("(7) Owner");
@@ -986,7 +1128,8 @@ public class Main {
             System.out.println("(10) Water Type");
             System.out.print("Select An Option: ");
             int option = checkUserInputMenu(11);
-            switch (option) {
+            switch (option)
+            {
                 case 6:
                     System.out.println("Returning...");
                     back = true;
@@ -1019,18 +1162,21 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 11 || option < 0) {
+            if (option > 11 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void editBird(int id) {
+    public static void editBird(int id)
+    {
         String user;
         int userInput;
         boolean back = false;
-        while (!back) {
+        while (!back)
+        {
             System.out.println("\nSecond Page...");
             System.out.println("(6) Back");
             System.out.println("(7) Owner");
@@ -1040,7 +1186,8 @@ public class Main {
             System.out.println("(11) Ability To Fly");
             System.out.print("Select An Option: ");
             int option = checkUserInputMenu(12);
-            switch (option) {
+            switch (option)
+            {
                 case 6:
                     System.out.println("Returning...");
                     back = true;
@@ -1079,60 +1226,87 @@ public class Main {
                     clearInvalidMenu();
                     break;
             }
-            if (option > 12 || option < 0) {
+            if (option > 12 || option < 0)
+            {
                 System.out.println("Sorry There Is No Option " + option);
                 System.out.println("Please Choose Another Option From The List\n");
             }
         }
     }
 
-    public static void fillReg() {
-        //  Owner greg = new Owner("Greg", "greg@gmail.com", "0853151", "Dundalk");
-//        greg.addPet("bear", "bob", "fire", 404, "green", "male");
-//        greg.addPet("goldfish", "goldy", "water", 4, "white", "other", "freshwater");
-//        greg.addPet("cat", "tim", "fire", 224, "pink", "female", false);
-//        greg.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
-//
-        // Owner kevin = new Owner("Kevin", "kevins@gmail.com", "0861415", "Dundalk,Ireland");
-//        kevin.addPet("beadr", "bob", "fire", 404, "green", "male");
-//        kevin.addPet("koda", "goldy", "water", 4, "white", "other", "freshwater");
-//        kevin.addPet("thing", "tim", "fire", 224, "pink", "female", true);
-//        kevin.addPet("bird", "bob", "fire", 44, "green", "other", 44, false);
-//        kevin.addPet("beadsr", "bobe", "fire", 404, "green", "male");
-//        kevin.addPet("koda", "goldy", "water", 4, "white", "other", "freshwater");
-//        kevin.addPet("thin2g", "tim", "earth", 2224, "green", "female", true);
-//        kevin.addPet("bird", "bob", "fire", 44, "green", "male", 44, false);
-        //    r.addOwner(greg);
-        //   r.addOwner(kevin);
+    public static void loadOption()
+    {
+        boolean back = false;
+        while (!back)
+        {
+            System.out.println("\nLoad Options");
+            String[] menuList =
+            {
+                "Back", "File Stream", "Object Stream"
+            };
+            printMenuItems(menuList);
+            System.out.print("Select An Option: ");
+            int option = checkUserInputMenu(3);
+            switch (option)
+            {
+                case 0:
+                    System.out.println("Returning...");
+                    back = true;
+                    break;
+                case 1:
+                    r.loadOwnerData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\OwnerData.csv");
+                    r.loadPetData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\PetData.csv");
+                    break;
+                case 2:
+                    r.loadRegistry("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\store.dat");
+                    break;
+                case 3:
+                    clearInvalidMenu();
+                    break;
+            }
+            if (option > 3 || option < 0)
+            {
+                System.out.println("Sorry There Is No Option " + option);
+                System.out.println("Please Choose Another Option From The List\n");
+            }
+        }
 
-        r.loadOwnerData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\OwnerData.csv");
-        r.loadPetData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\PetData.csv");
     }
 
-    private static void clearInvalidMenu() {
+    private static void clearInvalidMenu()
+    {
         System.out.println("Select A Vaild Option");
         keyboard.nextLine();
     }
 
-    private static int checkUserInputMenu(int failOption) {
+    private static int checkUserInputMenu(int failOption)
+    {
         int option;
-        try {
+        try
+        {
             option = keyboard.nextInt();
 
-        } catch (InputMismatchException e) {
+        }
+        catch (InputMismatchException e)
+        {
             System.out.println("\nInput Is Not A Number");
             option = failOption;
         }
         return option;
     }
 
-    private static String checkUserInput(String message) {
+    private static String checkUserInput(String message)
+    {
         boolean word = false;
         String input = keyboard.next();
-        while (!word) {
-            if (input.matches("[a-zA-Z]{1,54}")) {
+        while (!word)
+        {
+            if (input.matches("[a-zA-Z]{1,54}"))
+            {
                 word = true;
-            } else {
+            }
+            else
+            {
                 System.out.println("Invalid Input Try Again");
                 System.out.print("\n" + message + ": ");
                 input = keyboard.next();
@@ -1141,14 +1315,19 @@ public class Main {
         return input;
     }
 
-    private static String checkTelephone() {
+    private static String checkTelephone()
+    {
         String telephone = "";
         boolean telephoneValid = false;
-        while (!telephoneValid) {
+        while (!telephoneValid)
+        {
             telephone = keyboard.next();
-            if (telephone.matches("[0-9]{10}")) {
+            if (telephone.matches("[0-9]{10}"))
+            {
                 telephoneValid = true;
-            } else {
+            }
+            else
+            {
                 System.out.println("Input Is Not A Valid Telephone Number");
                 System.out.print("Telephone: ");
             }
@@ -1156,14 +1335,19 @@ public class Main {
         return telephone;
     }
 
-    private static int checkUserInputInt(String message) {
+    private static int checkUserInputInt(String message)
+    {
         boolean number = false;
         int input = 0;
-        while (!number) {
-            try {
+        while (!number)
+        {
+            try
+            {
                 input = keyboard.nextInt();
                 number = true;
-            } catch (InputMismatchException e) {
+            }
+            catch (InputMismatchException e)
+            {
                 System.out.println("Invalid Input Try Again");
                 System.out.print("\n" + message + ": ");
                 keyboard.nextLine();
@@ -1172,14 +1356,19 @@ public class Main {
         return input;
     }
 
-    private static String checkEmail() {
+    private static String checkEmail()
+    {
         String email = "";
         boolean emailValid = false;
-        while (!emailValid) {
+        while (!emailValid)
+        {
             email = keyboard.next();
-            if (email.matches("^(.+)@(.+)$")) {
+            if (email.matches("^(.+)@(.+)$"))
+            {
                 emailValid = true;
-            } else {
+            }
+            else
+            {
                 System.out.println("Input Is Not A Valid Telephone Number");
                 System.out.print("Email: ");
             }
@@ -1187,25 +1376,36 @@ public class Main {
         return email;
     }
 
-    private static void printMenuItems(String[] list) {
-        for (int i = 0; i < list.length; i++) {
+    private static void printMenuItems(String[] list)
+    {
+        for (int i = 0; i < list.length; i++)
+        {
             System.out.println("(" + i + ") " + list[i]);
         }
         System.out.print("Select An Option: ");
     }
 
-    public static String selectGender() {
+    public static String selectGender()
+    {
         String gender = "";
         boolean picked = false;
-        while (!picked) {
+        while (!picked)
+        {
             gender = keyboard.next();
-            if (gender.equalsIgnoreCase("male")) {
+            if (gender.equalsIgnoreCase("male"))
+            {
                 picked = true;
-            } else if (gender.equalsIgnoreCase("female")) {
+            }
+            else if (gender.equalsIgnoreCase("female"))
+            {
                 picked = true;
-            } else if (gender.equalsIgnoreCase("UNKOWN") || gender.equalsIgnoreCase("Other")) {
+            }
+            else if (gender.equalsIgnoreCase("UNKOWN") || gender.equalsIgnoreCase("Other"))
+            {
                 picked = true;
-            } else {
+            }
+            else
+            {
                 System.out.print("Please Select A Valid Option:");
             }
         }
