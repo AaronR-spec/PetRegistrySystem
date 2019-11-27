@@ -8,8 +8,10 @@ import java.util.Comparator;
  */
 public class PetRegDateComparator implements Comparator<Pet>
 {
-        public int compare(Pet a, Pet b)
-	{
-            return a.getRegDate().compareTo(b.getRegDate());
-	}
+
+    @Override
+    public int compare(Pet a, Pet b)
+    {
+        return a.getRegDate().compareTo(b.getRegDate());
+    }
 }
