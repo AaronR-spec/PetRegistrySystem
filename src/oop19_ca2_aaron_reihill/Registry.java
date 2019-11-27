@@ -1,6 +1,7 @@
 package oop19_ca2_aaron_reihill;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,7 +10,10 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -611,12 +615,13 @@ public class Registry
 
             sc.useDelimiter("[/\r\n]+");
             String type, name, breed, colour, gender;
-            int age, id;
+            int age, id,ownerId;
             while (sc.hasNext())
             {
                 String animal = sc.next();
                 if (animal.equalsIgnoreCase("M"))
                 {
+                    ownerId = sc.nextInt();
                     id = sc.nextInt();
                     type = sc.next();
                     name = sc.next();
@@ -630,10 +635,11 @@ public class Registry
                         neutered = true;
                     }
                     maxIndex = id;
-                    this.owners.get(0).addPet(id, type, name, breed, age, colour, gender, neutered);
+                    this.owners.get(findOwner(ownerId)).addPet(id, type, name, breed, age, colour, gender, neutered);
                 }
                 else if (animal.equalsIgnoreCase("F"))
                 {
+                    ownerId = sc.nextInt();
                     id = sc.nextInt();
                     type = sc.next();
                     name = sc.next();
@@ -643,10 +649,11 @@ public class Registry
                     gender = sc.next();
                     String water = sc.next();
                     maxIndex = id;
-                    this.owners.get(0).addPet(id, type, name, breed, age, colour, gender, water);
+                    this.owners.get(findOwner(ownerId)).addPet(id, type, name, breed, age, colour, gender, water);
                 }
                 else if (animal.equalsIgnoreCase("B"))
                 {
+                    ownerId = sc.nextInt();
                     id = sc.nextInt();
                     type = sc.next();
                     name = sc.next();
@@ -665,10 +672,11 @@ public class Registry
                         fly = false;
                     }
                     maxIndex = id;
-                    this.owners.get(0).addPet(id, type, name, breed, age, colour, gender, wingspan, fly);
+                    this.owners.get(findOwner(ownerId)).addPet(id, type, name, breed, age, colour, gender, wingspan, fly);
                 }
-                if (animal.equalsIgnoreCase("P"))
+                else if (animal.equalsIgnoreCase("P"))
                 {
+                    ownerId = sc.nextInt();
                     id = sc.nextInt();
                     type = sc.next();
                     name = sc.next();
@@ -677,14 +685,15 @@ public class Registry
                     colour = sc.next();
                     gender = sc.next();
                     maxIndex = id;
-                    this.owners.get(0).addPet(id, type, name, breed, age, colour, gender);
+                    this.owners.get(findOwner(ownerId)).addPet(id, type, name, breed, age, colour, gender);
                 }
                 else
                 {
-                    //error goes here
+                    System.out.println("Format Wrong");
                 }
             }
             sc.close();
+            System.out.println("Pet Records Loaded");
         }
         catch (IOException e)
         {
@@ -722,6 +731,7 @@ public class Registry
                 }
             }
             sc.close();
+            System.out.println("Owner Records Loaded");
         }
         catch (IOException e)
         {
@@ -1102,7 +1112,7 @@ public class Registry
         System.out.println("\nNumber Of Total Pets " + petCount);
         System.out.println("Number Of Them Mammals " + mammalCount + ", Fish: " + fishCount + ", Birds: " + birdCount);
         System.out.println("\nPercentage Of Pets Registered\nMammals\tFish\t  Bird");
-        System.out.printf("%.2f%%\t %.2f%%\t%.2f%%",mammalPercent ,fishPercent,birdPercent);
+        System.out.printf("%.2f%%\t %.2f%%\t%.2f%%", mammalPercent, fishPercent, birdPercent);
         System.out.println("\n\n" + mostPetReg + " Has The Most Pets Registered With " + ownerPetCountMax);
         System.out.println("Oldest Registered Pet " + oldestPet + " Aged " + maxAge);
         System.out.println("Youngest Registered Pet " + youngestPet + " Aged " + minAge);
@@ -1153,34 +1163,12 @@ public class Registry
         }
     }
 
-    public void storeData(String file)
-    {
-        try
-        {
-
-            FileOutputStream store = new FileOutputStream(file);
-            ObjectOutputStream storedObject = new ObjectOutputStream(store);
-            storedObject.writeObject(this.owners);
-            storedObject.close();
-            System.out.println("The Object  was succesfully written to a file");
-
-        }
-        catch (FileNotFoundException e)
-        {
-            System.out.println("File Not Found " + e.getLocalizedMessage());
-        }
-        catch (IOException e)
-        {
-            System.out.println("IOException" + e.getLocalizedMessage());
-        }
-    }
-
     public void displayPetsOrderByAge()
     {
         List<Pet> p = new ArrayList<>();
         for (Owner o : this.owners)
         {
-           p.addAll(o.getPets());
+            p.addAll(o.getPets());
         }
         Owner.displayAllPetsByAge(p);
     }
@@ -1210,51 +1198,121 @@ public class Registry
         List<Pet> p = new ArrayList<>();
         for (Owner o : this.owners)
         {
-           p.addAll(o.getPets());
+            p.addAll(o.getPets());
         }
         Owner.displayAllPetsByRegDate(p);
     }
+
     public void displayPetsOrderByRegDate(int ownerId)
     {
         for (Owner o : this.owners)
         {
-           if(o.getId() == ownerId)
-           {
-               Owner.displayAllPetsByRegDate(o.getPets());
-           }
+            if (o.getId() == ownerId)
+            {
+                Owner.displayAllPetsByRegDate(o.getPets());
+            }
         }
     }
-        public void displayPetsOrderByGender(int ownerId)
+
+    public void displayPetsOrderByGender(int ownerId)
     {
         for (Owner o : this.owners)
         {
-           if(o.getId() == ownerId)
-           {
-               Owner.displayAllPetsByGender(o.getPets());
-           }
+            if (o.getId() == ownerId)
+            {
+                Owner.displayAllPetsByGender(o.getPets());
+            }
         }
     }
+
     public void displayPetsOrderById(int ownerId)
     {
         for (Owner o : this.owners)
         {
-           if(o.getId() == ownerId)
-           {
-               Owner.displayAllPetsById(o.getPets());
-           }
-        }
-    }
-        public void displayPetsOrderByAge(int ownerId)
-    {
-        for (Owner o : this.owners)
-        {
-           if(o.getId() == ownerId)
-           {
-               Owner.displayAllPetsByAge(o.getPets());
-           }
+            if (o.getId() == ownerId)
+            {
+                Owner.displayAllPetsById(o.getPets());
+            }
         }
     }
 
+    public void displayPetsOrderByAge(int ownerId)
+    {
+        for (Owner o : this.owners)
+        {
+            if (o.getId() == ownerId)
+            {
+                Owner.displayAllPetsByAge(o.getPets());
+            }
+        }
+    }
+
+    public void loadRegistry(String file)
+    {
+        List<Owner> o = new ArrayList<>();
+        try
+        {
+            File f = new File(file);
+            if (f.exists())
+            {
+                ObjectInputStream in = new ObjectInputStream(new FileInputStream(f));
+                o = (ArrayList<Owner>) in.readObject();
+                in.close();
+                System.out.println("Registry Loaded In");
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println("IOException" + e.getLocalizedMessage());
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.out.println("ClassNotFoundException" + e.getLocalizedMessage());
+        }
+        this.owners.addAll(o);
+        maxId();
+    }
+
+    public void storeRegistry(String file)
+    {
+        File f = new File(file);
+        try
+        {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(f));
+            out.writeObject(this.owners);
+            out.close();
+            System.out.println("Registry Saved");
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Stored File Not Found" + e.getLocalizedMessage());
+        }
+        catch (IOException e)
+        {
+            System.out.println("Stored File IOException" + e.getLocalizedMessage());
+        }
+    }
+    private void maxId()
+    {
+        int pet = 0,owner = 0;
+        for(Owner o: this.owners)
+        {
+            if(o.getId()> owner)
+            {
+                owner = o.getId();
+            }
+            for(Pet p:o.getPets())
+            {
+                if(p.getPetID()>pet)
+                {
+                    pet = p.getPetID();
+                }
+            }
+        }
+        Owner.setIndex(owner + 1);
+        Pet.setIndex(pet + 1);
+        
+    }
     @Override
     public String toString()
     {
