@@ -31,7 +31,8 @@ public class Owner implements Serializable
     }
 
     /**
-     * owner constructor 
+     * owner constructor
+     *
      * @param name
      * @param telephone
      * @param address
@@ -45,7 +46,8 @@ public class Owner implements Serializable
     }
 
     /**
-     *owner constructor 
+     * owner constructor
+     *
      * @param id
      * @param name
      * @param telephone
@@ -60,7 +62,8 @@ public class Owner implements Serializable
     }
 
     /**
-     *owner constructor 
+     * owner constructor
+     *
      * @param name
      * @param email
      * @param telephone
@@ -78,15 +81,17 @@ public class Owner implements Serializable
 
     /**
      * returns owner name
+     *
      * @return name
-     */ 
+     */
     public String getName()
     {
         return name;
     }
 
     /**
-     *  gets static index 
+     * gets static index
+     *
      * @return index
      */
     public static int getIndex()
@@ -96,7 +101,8 @@ public class Owner implements Serializable
 
     /**
      * gets owner id
-     * @return id 
+     *
+     * @return id
      */
     public int getId()
     {
@@ -105,6 +111,7 @@ public class Owner implements Serializable
 
     /**
      * gets owner email
+     *
      * @return email
      */
     public String getEmail()
@@ -114,6 +121,7 @@ public class Owner implements Serializable
 
     /**
      * gets owners pets list
+     *
      * @return pets
      */
     public List<Pet> getPets()
@@ -123,6 +131,7 @@ public class Owner implements Serializable
 
     /**
      * gets owners phone number
+     *
      * @return telephone
      */
     public String getTelephone()
@@ -132,6 +141,7 @@ public class Owner implements Serializable
 
     /**
      * gets address
+     *
      * @return address
      */
     public String getAddress()
@@ -141,6 +151,7 @@ public class Owner implements Serializable
 
     /**
      * sets name
+     *
      * @param name
      */
     public void setName(String name)
@@ -150,6 +161,7 @@ public class Owner implements Serializable
 
     /**
      * sets static index
+     *
      * @param index
      */
     public static void setIndex(int index)
@@ -159,6 +171,7 @@ public class Owner implements Serializable
 
     /**
      * sets owner id
+     *
      * @param id
      */
     public void setId(int id)
@@ -168,6 +181,7 @@ public class Owner implements Serializable
 
     /**
      * sets owner email
+     *
      * @param email
      */
     public void setEmail(String email)
@@ -177,6 +191,7 @@ public class Owner implements Serializable
 
     /**
      * sets owner telephone
+     *
      * @param telephone
      */
     public void setTelephone(String telephone)
@@ -185,7 +200,8 @@ public class Owner implements Serializable
     }
 
     /**
-     *sets owner pets
+     * sets owner pets
+     *
      * @param pets
      */
     public void setPets(List<Pet> pets)
@@ -194,7 +210,8 @@ public class Owner implements Serializable
     }
 
     /**
-     *sets owner address
+     * sets owner address
+     *
      * @param address
      */
     public void setAddress(String address)
@@ -204,6 +221,7 @@ public class Owner implements Serializable
 
     /**
      * adds pet object to owners pet list
+     *
      * @param p
      */
     public void addPet(Pet p)
@@ -220,6 +238,7 @@ public class Owner implements Serializable
 
     /**
      * adds pet object to owners pet list
+     *
      * @param type
      * @param name
      * @param breed
@@ -241,6 +260,7 @@ public class Owner implements Serializable
 
     /**
      * adds pet object to owners pet list
+     *
      * @param petId
      * @param type
      * @param name
@@ -263,6 +283,7 @@ public class Owner implements Serializable
 
     /**
      * adds pet object to owners pet list
+     *
      * @param id
      * @param type
      * @param name
@@ -284,8 +305,9 @@ public class Owner implements Serializable
         }
     }
 
-    /** 
+    /**
      * adds pet object to owners pet list
+     *
      * @param type
      * @param name
      * @param breed
@@ -307,7 +329,8 @@ public class Owner implements Serializable
     }
 
     /**
-     *adds pet object to owners pet list
+     * adds pet object to owners pet list
+     *
      * @param type
      * @param name
      * @param breed
@@ -329,7 +352,8 @@ public class Owner implements Serializable
     }
 
     /**
-     *adds pet object to owners pet list
+     * adds pet object to owners pet list
+     *
      * @param petId
      * @param type
      * @param name
@@ -352,7 +376,8 @@ public class Owner implements Serializable
     }
 
     /**
-     *adds pet object to owners pet list
+     * adds pet object to owners pet list
+     *
      * @param type
      * @param name
      * @param breed
@@ -375,7 +400,8 @@ public class Owner implements Serializable
     }
 
     /**
-     *adds pet object to owners pet list
+     * adds pet object to owners pet list
+     *
      * @param petId
      * @param type
      * @param name
@@ -400,6 +426,7 @@ public class Owner implements Serializable
 
     /**
      * removes pet object form owners list
+     *
      * @param p
      */
     public void removePet(Pet p)
@@ -417,6 +444,7 @@ public class Owner implements Serializable
 
     /**
      * removes pet object form owners list
+     *
      * @param id
      */
     public void removePet(int id)
@@ -441,7 +469,7 @@ public class Owner implements Serializable
     }
 
     /**
-     * displays all of owners pets 
+     * displays all of owners pets
      */
     public void displayAllPets()
     {
@@ -450,7 +478,8 @@ public class Owner implements Serializable
     }
 
     /**
-     *  displays all of owners pets by age
+     * displays all of owners pets by age
+     *
      * @param p
      */
     public static void displayAllPetsByAge(List<Pet> p)
@@ -462,6 +491,7 @@ public class Owner implements Serializable
 
     /**
      * displays all of owners pets by id
+     *
      * @param p
      */
     public static void displayAllPetsById(List<Pet> p)
@@ -473,6 +503,7 @@ public class Owner implements Serializable
 
     /**
      * displays all of owners pets by gender
+     *
      * @param p
      */
     public static void displayAllPetsByGender(List<Pet> p)
@@ -484,6 +515,7 @@ public class Owner implements Serializable
 
     /**
      * displays all of owners pets by registered date
+     *
      * @param p
      */
     public static void displayAllPetsByRegDate(List<Pet> p)
@@ -496,6 +528,7 @@ public class Owner implements Serializable
 
     /**
      * returns pet index position in owners pet list
+     *
      * @param id
      * @return pets position in list
      */

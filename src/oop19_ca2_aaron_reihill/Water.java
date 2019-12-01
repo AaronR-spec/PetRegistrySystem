@@ -11,19 +11,16 @@ public enum Water
      * FRESHWATER state
      */
     FRESHWATER,
-
     /**
-     *SEAWATER state
+     * SEAWATER state
      */
     SEAWATER,
-
     /**
-     *BRACKISH state
+     * BRACKISH state
      */
     BRACKISH,
-
     /**
-     *UNKNOWN state
+     * UNKNOWN state
      */
     UNKNOWN
 }

@@ -14,7 +14,8 @@ public class Main
     static Registry r = new Registry();
 
     /**
-     * starts the menu 
+     * starts the menu
+     *
      * @param args
      */
     public static void main(String[] args)
@@ -22,7 +23,7 @@ public class Main
         displayMenu();
     }
 
-    /** 
+    /**
      * lists menu options and asks user for selected option
      */
     public static void displayMenu()
@@ -163,7 +164,7 @@ public class Main
         }
     }
 
-    /** 
+    /**
      * add pet , gets input and create a pet and adds to owner by id
      */
     public static void addPetOption()
@@ -251,6 +252,7 @@ public class Main
 
     /**
      * adds mammal by getting input and adding mammal object to owner by id
+     *
      * @param id
      */
     public static void addMammal(int id)
@@ -296,6 +298,7 @@ public class Main
 
     /**
      * adds fish by getting input and adding fish object to owner by id
+     *
      * @param id
      */
     public static void addFish(int id)
@@ -350,6 +353,7 @@ public class Main
 
     /**
      * adds bird by getting input and adding bird object to owner by id
+     *
      * @param id
      */
     public static void addBird(int id)
@@ -397,6 +401,7 @@ public class Main
 
     /**
      * adds pet by getting input and adding pet object to owner by id
+     *
      * @param id
      */
     public static void addPet(int id)
@@ -460,7 +465,8 @@ public class Main
     }
 
     /**
-     * finds owner by id, name,address,telephone and email and displays send owner
+     * finds owner by id, name,address,telephone and email and displays send
+     * owner
      */
     public static void ownerSearchOptions()
     {
@@ -521,7 +527,8 @@ public class Main
     }
 
     /**
-     * fins pet by id, name , animal category and type then displays matching pets
+     * fins pet by id, name , animal category and type then displays matching
+     * pets
      */
     public static void petSearchOptions()
     {
@@ -577,7 +584,7 @@ public class Main
     }
 
     /**
-     * display options 
+     * display options
      */
     public static void displayOptions()
     {
@@ -620,7 +627,7 @@ public class Main
     }
 
     /**
-     * displays pet details registered 
+     * displays pet details registered
      */
     public static void displayPets()
     {
@@ -673,7 +680,7 @@ public class Main
     }
 
     /**
-     * displays owner options 
+     * displays owner options
      */
     public static void displayOwners()
     {
@@ -713,7 +720,7 @@ public class Main
     }
 
     /**
-     * displays owners pet by different orders 
+     * displays owners pet by different orders
      */
     public static void ownerPetsDisplay()
     {
@@ -769,7 +776,7 @@ public class Main
     }
 
     /**
-     * displays animal by input 
+     * displays animal by input
      */
     public static void displayByAnimalCategory()
     {
@@ -915,7 +922,7 @@ public class Main
     }
 
     /**
-     * edit owner by input 
+     * edit owner by input
      */
     public static void editOwner()
     {
@@ -1090,6 +1097,7 @@ public class Main
 
     /**
      * edit pet next page
+     *
      * @param id
      */
     public static void editPetNextPage(int id)
@@ -1144,7 +1152,8 @@ public class Main
     }
 
     /**
-     * edit pet next page for mammal 
+     * edit pet next page for mammal
+     *
      * @param id
      */
     public static void editMammal(int id)
@@ -1206,7 +1215,8 @@ public class Main
     }
 
     /**
-     *edit pet next page for fish 
+     * edit pet next page for fish
+     *
      * @param id
      */
     public static void editFish(int id)
@@ -1269,6 +1279,7 @@ public class Main
 
     /**
      * edit pet next page for bird
+     *
      * @param id
      */
     public static void editBird(int id)
@@ -1493,6 +1504,7 @@ public class Main
 
     /**
      * selects gender using string
+     *
      * @return
      */
     public static String selectGender()

@@ -11,6 +11,7 @@ public class Fish extends Pet
 
     /**
      * calls super constructor and creates fish object
+     *
      * @param owner
      * @param petId
      * @param type
@@ -29,6 +30,7 @@ public class Fish extends Pet
 
     /**
      * calls super constructor and creates fish object
+     *
      * @param owner
      * @param type
      * @param name
@@ -46,6 +48,7 @@ public class Fish extends Pet
 
     /**
      * gets water enum state
+     *
      * @return water enum
      */
     public Water getWater()
@@ -55,6 +58,7 @@ public class Fish extends Pet
 
     /**
      * set water by enum
+     *
      * @param water
      */
     public void setWater(Water water)
@@ -74,6 +78,7 @@ public class Fish extends Pet
 
     /**
      * sets water by string returns if set or not
+     *
      * @param w
      * @return true or false if set
      */

@@ -11,14 +11,12 @@ public enum Gender
      * male state
      */
     MALE,
-
     /**
-     *female state
+     * female state
      */
     FEMALE,
-
     /**
-     *unknown state
+     * unknown state
      */
     UNKNOWN
 }

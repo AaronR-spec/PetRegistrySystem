@@ -1,4 +1,3 @@
-
 package oop19_ca2_aaron_reihill;
 
 import java.util.Comparator;
@@ -9,6 +8,7 @@ import java.util.Comparator;
  */
 public class PetIdComparator implements Comparator<Pet>
 {
+
     @Override
     public int compare(Pet a, Pet b)
     {

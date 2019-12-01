@@ -10,7 +10,8 @@ public class Mammal extends Pet
     private boolean neutered;
 
     /**
-     * calls super constructor and creates mammal object 
+     * calls super constructor and creates mammal object
+     *
      * @param type
      * @param name
      * @param breed
@@ -26,7 +27,8 @@ public class Mammal extends Pet
     }
 
     /**
-     * calls super constructor and creates mammal object 
+     * calls super constructor and creates mammal object
+     *
      * @param owner
      * @param petId
      * @param type
@@ -44,7 +46,8 @@ public class Mammal extends Pet
     }
 
     /**
-     * calls super constructor and creates mammal object 
+     * calls super constructor and creates mammal object
+     *
      * @param owner
      * @param type
      * @param name
@@ -62,6 +65,7 @@ public class Mammal extends Pet
 
     /**
      * gets if Neutered
+     *
      * @return
      */
     public boolean isNeutered()
@@ -71,6 +75,7 @@ public class Mammal extends Pet
 
     /**
      * set neutered by boolean input
+     *
      * @param neutered
      */
     public void setNeutered(boolean neutered)
@@ -80,6 +85,7 @@ public class Mammal extends Pet
 
     /**
      * sets neutered by string input
+     *
      * @param neutered
      */
     public void setNeutered(String neutered)

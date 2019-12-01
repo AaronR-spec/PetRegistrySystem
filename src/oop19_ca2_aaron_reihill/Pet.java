@@ -12,7 +12,8 @@ import java.util.InputMismatchException;
  *
  * @author D00222467/Aaron Reihill
  */
-public class Pet implements Serializable {
+public class Pet implements Serializable
+{
 
     private String type = "";
     private String name = "";
@@ -28,7 +29,8 @@ public class Pet implements Serializable {
     /**
      * Empty pet constructor
      */
-    public Pet() {
+    public Pet()
+    {
     }
 
     /**
@@ -40,7 +42,8 @@ public class Pet implements Serializable {
      * @param colour
      * @param regDate
      */
-    public Pet(String type, String breed, int age, String colour, String regDate) {
+    public Pet(String type, String breed, int age, String colour, String regDate)
+    {
         this.type = type;
         this.breed = breed;
         this.age = age;
@@ -59,7 +62,8 @@ public class Pet implements Serializable {
      * @param colour
      * @param gender
      */
-    public Pet(String type, String name, String breed, int age, String colour, String gender) {
+    public Pet(String type, String name, String breed, int age, String colour, String gender)
+    {
         this.type = type;
         this.name = name;
         this.breed = breed;
@@ -81,7 +85,8 @@ public class Pet implements Serializable {
      * @param colour
      * @param gender
      */
-    public Pet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender) {
+    public Pet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender)
+    {
         this.ownerID = owner;
         this.type = type;
         this.name = name;
@@ -104,7 +109,8 @@ public class Pet implements Serializable {
      * @param colour
      * @param gender
      */
-    public Pet(int owner, String type, String name, String breed, int age, String colour, String gender) {
+    public Pet(int owner, String type, String name, String breed, int age, String colour, String gender)
+    {
         this.ownerID = owner;
         this.type = type;
         this.name = name;
@@ -128,7 +134,8 @@ public class Pet implements Serializable {
      * @param gender
      * @param regDate
      */
-    public Pet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate) {
+    public Pet(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate)
+    {
         this.ownerID = owner;
         this.type = type;
         this.name = name;
@@ -145,7 +152,8 @@ public class Pet implements Serializable {
      *
      * @return type
      */
-    public String getType() {
+    public String getType()
+    {
         return type;
     }
 
@@ -154,7 +162,8 @@ public class Pet implements Serializable {
      *
      * @return name
      */
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
@@ -163,7 +172,8 @@ public class Pet implements Serializable {
      *
      * @return breed
      */
-    public String getBreed() {
+    public String getBreed()
+    {
         return breed;
     }
 
@@ -172,7 +182,8 @@ public class Pet implements Serializable {
      *
      * @return Registered Date
      */
-    public Date getRegDate() {
+    public Date getRegDate()
+    {
         return regDate;
     }
 
@@ -181,7 +192,8 @@ public class Pet implements Serializable {
      *
      * @return Age
      */
-    public int getAge() {
+    public int getAge()
+    {
         return age;
     }
 
@@ -190,7 +202,8 @@ public class Pet implements Serializable {
      *
      * @return Index
      */
-    public static int getIndex() {
+    public static int getIndex()
+    {
         return index;
     }
 
@@ -199,7 +212,8 @@ public class Pet implements Serializable {
      *
      * @return colour
      */
-    public String getColour() {
+    public String getColour()
+    {
         return colour;
     }
 
@@ -208,7 +222,8 @@ public class Pet implements Serializable {
      *
      * @return gender as enum
      */
-    public Gender getGender() {
+    public Gender getGender()
+    {
         return gender;
     }
 
@@ -217,12 +232,17 @@ public class Pet implements Serializable {
      *
      * @return gender as string
      */
-    public String getGenderString() {
+    public String getGenderString()
+    {
         String petGender;
-        if (null == this.gender) {
+        if (null == this.gender)
+        {
             petGender = "Unkown";
-        } else {
-            switch (this.gender) {
+        }
+        else
+        {
+            switch (this.gender)
+            {
                 case MALE:
                     petGender = "Male";
                     break;
@@ -243,7 +263,8 @@ public class Pet implements Serializable {
      *
      * @return pet id
      */
-    public int getPetID() {
+    public int getPetID()
+    {
         return petID;
     }
 
@@ -252,7 +273,8 @@ public class Pet implements Serializable {
      *
      * @return owner id
      */
-    public int getOwnerID() {
+    public int getOwnerID()
+    {
         return ownerID;
     }
 
@@ -261,7 +283,8 @@ public class Pet implements Serializable {
      *
      * @param type
      */
-    public void setType(String type) {
+    public void setType(String type)
+    {
         this.type = type;
     }
 
@@ -270,7 +293,8 @@ public class Pet implements Serializable {
      *
      * @param name
      */
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
@@ -279,7 +303,8 @@ public class Pet implements Serializable {
      *
      * @param breed
      */
-    public void setBreed(String breed) {
+    public void setBreed(String breed)
+    {
         this.breed = breed;
     }
 
@@ -289,10 +314,14 @@ public class Pet implements Serializable {
      * @param age
      * @throws InputMismatchException which is handled and printed error message
      */
-    public void setAge(int age) {
-        try {
+    public void setAge(int age)
+    {
+        try
+        {
             this.age = age;
-        } catch (InputMismatchException e) {
+        }
+        catch (InputMismatchException e)
+        {
             System.out.println("Error Age Can Not Be String");
         }
     }
@@ -302,7 +331,8 @@ public class Pet implements Serializable {
      *
      * @param colour
      */
-    public void setColour(String colour) {
+    public void setColour(String colour)
+    {
         this.colour = colour;
     }
 
@@ -311,7 +341,8 @@ public class Pet implements Serializable {
      *
      * @param gender
      */
-    public void setGender(Gender gender) {
+    public void setGender(Gender gender)
+    {
         this.gender = gender;
     }
 
@@ -321,15 +352,21 @@ public class Pet implements Serializable {
      * @param gender
      * @return true if gender is set
      */
-    public boolean setGender(String gender) {
+    public boolean setGender(String gender)
+    {
         boolean changed = false;
-        if (gender.equalsIgnoreCase("MALE")) {
+        if (gender.equalsIgnoreCase("MALE"))
+        {
             this.gender = Gender.MALE;
             changed = true;
-        } else if (gender.equalsIgnoreCase("FEMALE")) {
+        }
+        else if (gender.equalsIgnoreCase("FEMALE"))
+        {
             this.gender = Gender.FEMALE;
             changed = true;
-        } else if (gender.equalsIgnoreCase("UNKOWN") || gender.equalsIgnoreCase("Other")) {
+        }
+        else if (gender.equalsIgnoreCase("UNKOWN") || gender.equalsIgnoreCase("Other"))
+        {
             this.gender = Gender.UNKNOWN;
             changed = true;
         }
@@ -341,7 +378,8 @@ public class Pet implements Serializable {
      *
      * @param regDate
      */
-    public void setRegDate(Date regDate) {
+    public void setRegDate(Date regDate)
+    {
         this.regDate = regDate;
     }
 
@@ -351,13 +389,17 @@ public class Pet implements Serializable {
      * @param regDate
      * @throws InputMismatchException which is handled and printed error message
      */
-    public void setRegDate(String regDate) {
+    public void setRegDate(String regDate)
+    {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date date = null;
-        try {
+        try
+        {
             date = dateFormat.parse(regDate);
             this.regDate = date;
-        } catch (ParseException e) {
+        }
+        catch (ParseException e)
+        {
             System.out.println("Date In Wrong Format");
         }
 
@@ -369,10 +411,14 @@ public class Pet implements Serializable {
      * @param index
      * @throws InputMismatchException which is handled and printed error message
      */
-    public static void setIndex(int index) {
-        try {
+    public static void setIndex(int index)
+    {
+        try
+        {
             Pet.index = index;
-        } catch (InputMismatchException e) {
+        }
+        catch (InputMismatchException e)
+        {
             System.out.println("Error Index Can Not Be String");
         }
     }
@@ -383,10 +429,14 @@ public class Pet implements Serializable {
      * @param petID
      * @throws InputMismatchException which is handled and printed error message
      */
-    public void setPetID(int petID) {
-        try {
+    public void setPetID(int petID)
+    {
+        try
+        {
             this.petID = petID;
-        } catch (InputMismatchException e) {
+        }
+        catch (InputMismatchException e)
+        {
             System.out.println("Error Pet Id Can Not Be String");
         }
     }
@@ -397,10 +447,14 @@ public class Pet implements Serializable {
      * @param ownerID
      * @throws InputMismatchException which is handled and printed error message
      */
-    public void setOwnerID(int ownerID) {
-        try {
+    public void setOwnerID(int ownerID)
+    {
+        try
+        {
             this.ownerID = ownerID;
-        } catch (InputMismatchException e) {
+        }
+        catch (InputMismatchException e)
+        {
             System.out.println("Error Pet Id Can Not Be String");
         }
     }
@@ -419,7 +473,8 @@ public class Pet implements Serializable {
      * @param water
      * @return pet object
      */
-    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, String water) {
+    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, String water)
+    {
         return new Fish(owner, petId, type, name, breed, age, colour, gender, water);
     }
 
@@ -436,7 +491,8 @@ public class Pet implements Serializable {
      * @param water
      * @return pet object
      */
-    public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String water) {
+    public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, String water)
+    {
         return new Fish(owner, type, name, breed, age, colour, gender, water);
     }
 
@@ -453,7 +509,8 @@ public class Pet implements Serializable {
      * @param neutered
      * @return pet object
      */
-    public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, boolean neutered) {
+    public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
+    {
         return new Mammal(owner, type, name, breed, age, colour, gender, neutered);
     }
 
@@ -471,7 +528,8 @@ public class Pet implements Serializable {
      * @param neutered
      * @return pet object
      */
-    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, boolean neutered) {
+    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
+    {
         return new Mammal(owner, petId, type, name, breed, age, colour, gender, neutered);
     }
 
@@ -489,7 +547,8 @@ public class Pet implements Serializable {
      * @param fly
      * @return pet objects
      */
-    public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly) {
+    public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
+    {
         return new Bird(owner, type, name, breed, age, colour, gender, wingspan, fly);
     }
 
@@ -508,7 +567,8 @@ public class Pet implements Serializable {
      * @param fly
      * @return pet objects
      */
-    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly) {
+    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
+    {
         return new Bird(owner, petId, type, name, breed, age, colour, gender, wingspan, fly);
     }
 
@@ -524,7 +584,8 @@ public class Pet implements Serializable {
      * @param gender
      * @return pet object
      */
-    public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender) {
+    public static Pet createPet(int owner, String type, String name, String breed, int age, String colour, String gender)
+    {
         return new Pet(owner, type, name, breed, age, colour, gender);
     }
 
@@ -541,7 +602,8 @@ public class Pet implements Serializable {
      * @param gender
      * @return pet object
      */
-    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender) {
+    public static Pet createPet(int owner, int petId, String type, String name, String breed, int age, String colour, String gender)
+    {
         return new Pet(owner, petId, type, name, breed, age, colour, gender);
     }
 
@@ -550,8 +612,10 @@ public class Pet implements Serializable {
      *
      * @param pets
      */
-    public static void displayAllPets(List<Pet> pets) {
-        for (Pet p : pets) {
+    public static void displayAllPets(List<Pet> pets)
+    {
+        for (Pet p : pets)
+        {
             p.displayPet();
         }
     }
@@ -559,22 +623,30 @@ public class Pet implements Serializable {
     /**
      * displays this pet class
      */
-    public void displayPet() {
+    public void displayPet()
+    {
         System.out.println("\n(" + getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate());
     }
 
-    private void findGender(String g) {
-        if (g.equalsIgnoreCase("male")) {
+    private void findGender(String g)
+    {
+        if (g.equalsIgnoreCase("male"))
+        {
             this.gender = Gender.MALE;
-        } else if (g.equalsIgnoreCase("female")) {
+        }
+        else if (g.equalsIgnoreCase("female"))
+        {
             this.gender = Gender.FEMALE;
-        } else {
+        }
+        else
+        {
             this.gender = Gender.UNKNOWN;
         }
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 7;
         hash = 37 * hash + Objects.hashCode(this.name);
         hash = 37 * hash + Objects.hashCode(this.regDate);
@@ -584,40 +656,51 @@ public class Pet implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
             return true;
         }
-        if (obj == null) {
+        if (obj == null)
+        {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
+        {
             return false;
         }
         final Pet other = (Pet) obj;
-        if (this.age != other.age) {
+        if (this.age != other.age)
+        {
             return false;
         }
-        if (!Objects.equals(this.type, other.type)) {
+        if (!Objects.equals(this.type, other.type))
+        {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.name, other.name))
+        {
             return false;
         }
-        if (!Objects.equals(this.breed, other.breed)) {
+        if (!Objects.equals(this.breed, other.breed))
+        {
             return false;
         }
-        if (!Objects.equals(this.colour, other.colour)) {
+        if (!Objects.equals(this.colour, other.colour))
+        {
             return false;
         }
-        if (this.gender != other.gender) {
+        if (this.gender != other.gender)
+        {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return getClass().getSimpleName() + "{" + "type=" + type + ", name=" + name + ", breed=" + breed + ", age=" + age + ", colour=" + colour + ", gender=" + gender + ", regDate=" + regDate + '}';
     }
 

@@ -1,4 +1,3 @@
-
 package oop19_ca2_aaron_reihill;
 
 /**
@@ -13,6 +12,7 @@ public class Bird extends Pet
 
     /**
      * reads input and calls super constructor bird to make a bird object
+     *
      * @param owner
      * @param petId
      * @param type
@@ -32,7 +32,8 @@ public class Bird extends Pet
     }
 
     /**
-     *reads input and calls super constructor bird to make a bird object
+     * reads input and calls super constructor bird to make a bird object
+     *
      * @param owner
      * @param type
      * @param name
@@ -52,7 +53,8 @@ public class Bird extends Pet
 
     /**
      * gets wingspan
-     * @return wingspan 
+     *
+     * @return wingspan
      */
     public int getWingspan()
     {
@@ -61,6 +63,7 @@ public class Bird extends Pet
 
     /**
      * gets if bird can fly
+     *
      * @return true or false if bird can fly
      */
     public boolean isFly()
@@ -70,6 +73,7 @@ public class Bird extends Pet
 
     /**
      * sets wingspan to input
+     *
      * @param wingspan
      */
     public void setWingspan(int wingspan)
@@ -79,6 +83,7 @@ public class Bird extends Pet
 
     /**
      * sets fly to true or false
+     *
      * @param fly
      */
     public void setFly(boolean fly)
@@ -88,6 +93,7 @@ public class Bird extends Pet
 
     /**
      * takes string in and sets if bird can fly or not
+     *
      * @param fly
      * @return true or false
      */
