@@ -1360,11 +1360,11 @@ public class Main
                     back = true;
                     break;
                 case 1:
-                    r.loadOwnerData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\OwnerData.csv");
-                    r.loadPetData("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\PetData.csv");
+                    r.loadOwnerData("OwnerData.csv");
+                    r.loadPetData("PetData.csv");
                     break;
                 case 2:
-                    r.loadRegistry("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\store.dat");
+                    r.loadRegistry("store.dat");
                     break;
                 case 3:
                     clearInvalidMenu();
