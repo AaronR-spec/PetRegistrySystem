@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 /**
  *
- * @author aaron
+ * @author D00222467/Aaron Reihill
  */
 public class PetRegDateComparator implements Comparator<Pet>
 {

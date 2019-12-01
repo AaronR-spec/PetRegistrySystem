@@ -1,61 +1,82 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package oop19_ca2_aaron_reihill;
 
 /**
  *
- * @author aaron
+ * @author D00222467/Aaron Reihill
  */
 public class Fish extends Pet
 {
 
-    private Water water = Water.UNKOWN;
+    private Water water = Water.UNKNOWN;
 
-    public Fish(String type, String breed, int age, String colour, String regDate)
+    /**
+     * calls super constructor and creates fish object
+     * @param owner
+     * @param petId
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param water
+     */
+    public Fish(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, String water)
     {
-        super(type, breed, age, colour, regDate);
-    }
-    public Fish(int owner,int petId, String type, String name, String breed, int age, String colour, String gender, String water)
-    {
-        super(owner,petId, type, name, breed, age, colour, gender);
+        super(owner, petId, type, name, breed, age, colour, gender);
         setWater(water);
     }
+
+    /**
+     * calls super constructor and creates fish object
+     * @param owner
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param water
+     */
     public Fish(int owner, String type, String name, String breed, int age, String colour, String gender, String water)
     {
         super(owner, type, name, breed, age, colour, gender);
         setWater(water);
     }
 
-    public Fish(String type, String name, String breed, int age, String colour, String gender, String water)
-    {
-        super(type, name, breed, age, colour, gender);
-        setWater(water);
-    }
-
-    public Fish(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, String water)
-    {
-        super(owner, type, name, breed, age, colour, gender, regDate);
-        setWater(water);
-    }
-
+    /**
+     * gets water enum state
+     * @return water enum
+     */
     public Water getWater()
     {
         return water;
     }
 
+    /**
+     * set water by enum
+     * @param water
+     */
     public void setWater(Water water)
     {
         this.water = water;
     }
+
+    /**
+     * polymorfism override of display pet
+     */
     @Override
     public void displayPet()
     {
-       System.out.println("\n(" + this.getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate() + ", Water Type: " + getWater());
+        System.out.println("\n(" + this.getClass().getSimpleName() + ") PetID: " + this.getPetID() + ", OwnerID: " + this.getOwnerID() + ", Type: " + this.getType() + ", Name: " + this.getName() + ", Age: " + this.getAge() + ", Breed: " + this.getBreed() + ", Colour: " + this.getColour() + ", Gender: " + this.getGender() + ", DateReg: " + this.getRegDate() + ", Water Type: " + getWater());
 
     }
+
+    /**
+     * sets water by string returns if set or not
+     * @param w
+     * @return true or false if set
+     */
     public boolean setWater(String w)
     {
         boolean set;
@@ -74,9 +95,9 @@ public class Fish extends Pet
             this.water = Water.SEAWATER;
             set = true;
         }
-        else if(w.equalsIgnoreCase("UNKOWN")||w.equalsIgnoreCase("Other"))
+        else if (w.equalsIgnoreCase("UNKOWN") || w.equalsIgnoreCase("Other"))
         {
-            this.water = Water.UNKOWN;
+            this.water = Water.UNKNOWN;
             set = true;
         }
         else

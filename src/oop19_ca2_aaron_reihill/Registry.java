@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -12,15 +11,12 @@ import java.util.Scanner;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author D00222467
+ * @author D00222467/Aaron Reihill
  */
-public class Registry
-{
+public class Registry {
 
     ArrayList<Owner> owners = new ArrayList<>();
     private static String OWNER_ALREADY_REG = "Owner Already Registered";
@@ -28,148 +24,165 @@ public class Registry
     private static String OWNER_NOT_FOUND = "Owner Not Found";
     private static String PET_NOT_FOUND = "Pet Not Found";
 
-    public Registry()
-    {
+    /**
+     * empty constructor
+     */
+    public Registry() {
     }
 
-    public Registry(ArrayList<Owner> owners)
-    {
+    /**
+     * creates registry with owners list
+     * @param owners
+     */
+    public Registry(ArrayList<Owner> owners) {
         this.owners = owners;
     }
 
-    public ArrayList<Owner> getOwners()
-    {
+    /**
+     * gets registered owners
+     * @return owner list
+     */
+    public ArrayList<Owner> getOwners() {
         return owners;
     }
 
-    public void setOwners(ArrayList<Owner> owners)
-    {
+    /**
+     * sets owner list
+     * @param owners
+     */
+    public void setOwners(ArrayList<Owner> owners) {
         this.owners = owners;
     }
 
-    public void addOwner(String name)
-    {
-        this.owners.add(new Owner(name));
-    }
-
-    public void addOwner(Owner o)
-    {
-        if (CheckOwnerDup(o.getName(), o.getAddress()) == -1)
-        {
-            this.owners.add(o);
-        }
-        else
-        {
-            System.out.println(OWNER_ALREADY_REG);
-        }
-    }
-
-    public void addOwner(String name, String email, String telephone, String address, List<Pet> pets)
-    {
-        if (CheckOwnerDup(name, address) == -1)
-        {
-            this.owners.add(new Owner(name, email, telephone, address, pets));
-        }
-        else
-        {
-            System.out.println(OWNER_ALREADY_REG);
-        }
-    }
-
-    public void addOwner(String name, String telephone, String address)
-    {
-        if (CheckOwnerDup(name, address) == -1)
-        {
+    /**
+     * adds owner to registered list, if already there prints error message
+     * @param name
+     * @param telephone
+     * @param address
+     */
+    public void addOwner(String name, String telephone, String address) {
+        if (CheckOwnerDup(name, address) == -1) {
             this.owners.add(new Owner(name, telephone, address));
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_ALREADY_REG);
         }
     }
 
-    public void addOwner(int id, String name, String telephone, String address)
-    {
-        if (CheckOwnerDup(name, address) == -1)
-        {
+    /**
+     *adds owner to registered list, if already there prints error message
+     * @param id
+     * @param name
+     * @param telephone
+     * @param address
+     */
+    public void addOwner(int id, String name, String telephone, String address) {
+        if (CheckOwnerDup(name, address) == -1) {
             this.owners.add(new Owner(id, name, telephone, address));
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_ALREADY_REG);
         }
     }
 
-    public void addOwner(String name, String email, String telephone, String address)
-    {
-        if (CheckOwnerDup(name, address) == -1)
-        {
+    /**
+     *adds owner to registered list, if already there prints error message
+     * @param name
+     * @param email
+     * @param telephone
+     * @param address
+     */
+    public void addOwner(String name, String email, String telephone, String address) {
+        if (CheckOwnerDup(name, address) == -1) {
             this.owners.add(new Owner(name, email, telephone, address));
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_ALREADY_REG);
         }
     }
 
-    public void addOwner(String name, List<Pet> pets)
-    {
-        this.owners.add(new Owner(name, pets));
-    }
-
-    public void addFish(int owner, String type, String name, String breed, int age, String colour, String gender, String water)
-    {
+    /**
+     *adds fish object to registered owner
+     * @param owner
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param water
+     */
+    public void addFish(int owner, String type, String name, String breed, int age, String colour, String gender, String water) {
         Pet.createPet(owner, type, name, breed, age, colour, gender, water);
     }
 
-    public void addMammal(int owner, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
-    {
+    /**
+     *adds mammal object to registered owner
+     * @param owner
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param neutered
+     */
+    public void addMammal(int owner, String type, String name, String breed, int age, String colour, String gender, boolean neutered) {
         Pet.createPet(owner, type, name, breed, age, colour, gender, neutered);
     }
 
-    public void addBird(int owner, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
-    {
+    /**
+     *adds bird object to registered owner
+     * @param owner
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param wingspan
+     * @param fly
+     */
+    public void addBird(int owner, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly) {
         Pet.createPet(owner, type, name, breed, age, colour, gender, wingspan, fly);
     }
 
-    public void addPet(int owner, String type, String name, String breed, int age, String colour, String gender)
-    {
+    /**
+     *adds pet object to registered owner
+     * @param owner
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     */
+    public void addPet(int owner, String type, String name, String breed, int age, String colour, String gender) {
         Pet.createPet(owner, type, name, breed, age, colour, gender);
     }
 
-    public void removeOwner(Owner o)
-    {
-        if (findOwner(o.getId()) != -1)
-        {
-            o.removeAllPet();
-            this.owners.remove(o);
-        }
-        else
-        {
-            System.out.println(OWNER_NOT_FOUND);
-        }
-    }
-
-    public void removePet(int id, int petID)
-    {
+    /**
+     *removes pet object from registered owner
+     * @param id
+     * @param petID
+     */
+    public void removePet(int id, int petID) {
         int ownerIndex = findOwner(id);
-        if (ownerIndex != -1)
-        {
+        if (ownerIndex != -1) {
             Owner o = getOwnerByID(id);
             o.removePet(petID);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public String petsName(int id, int petID)
-    {
+    /**
+     * gets pets name from pet id and its owner id
+     * @param id
+     * @param petID
+     * @return pets name
+     */
+    public String petsName(int id, int petID) {
         String name = "";
         int ownerIndex = findOwner(id);
-        if (ownerIndex != -1)
-        {
+        if (ownerIndex != -1) {
             Owner o = getOwnerByID(id);
             int index = o.findPet(petID);
             name = o.getPets().get(index).getName();
@@ -177,56 +190,62 @@ public class Registry
         return name;
     }
 
-    public void removeOwner(int id)
-    {
+    /**
+     * removes owner by id
+     * @param id
+     */
+    public void removeOwner(int id) {
         int ownerIndex = findOwner(id);
-        if (ownerIndex != -1)
-        {
+        if (ownerIndex != -1) {
             this.owners.get(ownerIndex).removeAllPet();
             this.owners.remove(ownerIndex);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public void displayAllOwners()
-    {
+    /**
+     * displays all owners
+     */
+    public void displayAllOwners() {
 
-        for (Owner o : this.owners)
-        {
+        for (Owner o : this.owners) {
             System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
         }
     }
 
-    public void displayOwner(Owner o)
-    {
+    /**
+     * displays a owner 
+     * @param o
+     */
+    public void displayOwner(Owner o) {
         System.out.println("\nID: " + o.getId() + "\nName: " + o.getName() + "\nEmail: " + o.getEmail() + "\nTelephone: " + o.getTelephone() + "\nAddress: " + o.getAddress() + "\nPets Registered: " + o.getPets().size());
     }
 
-    public void displayOwnersPet(int id)
-    {
+    /**
+     * displays all pets registered to owner by id
+     * @param id
+     */
+    public void displayOwnersPet(int id) {
         Owner o = getOwnerByID(id);
-        if (findOwnerID(o.getName()) != -1)
-        {
+        if (findOwnerID(o.getName()) != -1) {
             o.displayAllPets();
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public int findOwnerID(String name)
-    {
+    /**
+     * finds owner id by owners name
+     * @param name 
+     * @return owners id
+     */
+    public int findOwnerID(String name) {
         int ownerID = -1;
         boolean found = false;
         int i = 0;
-        while (!found && i < this.owners.size())
-        {
-            if (this.owners.get(i).getName().equalsIgnoreCase(name))
-            {
+        while (!found && i < this.owners.size()) {
+            if (this.owners.get(i).getName().equalsIgnoreCase(name)) {
                 ownerID = this.owners.get(i).getId();
                 found = true;
             }
@@ -235,96 +254,82 @@ public class Registry
         return ownerID;
     }
 
-    public void displayOwnerByName(String name)
-    {
+    /**
+     * displays owner by name
+     * @param name
+     */
+    public void displayOwnerByName(String name) {
 
-        if (findOwnerID(name) != -1)
-        {
+        if (findOwnerID(name) != -1) {
             Owner o = this.owners.get(findOwnerID(name));
             displayOwner(o);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public void displayOwnerByAddress(String address)
-    {
+    /**
+     *displays owner by address
+     * @param address
+     */
+    public void displayOwnerByAddress(String address) {
 
-        if (findOwnerAddress(address) != -1)
-        {
+        if (findOwnerAddress(address) != -1) {
             Owner o = this.owners.get(findOwnerAddress(address));
             displayOwner(o);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public void displayOwnerByTelephone(String address)
-    {
+    /**
+     *displays owner by telephone
+     * @param address
+     */
+    public void displayOwnerByTelephone(String address) {
 
-        if (findOwnerAddress(address) != -1)
-        {
+        if (findOwnerAddress(address) != -1) {
             Owner o = this.owners.get(findOwnerAddress(address));
             displayOwner(o);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public void displayOwnerByEmail(String email)
-    {
+    /**
+     *displays owner by email
+     * @param email
+     */
+    public void displayOwnerByEmail(String email) {
 
-        if (findOwnerEmail(email) != -1)
-        {
+        if (findOwnerEmail(email) != -1) {
             Owner o = this.owners.get(findOwnerAddress(email));
             displayOwner(o);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public void displayAllPets()
-    {
-        for (Owner o : this.owners)
-        {
+    /**
+     * displays all pets registered to all owners
+     */
+    public void displayAllPets() {
+        for (Owner o : this.owners) {
             o.displayAllPets();
         }
     }
 
-    public Owner getOwnerByName(String name)
-    {
-        int index = -1;
-        int i = 0;
-        boolean found = false;
-        while (!found && i < this.owners.size())
-        {
-            if (this.owners.get(i).getName().equalsIgnoreCase(name))
-            {
-                index = i;
-                found = true;
-            }
-            i++;
-        }
-        return this.owners.get(i);
-    }
-
-    public Owner getOwnerByID(int id)
-    {
+    /**
+     * gets owner object with id 
+     * @param id
+     * @return owner object
+     */
+    public Owner getOwnerByID(int id) {
         Owner o = new Owner();
         int i = 0;
         boolean found = false;
-        while (!found && i < this.owners.size())
-        {
-            if (this.owners.get(i).getId() == id)
-            {
+        while (!found && i < this.owners.size()) {
+            if (this.owners.get(i).getId() == id) {
                 o = this.owners.get(i);
                 found = true;
             }
@@ -333,14 +338,16 @@ public class Registry
         return o;
     }
 
-    public boolean checkOwnerId(int id)
-    {
+    /** 
+     * checks to see if owner id is already taken
+     * @param id
+     * @return true or false if there or not
+     */
+    public boolean checkOwnerId(int id) {
         int i = 0;
         boolean found = false;
-        while (!found && i < this.owners.size())
-        {
-            if (this.owners.get(i).getId() == id)
-            {
+        while (!found && i < this.owners.size()) {
+            if (this.owners.get(i).getId() == id) {
                 found = true;
             }
             i++;
@@ -348,15 +355,17 @@ public class Registry
         return found;
     }
 
-    public int findOwner(int id)
-    {
+    /**
+     * finds owner index in list
+     * @param id
+     * @return owners position
+     */
+    public int findOwner(int id) {
         int index = -1;
         int i = 0;
         boolean found = false;
-        while (!found && i < this.owners.size())
-        {
-            if (this.owners.get(i).getId() == id)
-            {
+        while (!found && i < this.owners.size()) {
+            if (this.owners.get(i).getId() == id) {
                 index = i;
                 found = true;
             }
@@ -365,17 +374,17 @@ public class Registry
         return index;
     }
 
-    public void displayPetByID(int id)
-    {
+    /**
+     * displays pet by id
+     * @param id
+     */
+    public void displayPetByID(int id) {
         boolean found = false;
         int i = 0, j = 0;
-        while (!found && i < this.owners.size())
-        {
+        while (!found && i < this.owners.size()) {
             List<Pet> pets = this.owners.get(i).getPets();
-            while (j < pets.size())
-            {
-                if (pets.get(j).getPetID() == id)
-                {
+            while (j < pets.size()) {
+                if (pets.get(j).getPetID() == id) {
                     pets.get(j).displayPet();
                     found = true;
                 }
@@ -383,25 +392,25 @@ public class Registry
             }
             i++;
         }
-        if (!found)
-        {
+        if (!found) {
             System.out.println(PET_NOT_FOUND);
         }
 
     }
 
-    public Pet getPetById(int id)
-    {
+    /**
+     * returns pet object by there id
+     * @param id
+     * @return pet object
+     */
+    public Pet getPetById(int id) {
         Pet p = new Pet();
         boolean found = false;
         int i = 0, j = 0;
-        while (!found && i < this.owners.size())
-        {
+        while (!found && i < this.owners.size()) {
             List<Pet> pets = this.owners.get(i).getPets();
-            while (j < pets.size())
-            {
-                if (pets.get(j).getPetID() == id)
-                {
+            while (j < pets.size()) {
+                if (pets.get(j).getPetID() == id) {
                     p = pets.get(j);
                     found = true;
                 }
@@ -409,25 +418,25 @@ public class Registry
             }
             i++;
         }
-        if (!found)
-        {
+        if (!found) {
             System.out.println(PET_NOT_FOUND);
         }
         return p;
     }
 
-    public boolean checkPetIdDup(int id)
-    {
+    /**
+     * checks to see if pet duplicate 
+     * @param id 
+     * @return true or false if duplicate
+     */
+    public boolean checkPetIdDup(int id) {
 
         boolean found = false;
         int i = 0, j = 0;
-        while (!found && i < this.owners.size())
-        {
+        while (!found && i < this.owners.size()) {
             List<Pet> pets = this.owners.get(i).getPets();
-            while (j < pets.size())
-            {
-                if (pets.get(j).getPetID() == id)
-                {
+            while (j < pets.size()) {
+                if (pets.get(j).getPetID() == id) {
                     found = true;
                 }
                 j++;
@@ -437,17 +446,17 @@ public class Registry
         return found;
     }
 
-    public void displayPetByName(String name)
-    {
+    /**
+     * displays pet by name 
+     * @param name
+     */
+    public void displayPetByName(String name) {
         boolean found = false;
         int i = 0, j = 0;
-        while (i < this.owners.size())
-        {
+        while (i < this.owners.size()) {
             List<Pet> pets = this.owners.get(i).getPets();
-            while (j < pets.size())
-            {
-                if (pets.get(j).getName().equalsIgnoreCase(name))
-                {
+            while (j < pets.size()) {
+                if (pets.get(j).getName().equalsIgnoreCase(name)) {
                     pets.get(j).displayPet();
                     found = true;
                 }
@@ -455,21 +464,22 @@ public class Registry
             }
             i++;
         }
-        if (!found)
-        {
+        if (!found) {
             System.out.println(PET_NOT_FOUND);
         }
 
     }
 
-    public int findOwnerAddress(String address)
-    {
+    /**
+     * finds owner by address
+     * @param address
+     * @return owner position in list
+     */
+    public int findOwnerAddress(String address) {
         int index = -1, i = 0;
         boolean found = false;
-        while (!found && i < this.owners.size())
-        {
-            if (this.owners.get(i).getAddress().equalsIgnoreCase(address))
-            {
+        while (!found && i < this.owners.size()) {
+            if (this.owners.get(i).getAddress().equalsIgnoreCase(address)) {
                 index = i;
                 found = true;
             }
@@ -478,14 +488,16 @@ public class Registry
         return index;
     }
 
-    public int findOwnerTelephone(String telephone)
-    {
+    /**
+     * finds owner by telephone
+     * @param telephone
+     * @return owners position
+     */
+    public int findOwnerTelephone(String telephone) {
         int index = -1, i = 0;
         boolean found = false;
-        while (!found && i < this.owners.size())
-        {
-            if (this.owners.get(i).getTelephone().equalsIgnoreCase(telephone))
-            {
+        while (!found && i < this.owners.size()) {
+            if (this.owners.get(i).getTelephone().equalsIgnoreCase(telephone)) {
                 index = i;
                 found = true;
             }
@@ -494,14 +506,16 @@ public class Registry
         return index;
     }
 
-    public int findOwnerEmail(String email)
-    {
+    /**
+     * finds owner by email
+     * @param email
+     * @return owners position
+     */
+    public int findOwnerEmail(String email) {
         int index = -1, i = 0;
         boolean found = false;
-        while (!found && i < this.owners.size())
-        {
-            if (this.owners.get(i).getEmail().equalsIgnoreCase(email))
-            {
+        while (!found && i < this.owners.size()) {
+            if (this.owners.get(i).getEmail().equalsIgnoreCase(email)) {
                 index = i;
                 found = true;
             }
@@ -510,18 +524,15 @@ public class Registry
         return index;
     }
 
-    private int CheckOwnerDup(String name, String address)
-    {
+    private int CheckOwnerDup(String name, String address) {
         int ownerIndex = -1;
         boolean found = false;
         Owner owner = new Owner();
         owner.setName(name);
         owner.setAddress(address);
         int i = 0;
-        while (!found && i < this.owners.size())
-        {
-            if (this.owners.get(i).equals(i))
-            {
+        while (!found && i < this.owners.size()) {
+            if (this.owners.get(i).equals(i)) {
                 ownerIndex = i;
                 found = true;
             }
@@ -530,65 +541,55 @@ public class Registry
         return ownerIndex;
     }
 
-    public void displayPetByType(String type)
-    {
+    /**
+     * displays pet by type
+     * @param type
+     */
+    public void displayPetByType(String type) {
         boolean found = false;
-        for (Owner o : this.owners)
-        {
-            for (Pet p : o.getPets())
-            {
-                if (p.getType().equalsIgnoreCase(type))
-                {
+        for (Owner o : this.owners) {
+            for (Pet p : o.getPets()) {
+                if (p.getType().equalsIgnoreCase(type)) {
                     p.displayPet();
                     found = true;
                 }
             }
         }
-        if (!found)
-        {
+        if (!found) {
             System.out.println("Animal Type Not Found");
         }
     }
 
-    public void displayPetByCategory(String animal)
-    {
+    /**
+     * displays pet by category
+     * @param animal
+     */
+    public void displayPetByCategory(String animal) {
         int category = 0;
-        if (animal.equalsIgnoreCase("mammal"))
-        {
+        if (animal.equalsIgnoreCase("mammal")) {
             category = 1;
-        }
-        else if (animal.equalsIgnoreCase("fish"))
-        {
+        } else if (animal.equalsIgnoreCase("fish")) {
             category = 2;
-        }
-        else if (animal.equalsIgnoreCase("bird"))
-        {
+        } else if (animal.equalsIgnoreCase("bird")) {
             category = 3;
         }
-        if (category != 0)
-        {
-            for (Owner o : this.owners)
-            {
-                for (Pet p : o.getPets())
-                {
+        if (category != 0) {
+            for (Owner o : this.owners) {
+                for (Pet p : o.getPets()) {
 
-                    switch (category)
-                    {
+                    switch (category) {
                         case 1:
-                            if (p instanceof Mammal)
-                            {
+                            if (p instanceof Mammal) {
                                 p.displayPet();
                             }
                             break;
                         case 2:
-                            if (p instanceof Fish)
-                            {
+                            if (p instanceof Fish) {
                                 p.displayPet();
                             }
                             break;
                         case 3:
-                            if (p instanceof Bird)
-                            {
+                            if (p instanceof Bird) {
                                 p.displayPet();
                             }
                             break;
@@ -598,29 +599,27 @@ public class Registry
                 }
 
             }
-        }
-        else
-        {
+        } else {
             System.out.println("Animal Category Not Found");
         }
 
     }
 
-    public void loadPetData(String file)
-    {
+    /**
+     * loads pet data from text file
+     * @param file
+     */
+    public void loadPetData(String file) {
         int maxIndex = 0;
-        try
-        {
+        try {
             Scanner sc = new Scanner(new File(file));
 
             sc.useDelimiter("[/\r\n]+");
             String type, name, breed, colour, gender;
-            int age, id,ownerId;
-            while (sc.hasNext())
-            {
+            int age, id, ownerId;
+            while (sc.hasNext()) {
                 String animal = sc.next();
-                if (animal.equalsIgnoreCase("M"))
-                {
+                if (animal.equalsIgnoreCase("M")) {
                     ownerId = sc.nextInt();
                     id = sc.nextInt();
                     type = sc.next();
@@ -630,15 +629,12 @@ public class Registry
                     colour = sc.next();
                     gender = sc.next();
                     boolean neutered = false;
-                    if (sc.next().equalsIgnoreCase("true"))
-                    {
+                    if (sc.next().equalsIgnoreCase("true")) {
                         neutered = true;
                     }
                     maxIndex = id;
                     this.owners.get(findOwner(ownerId)).addPet(id, type, name, breed, age, colour, gender, neutered);
-                }
-                else if (animal.equalsIgnoreCase("F"))
-                {
+                } else if (animal.equalsIgnoreCase("F")) {
                     ownerId = sc.nextInt();
                     id = sc.nextInt();
                     type = sc.next();
@@ -650,9 +646,7 @@ public class Registry
                     String water = sc.next();
                     maxIndex = id;
                     this.owners.get(findOwner(ownerId)).addPet(id, type, name, breed, age, colour, gender, water);
-                }
-                else if (animal.equalsIgnoreCase("B"))
-                {
+                } else if (animal.equalsIgnoreCase("B")) {
                     ownerId = sc.nextInt();
                     id = sc.nextInt();
                     type = sc.next();
@@ -663,19 +657,14 @@ public class Registry
                     gender = sc.next();
                     int wingspan = sc.nextInt();
                     boolean fly;
-                    if (sc.next().equalsIgnoreCase("true"))
-                    {
+                    if (sc.next().equalsIgnoreCase("true")) {
                         fly = true;
-                    }
-                    else
-                    {
+                    } else {
                         fly = false;
                     }
                     maxIndex = id;
                     this.owners.get(findOwner(ownerId)).addPet(id, type, name, breed, age, colour, gender, wingspan, fly);
-                }
-                else if (animal.equalsIgnoreCase("P"))
-                {
+                } else if (animal.equalsIgnoreCase("P")) {
                     ownerId = sc.nextInt();
                     id = sc.nextInt();
                     type = sc.next();
@@ -686,218 +675,125 @@ public class Registry
                     gender = sc.next();
                     maxIndex = id;
                     this.owners.get(findOwner(ownerId)).addPet(id, type, name, breed, age, colour, gender);
-                }
-                else
-                {
+                } else {
                     System.out.println("Format Wrong");
                 }
             }
             sc.close();
             System.out.println("Pet Records Loaded");
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("File Not Found. " + e.getLocalizedMessage());
         }
         Pet.setIndex(maxIndex + 1);
     }
 
-    public void loadOwnerData(String file)
-    {
+    /**
+     * loads owner data from text file
+     * @param file
+     */
+    public void loadOwnerData(String file) {
         int maxIndex = 0;
-        try
-        {
+        try {
             Scanner sc = new Scanner(new File(file));
 
             sc.useDelimiter("[/\r\n]+");
             String name, telephone, address, email;
             int id;
-            while (sc.hasNext())
-            {
+            while (sc.hasNext()) {
                 id = sc.nextInt();
                 name = sc.next();
                 telephone = sc.next();
                 address = sc.next();
-                if (sc.hasNext())
-                {
+                if (sc.hasNext()) {
                     email = sc.next();
                     maxIndex = id;
                     addOwner(id, name, telephone, address);
-                }
-                else
-                {
+                } else {
                     maxIndex = id;
                     addOwner(id, name, telephone, address);
                 }
             }
             sc.close();
             System.out.println("Owner Records Loaded");
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("File Not Found. " + e.getLocalizedMessage());
-        }
-        catch (InputMismatchException e)
-        {
+        } catch (InputMismatchException e) {
             System.out.println("Format Is Wrong" + e.getLocalizedMessage());
         }
         Owner.setIndex(maxIndex + 1);
     }
 
-    public void changePetName(int id, String name)
-    {
-        Pet p = getPetById(id);
-        System.out.println("\n" + p.getName() + " Changed To " + name);
-        p.setName(name);
-    }
-
-    public void changePetBreed(int id, String breed)
-    {
-        Pet p = getPetById(id);
-        System.out.println("\n" + p.getBreed() + " Changed To " + breed);
-        p.setBreed(breed);
-    }
-
-    public void changePetAge(int id, int age)
-    {
-        Pet p = getPetById(id);
-        System.out.println("\n" + p.getAge() + " Changed To " + age);
-        p.setAge(age);
-    }
-
-    public void changePetColour(int id, String colour)
-    {
-        Pet p = getPetById(id);
-        System.out.println("\n" + p.getColour() + " Changed To " + colour);
-        p.setColour(colour);
-    }
-
-    public void changePetId(int id)
-    {
-
-        if (!checkPetIdDup(id))
-        {
-            Pet p = getPetById(id);
-            System.out.println("\n" + p.getPetID() + " Changed To " + id);
-            p.setPetID(id);
-        }
-        else
-        {
-            System.out.println(PET_ALREADY_REG);
-        }
-    }
-
-    public void changePetOwner(int id, int ownerId)
-    {
-        Pet p = getPetById(id);
-        System.out.println("\n" + p.getOwnerID() + " Changed To " + ownerId);
-        if (getOwnerByID(ownerId).findPet(id) == -1)
-        {
-            getOwnerByID(p.getOwnerID()).removePet(p);
-            getOwnerByID(ownerId).addPet(p);
-        }
-        else
-        {
-            System.out.println(PET_ALREADY_REG);
-        }
-    }
-
-    public void changePetAnimalCategory(int id, String category)
-    {
+    /**
+     * changes pets category by input if not there prints error message
+     * @param id
+     * @param category
+     */
+    public void changePetAnimalCategory(int id, String category) {
         Pet p = getPetById(id);
         String user = "";
         int userInput = 0;
         boolean picked = false;
         boolean choice = false;
         Scanner input = new Scanner(System.in);
-        if (category.equalsIgnoreCase("Mammal"))
-        {
-            while (!picked)
-            {
+        if (category.equalsIgnoreCase("Mammal")) {
+            while (!picked) {
                 System.out.print("Is The Pet Neutered: ");
                 user = input.next();
-                if (user.equalsIgnoreCase("yes") || user.equalsIgnoreCase("true"))
-                {
+                if (user.equalsIgnoreCase("yes") || user.equalsIgnoreCase("true")) {
                     choice = true;
                     picked = true;
-                }
-                else if (user.equalsIgnoreCase("no") || user.equalsIgnoreCase("false"))
-                {
+                } else if (user.equalsIgnoreCase("no") || user.equalsIgnoreCase("false")) {
                     choice = false;
                     picked = true;
-                }
-                else
-                {
-                    System.out.println(user + " Is Not A Valid Input (Y/N)");
+                } else {
+                    System.out.println(user + " Is Not A Valid Input (Yes/No)");
                 }
             }
             System.out.println(p.getClass().getSimpleName() + " Changed To " + category);
             getOwnerByID(p.getOwnerID()).removePet(p);
             getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(), p.getBreed(), p.getAge(), p.getColour(), p.getGenderString(), choice));
-        }
-        else if (category.equalsIgnoreCase("Bird"))
-        {
-            while (!picked)
-            {
+        } else if (category.equalsIgnoreCase("Bird")) {
+            while (!picked) {
                 System.out.print("\nWingspan(ft): ");
                 userInput = input.nextInt();
-                if (userInput < 0)
-                {
+                if (userInput < 0) {
                     System.out.println("Invalid Input Defaulating To Zero...");
                     userInput = 0;
                 }
                 System.out.print("Can The Pet Fly: ");
                 user = input.next();
-                if (user.equalsIgnoreCase("no") || user.equalsIgnoreCase("false"))
-                {
+                if (user.equalsIgnoreCase("no") || user.equalsIgnoreCase("false")) {
                     choice = false;
                     picked = true;
-                }
-                else if (user.equalsIgnoreCase("yes") || user.equalsIgnoreCase("true"))
-                {
+                } else if (user.equalsIgnoreCase("yes") || user.equalsIgnoreCase("true")) {
                     choice = true;
                     picked = true;
-                }
-                else
-                {
+                } else {
                     System.out.println(user + " Is Not A Valid Input (Y/N)");
                 }
             }
             System.out.println(p.getClass().getSimpleName() + " Changed To " + category);
             getOwnerByID(p.getOwnerID()).removePet(p);
             getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(), p.getBreed(), p.getAge(), p.getColour(), p.getGenderString(), userInput, choice));
-        }
-        else if (category.equalsIgnoreCase("Fish"))
-        {
-            while (!picked)
-            {
+        } else if (category.equalsIgnoreCase("Fish")) {
+            while (!picked) {
                 System.out.print("\nWingspan(ft): ");
                 userInput = input.nextInt();
-                if (userInput < 0)
-                {
+                if (userInput < 0) {
                     System.out.println("Invalid Input Defaulating To Zero...");
                     userInput = 0;
                 }
                 System.out.print("Can The Pet Fly: ");
                 user = input.next();
-                if (user.equalsIgnoreCase("FRESHWATER"))
-                {
+                if (user.equalsIgnoreCase("FRESHWATER")) {
                     picked = true;
-                }
-                else if (user.equalsIgnoreCase("SEAWATER"))
-                {
+                } else if (user.equalsIgnoreCase("SEAWATER")) {
                     picked = true;
-                }
-                else if (user.equalsIgnoreCase("BRACKISH"))
-                {
+                } else if (user.equalsIgnoreCase("BRACKISH")) {
                     picked = true;
-                }
-                else if (user.equalsIgnoreCase("UNKOWN") || user.equalsIgnoreCase("Dont know"))
-                {
+                } else if (user.equalsIgnoreCase("UNKOWN") || user.equalsIgnoreCase("Dont know")) {
                     picked = true;
-                }
-                else
-                {
+                } else {
                     System.out.println(user + " Is Not A Valid Input (FRESHWATER, SEAWATER, BRACKISH, UNKOWN)");
                 }
             }
@@ -905,157 +801,138 @@ public class Registry
             getOwnerByID(p.getOwnerID()).removePet(p);
             getOwnerByID(p.getOwnerID()).addPet(Pet.createPet(p.getOwnerID(), p.getPetID(), p.getType(), p.getName(), p.getBreed(), p.getAge(), p.getColour(), p.getGenderString(), user));
 
-        }
-
-        else
-        {
+        } else {
             System.out.println("Category Not Found...");
             System.out.println("\nValid Categories: (Mammal)(Bird)(Fish)");
         }
     }
 
-    public void changePetGender(int id, String gender)
-    {
-        String ogGender = getPetById(id).getGenderString();
-        if (getPetById(id).setGender(gender))
-        {
-            System.out.println(ogGender + " Changed To " + getPetById(id).getGender());
-        }
-        else
-        {
-            System.out.println("\n" + gender + " Is Not A Valid Option");
-            System.out.println("Valid Options (Male,Female,Unkown)");
-        }
-    }
-
-    public void changePetRegDate(int id, String reg)
-    {
-        String ogReg = getPetById(id).getRegDate().toString();
-        getPetById(id).setRegDate(reg);
-        System.out.println(ogReg + " Changed To " + getPetById(id).getRegDate());
-    }
-
-    public void availableOwners()
-    {
+    /**
+     * prints all owners registered 
+     */
+    public void availableOwners() {
         System.out.println();
-        for (int i = 0; i < this.owners.size(); i++)
-        {
+        for (int i = 0; i < this.owners.size(); i++) {
             System.out.print("(ID: " + this.owners.get(i).getId() + ", Name: " + this.owners.get(i).getName() + " )\n");
         }
     }
 
-    public void changeOwnerName(int id, String name)
-    {
-        if (checkOwnerId(id))
-        {
+    /**
+     * changes owner name by id
+     * @param id
+     * @param name
+     */
+    public void changeOwnerName(int id, String name) {
+        if (checkOwnerId(id)) {
             System.out.println("\nOwner's Name " + getOwnerByID(id).getName() + " Changed To " + name);
             getOwnerByID(id).setName(name);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public void changeOwnerTelephone(int id, String telephone)
-    {
-        if (checkOwnerId(id))
-        {
+    /**
+     *changes telephone name by id
+     * @param id
+     * @param telephone
+     */
+    public void changeOwnerTelephone(int id, String telephone) {
+        if (checkOwnerId(id)) {
             System.out.println("\nOwner's Telephone " + getOwnerByID(id).getTelephone() + " Changed To " + telephone);
             getOwnerByID(id).setTelephone(telephone);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public void changeOwnerEmail(int id, String email)
-    {
-        if (checkOwnerId(id))
-        {
+    /**
+     * changes owner email by id
+     * @param id
+     * @param email
+     */
+    public void changeOwnerEmail(int id, String email) {
+        if (checkOwnerId(id)) {
             System.out.println("\nOwner's Email " + getOwnerByID(id).getEmail() + " Changed To " + email);
             getOwnerByID(id).setEmail(email);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public void changeOwnerAddress(int id, String address)
-    {
-        if (checkOwnerId(id))
-        {
+    /**
+     * changes owner address by id
+     * @param id
+     * @param address
+     */
+    public void changeOwnerAddress(int id, String address) {
+        if (checkOwnerId(id)) {
             System.out.println("\nOwner's Address " + getOwnerByID(id).getAddress() + " Changed To " + address);
             getOwnerByID(id).setTelephone(address);
-        }
-        else
-        {
+        } else {
             System.out.println(OWNER_NOT_FOUND);
         }
     }
 
-    public void changeOwnerId(int id, int newId)
-    {
-        if (checkOwnerId(id) && !checkOwnerId(newId))
-        {
+    /**
+     * changes owner id by id
+     * @param id
+     * @param newId
+     */
+    public void changeOwnerId(int id, int newId) {
+        if (checkOwnerId(id) && !checkOwnerId(newId)) {
             System.out.println("\nOwner's Id " + getOwnerByID(id).getId() + " Changed To " + newId);
             getOwnerByID(id).setId(newId);
-        }
-        else
-        {
+        } else {
             System.out.println("Could Not Change Id To " + newId);
         }
     }
 
-    public void displayMammals()
-    {
-        for (Owner o : this.owners)
-        {
+    /**
+     * displays all mammals 
+     */
+    public void displayMammals() {
+        for (Owner o : this.owners) {
             List<Pet> pets = o.getPets();
-            for (Pet p : pets)
-            {
-                if (p instanceof Mammal)
-                {
+            for (Pet p : pets) {
+                if (p instanceof Mammal) {
                     p.displayPet();
                 }
             }
         }
     }
 
-    public void displayFish()
-    {
-        for (Owner o : this.owners)
-        {
+    /**
+     * displays all fish 
+     */
+    public void displayFish() {
+        for (Owner o : this.owners) {
             List<Pet> pets = o.getPets();
-            for (Pet p : pets)
-            {
-                if (p instanceof Fish)
-                {
+            for (Pet p : pets) {
+                if (p instanceof Fish) {
                     p.displayPet();
                 }
             }
         }
     }
 
-    public void displayBirds()
-    {
-        for (Owner o : this.owners)
-        {
+    /**
+     * displays all birds 
+     */
+    public void displayBirds() {
+        for (Owner o : this.owners) {
             List<Pet> pets = o.getPets();
-            for (Pet p : pets)
-            {
-                if (p instanceof Bird)
-                {
+            for (Pet p : pets) {
+                if (p instanceof Bird) {
                     p.displayPet();
                 }
             }
         }
     }
 
-    public void petStatistics()
-    {
+    /**
+     * prints the pet statistics of all pets registered 
+     */
+    public void petStatistics() {
         int maxAge = 0;
         String oldestPet = "";
         int minAge = 100;
@@ -1068,38 +945,30 @@ public class Registry
         int ownerPetCount = 0;
         int ownerPetCountMax = 0;
         String mostPetReg = "";
-        for (Owner o : this.owners)
-        {
+        for (Owner o : this.owners) {
             List<Pet> pets = o.getPets();
-            for (Pet p : pets)
-            {
+            for (Pet p : pets) {
                 ownerPetCount++;
                 petCount++;
                 averageAge += p.getAge();
-                if (p.getAge() > maxAge)
-                {
+                if (p.getAge() > maxAge) {
                     maxAge = p.getAge();
                     oldestPet = p.getName();
                 }
-                if (p.getAge() < minAge)
-                {
+                if (p.getAge() < minAge) {
                     minAge = p.getAge();
                     youngestPet = p.getName();
                 }
-                if (p instanceof Mammal)
-                {
+                if (p instanceof Mammal) {
                     mammalCount++;
                 }
-                if (p instanceof Bird)
-                {
+                if (p instanceof Bird) {
                     birdCount++;
                 }
-                if (p instanceof Fish)
-                {
+                if (p instanceof Fish) {
                     fishCount++;
                 }
-                if (ownerPetCount > ownerPetCountMax)
-                {
+                if (ownerPetCount > ownerPetCountMax) {
                     mostPetReg = o.getName();
                 }
             }
@@ -1119,203 +988,243 @@ public class Registry
         System.out.println("Average Age Of All Pets: " + averageAge / petCount);
     }
 
-    public void changePetNeutered(int id, String n)
-    {
-        Mammal m = (Mammal) getPetById(id);
-        System.out.print("\nStatus Changed From " + m.isNeutered() + " To ");
-        m.setNeutered(n);
-        System.out.print(m.isNeutered());
-    }
-
-    public void changePetWaterType(int id, String w)
-    {
-        Fish f = (Fish) getPetById(id);
-        String ogWater = f.getWater().toString();
-        if (f.setWater(w))
-        {
-            System.out.print("\nStatus Changed From " + ogWater + " To " + f.getWater());
-        }
-        else
-        {
-            System.out.println("Invalid Option Could Not Change Water Type");
-        }
-    }
-
-    public void changeWingspan(int id, int ft)
-    {
-        Bird b = (Bird) getPetById(id);
-        int ogWing = b.getWingspan();
-        b.setWingspan(ft);
-        System.out.print("\nWingspan Changed From " + ogWing + "ft To " + b.getWingspan() + "ft");
-    }
-
-    public void changeFly(int id, String fly)
-    {
-        Bird b = (Bird) getPetById(id);
-        boolean ogfly = b.isFly();
-        if (b.setFly(fly))
-        {
-            System.out.println("\nAbility To Fly Changed From " + ogfly + " To " + b.isFly());
-        }
-        else
-        {
-            System.out.println("Invalid Option Could Not Change Fly Ability");
-        }
-    }
-
-    public void displayPetsOrderByAge()
-    {
+    /**
+     * displays pets by age comparator
+     */
+    public void displayPetsOrderByAge() {
         List<Pet> p = new ArrayList<>();
-        for (Owner o : this.owners)
-        {
+        for (Owner o : this.owners) {
             p.addAll(o.getPets());
         }
         Owner.displayAllPetsByAge(p);
     }
 
-    public void displayPetsOrderById()
-    {
+    /**
+     * displays pets by id comparator
+     */
+    public void displayPetsOrderById() {
         List<Pet> p = new ArrayList<>();
-        for (Owner o : this.owners)
-        {
+        for (Owner o : this.owners) {
             p.addAll(o.getPets());
         }
         Owner.displayAllPetsById(p);
     }
 
-    public void displayPetsOrderByGender()
-    {
+    /**
+     * displays pets by gender comparator
+     */
+    public void displayPetsOrderByGender() {
         List<Pet> p = new ArrayList<>();
-        for (Owner o : this.owners)
-        {
+        for (Owner o : this.owners) {
             p.addAll(o.getPets());
         }
         Owner.displayAllPetsByGender(p);
     }
 
-    public void displayPetsOrderByRegDate()
-    {
+    /**
+     * displays pets by registered date comparator
+     */
+    public void displayPetsOrderByRegDate() {
         List<Pet> p = new ArrayList<>();
-        for (Owner o : this.owners)
-        {
+        for (Owner o : this.owners) {
             p.addAll(o.getPets());
         }
         Owner.displayAllPetsByRegDate(p);
     }
 
-    public void displayPetsOrderByRegDate(int ownerId)
-    {
-        for (Owner o : this.owners)
-        {
-            if (o.getId() == ownerId)
-            {
+    /**
+     * displays pets by registered date comparator using owner id
+     * @param ownerId
+     */
+    public void displayPetsOrderByRegDate(int ownerId) {
+        for (Owner o : this.owners) {
+            if (o.getId() == ownerId) {
                 Owner.displayAllPetsByRegDate(o.getPets());
             }
         }
     }
 
-    public void displayPetsOrderByGender(int ownerId)
-    {
-        for (Owner o : this.owners)
-        {
-            if (o.getId() == ownerId)
-            {
+    /**
+     *displays pets by gender comparator using owner id
+     * @param ownerId
+     */
+    public void displayPetsOrderByGender(int ownerId) {
+        for (Owner o : this.owners) {
+            if (o.getId() == ownerId) {
                 Owner.displayAllPetsByGender(o.getPets());
             }
         }
     }
 
-    public void displayPetsOrderById(int ownerId)
-    {
-        for (Owner o : this.owners)
-        {
-            if (o.getId() == ownerId)
-            {
+    /**
+     *displays pets by id comparator using owner id
+     * @param ownerId
+     */
+    public void displayPetsOrderById(int ownerId) {
+        for (Owner o : this.owners) {
+            if (o.getId() == ownerId) {
                 Owner.displayAllPetsById(o.getPets());
             }
         }
     }
 
-    public void displayPetsOrderByAge(int ownerId)
-    {
-        for (Owner o : this.owners)
-        {
-            if (o.getId() == ownerId)
-            {
+    /**
+     *displays pets by age comparator using owner id
+     * @param ownerId
+     */
+    public void displayPetsOrderByAge(int ownerId) {
+        for (Owner o : this.owners) {
+            if (o.getId() == ownerId) {
                 Owner.displayAllPetsByAge(o.getPets());
             }
         }
     }
 
-    public void loadRegistry(String file)
-    {
+    /**
+     * loads registry from object stream
+     * @param file
+     */
+    public void loadRegistry(String file) {
         List<Owner> o = new ArrayList<>();
-        try
-        {
+        try {
             File f = new File(file);
-            if (f.exists())
-            {
+            if (f.exists()) {
                 ObjectInputStream in = new ObjectInputStream(new FileInputStream(f));
                 o = (ArrayList<Owner>) in.readObject();
                 in.close();
                 System.out.println("Registry Loaded In");
             }
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("IOException" + e.getLocalizedMessage());
-        }
-        catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             System.out.println("ClassNotFoundException" + e.getLocalizedMessage());
         }
         this.owners.addAll(o);
         maxId();
     }
 
-    public void storeRegistry(String file)
-    {
+    /**
+     * saves registry from object stream
+     * @param file
+     */
+    public void storeRegistry(String file) {
         File f = new File(file);
-        try
-        {
+        try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(f));
             out.writeObject(this.owners);
             out.close();
             System.out.println("Registry Saved");
-        }
-        catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             System.out.println("Stored File Not Found" + e.getLocalizedMessage());
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             System.out.println("Stored File IOException" + e.getLocalizedMessage());
         }
     }
-    private void maxId()
-    {
-        int pet = 0,owner = 0;
-        for(Owner o: this.owners)
-        {
-            if(o.getId()> owner)
+
+    public void editPet(int id, String variable, String replace) {
+        Pet p = getPetById(id);
+        switch (variable) {
+            case ("name"):
+                p.setName(replace);
+                System.out.println("Changed To " + replace);
+                break;
+            case ("type"):
+                p.setType(replace);
+                System.out.println("Changed To " + replace);
+                break;
+            case ("breed"):
+                p.setBreed(replace);
+                System.out.println("Changed To " + replace);
+                break;
+            case ("colour"):
+                p.setColour(replace);
+                System.out.println("Changed To " + replace);
+                break;
+            case ("gender"):
+                p.setGender(replace);
+                System.out.println("Changed To " + replace);
+                break;
+            case ("regDate"):
+                p.setRegDate(replace);
+                System.out.println("Changed To " + replace);
+                break;
+        }
+        if (p instanceof Mammal) {
+            if (variable.equalsIgnoreCase("neutered")) {
+                Mammal m = (Mammal) p;
+                m.setNeutered(replace);
+                System.out.println("Changed To " + replace);
+            }
+            if (p instanceof Fish) {
+                if (variable.equalsIgnoreCase("water")) {
+                    Fish f = (Fish) p;
+                    f.setWater(replace);
+                    System.out.println("Changed To " + replace);
+                }
+            }
+            if (p instanceof Bird) {
+                if (variable.equalsIgnoreCase("fly")) {
+                    Bird b = (Bird) p;
+                    b.setFly(replace);
+                    System.out.println("Changed To " + replace);
+                }
+            }
+        }
+    }
+
+    public void editPet(int id, String variable, int replace) {
+        Pet p = getPetById(id);
+        if (variable.equalsIgnoreCase("petId")) {
+            if (!checkPetIdDup(id)) {
+            p.setPetID(replace);
+            System.out.println("Changed To " + replace);
+            }
+            else
             {
+                System.out.println(PET_ALREADY_REG);
+            }
+        } else if (variable.equalsIgnoreCase("age")) {
+            p.setAge(replace);
+            System.out.println("Changed To " + replace);
+        } else if (variable.equalsIgnoreCase("ownerId")) 
+        {
+             if (findOwner(replace) != -1){
+            p.setOwnerID(replace);
+            this.owners.get(findOwner(replace)).addPet(p);
+            System.out.println("Changed To " + replace);
+             }
+             else
+             {
+                 System.out.println(OWNER_NOT_FOUND);
+             }
+        } else if (p instanceof Bird) {
+            if (variable.equalsIgnoreCase("wingspan")) {
+                Bird b = (Bird) p;
+                b.setWingspan(replace);
+                System.out.println("Changed To " + replace);
+            }
+        }
+    }
+
+    private void maxId() {
+        int pet = 0, owner = 0;
+        for (Owner o : this.owners) {
+            if (o.getId() > owner) {
                 owner = o.getId();
             }
-            for(Pet p:o.getPets())
-            {
-                if(p.getPetID()>pet)
-                {
+            for (Pet p : o.getPets()) {
+                if (p.getPetID() > pet) {
                     pet = p.getPetID();
                 }
             }
         }
         Owner.setIndex(owner + 1);
         Pet.setIndex(pet + 1);
-        
+
     }
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Registry{" + "owners=" + owners + '}';
     }
 }

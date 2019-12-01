@@ -13,11 +13,18 @@ public class Main
     static Scanner keyboard = new Scanner(System.in);
     static Registry r = new Registry();
 
+    /**
+     * starts the menu 
+     * @param args
+     */
     public static void main(String[] args)
     {
         displayMenu();
     }
 
+    /** 
+     * lists menu options and asks user for selected option
+     */
     public static void displayMenu()
     {
         System.out.println("Aaron Reihill CA2 (OOP)");
@@ -76,6 +83,9 @@ public class Main
 
     }
 
+    /**
+     * add options for pet/ owner
+     */
     public static void addOptions()
     {
         boolean exit = false;
@@ -113,11 +123,14 @@ public class Main
         }
     }
 
+    /**
+     * add owner asks for input and creates a owner
+     */
     public static void addOwner()
     {
         String telephone, address, name, email;
-        System.out.print("\nName: ");
-        name = checkUserInput("Name");
+        System.out.print("\nFirst Name: ");
+        name = checkUserInput("First Name");
         System.out.print("Address: ");
         address = keyboard.next();
         System.out.print("Telephone: ");
@@ -150,6 +163,9 @@ public class Main
         }
     }
 
+    /** 
+     * add pet , gets input and create a pet and adds to owner by id
+     */
     public static void addPetOption()
     {
         boolean back = false;
@@ -233,6 +249,10 @@ public class Main
         }
     }
 
+    /**
+     * adds mammal by getting input and adding mammal object to owner by id
+     * @param id
+     */
     public static void addMammal(int id)
     {
         String type, name, breed, colour, gender;
@@ -240,8 +260,8 @@ public class Main
         boolean neutered = false;
         System.out.print("\nType: ");
         type = checkUserInput("Type");
-        System.out.print("Name: ");
-        name = checkUserInput("Name");
+        System.out.print("First Name: ");
+        name = checkUserInput("First Name");
         System.out.print("Breed: ");
         breed = checkUserInput("Breed");
         System.out.print("Age: ");
@@ -274,14 +294,18 @@ public class Main
         System.out.println("\nPet " + name + " added");
     }
 
+    /**
+     * adds fish by getting input and adding fish object to owner by id
+     * @param id
+     */
     public static void addFish(int id)
     {
         String type, name, breed, colour, gender, water = "";
         int age;
         System.out.print("\nType: ");
         type = checkUserInput("Type");
-        System.out.print("Name: ");
-        name = checkUserInput("Name");
+        System.out.print("First Name: ");
+        name = checkUserInput("First Name");
         System.out.print("Breed: ");
         breed = checkUserInput("Breed");
         System.out.print("Age: ");
@@ -324,6 +348,10 @@ public class Main
         System.out.println("\nPet " + name + " added");
     }
 
+    /**
+     * adds bird by getting input and adding bird object to owner by id
+     * @param id
+     */
     public static void addBird(int id)
     {
         String type, name, breed, colour, gender;
@@ -331,8 +359,8 @@ public class Main
         boolean fly = false;
         System.out.print("\nType: ");
         type = checkUserInput("Type");
-        System.out.print("Name: ");
-        name = checkUserInput("Name");
+        System.out.print("First Name: ");
+        name = checkUserInput("First Name");
         System.out.print("Breed: ");
         breed = checkUserInput("Breed");
         System.out.print("Age: ");
@@ -367,14 +395,18 @@ public class Main
         System.out.println("\nPet " + name + " added");
     }
 
+    /**
+     * adds pet by getting input and adding pet object to owner by id
+     * @param id
+     */
     public static void addPet(int id)
     {
         String type, name, breed, colour, gender;
         int age;
         System.out.print("\nType: ");
         type = checkUserInput("Type");
-        System.out.print("Name: ");
-        name = checkUserInput("Name");
+        System.out.print("First Name: ");
+        name = checkUserInput("First Name");
         System.out.print("Breed: ");
         breed = checkUserInput("Breed");
         System.out.print("Age: ");
@@ -387,6 +419,9 @@ public class Main
         System.out.println("\nPet " + name + " added");
     }
 
+    /**
+     * owner search or pet search options
+     */
     public static void searchOptions()
     {
         boolean back = false;
@@ -424,6 +459,9 @@ public class Main
 
     }
 
+    /**
+     * finds owner by id, name,address,telephone and email and displays send owner
+     */
     public static void ownerSearchOptions()
     {
         String user;
@@ -482,6 +520,9 @@ public class Main
         }
     }
 
+    /**
+     * fins pet by id, name , animal category and type then displays matching pets
+     */
     public static void petSearchOptions()
     {
 
@@ -535,6 +576,9 @@ public class Main
         }
     }
 
+    /**
+     * display options 
+     */
     public static void displayOptions()
     {
         boolean back = false;
@@ -575,6 +619,9 @@ public class Main
         }
     }
 
+    /**
+     * displays pet details registered 
+     */
     public static void displayPets()
     {
         boolean back = false;
@@ -625,6 +672,9 @@ public class Main
         }
     }
 
+    /**
+     * displays owner options 
+     */
     public static void displayOwners()
     {
         boolean back = false;
@@ -662,6 +712,9 @@ public class Main
         }
     }
 
+    /**
+     * displays owners pet by different orders 
+     */
     public static void ownerPetsDisplay()
     {
         r.availableOwners();
@@ -715,6 +768,9 @@ public class Main
         }
     }
 
+    /**
+     * displays animal by input 
+     */
     public static void displayByAnimalCategory()
     {
         boolean back = false;
@@ -757,6 +813,9 @@ public class Main
 
     }
 
+    /**
+     * removes owner or pet by id
+     */
     public static void removeOptions()
     {
         boolean back = false;
@@ -813,6 +872,9 @@ public class Main
         }
     }
 
+    /**
+     * owner and pet edit options
+     */
     public static void editOptions()
     {
         boolean back = false;
@@ -852,96 +914,27 @@ public class Main
         }
     }
 
+    /**
+     * edit owner by input 
+     */
     public static void editOwner()
     {
         r.availableOwners();
         System.out.print("\nEnter Owner ID To Edit: ");
         int id = checkUserInputInt("Enter Owner ID To Edit");
-        int userInput;
-        String user;
-        boolean back = false;
-        while (!back)
+        if (r.checkOwnerId(id))
         {
-
-            System.out.println("\nEdit Owner Options");
-            String[] menuList
-                    =
-                    {
-                        "Back", "Name", "Id", "Telephone", "Address", "Email"
-                    };
-            printMenuItems(menuList);
-            int option = checkUserInputMenu(6);
-            switch (option)
-            {
-                case 0:
-                    System.out.println("Returning...");
-                    back = true;
-                    break;
-                case 1:
-                    System.out.print("\nNew Name: ");
-                    user = checkUserInput("New Name");
-                    r.changeOwnerName(id, user);
-                    break;
-                case 2:
-                    System.out.print("New Id: ");
-                    userInput = checkUserInputInt("New Id");
-                    r.changeOwnerId(id, userInput);
-                    if (r.checkOwnerId(userInput))
-                    {
-                        id = userInput;
-                    }
-                    break;
-                case 3:
-                    System.out.print("\nNew Telephone: ");
-                    user = checkTelephone();
-                    r.changeOwnerTelephone(id, user);
-                    break;
-                case 4:
-                    System.out.print("New Address: ");
-                    user = keyboard.next();
-                    r.changeOwnerAddress(id, user);
-                    break;
-                case 5:
-                    System.out.print("New Email: ");
-                    user = checkEmail();
-                    r.changeOwnerEmail(id, user);
-                    break;
-                case 6:
-                    clearInvalidMenu();
-                    break;
-            }
-            if (option > 6 || option < 0)
-            {
-                System.out.println("Sorry There Is No Option " + option);
-                System.out.println("Please Choose Another Option From The List\n");
-            }
-        }
-    }
-
-    public static void editPet()
-    {
-        String user;
-        int userInput;
-        r.availableOwners();
-        System.out.print("\nEnter Pets Owner ID: ");
-        int id = checkUserInputInt("Enter Pets Owner ID");
-        r.displayOwnersPet(id);
-        System.out.print("\nPet ID: ");
-        id = checkUserInputInt("Pet ID");
-        if (!r.checkPetIdDup(id))
-        {
-            System.out.println("Pet Not Found");
-        }
-        else
-        {
+            int userInput;
+            String user;
             boolean back = false;
             while (!back)
             {
-                System.out.println("\nEdit Pet Options");
+
+                System.out.println("\nEdit Owner Options");
                 String[] menuList
                         =
                         {
-                            "Back", "Animal Category", "Name", "Breed", "Age", "Next Page"
+                            "Back", "Name", "Id", "Telephone", "Address", "Email"
                         };
                 printMenuItems(menuList);
                 int option = checkUserInputMenu(6);
@@ -952,46 +945,33 @@ public class Main
                         back = true;
                         break;
                     case 1:
-                        System.out.println("\nCategory To Change To: ");
-                        user = checkUserInput("Category To Change To");
-                        r.changePetAnimalCategory(id, user);
+                        System.out.print("\nNew First Name: ");
+                        user = checkUserInput("New First Name");
+                        r.changeOwnerName(id, user);
                         break;
                     case 2:
-                        r.displayPetByID(id);
-                        System.out.print("\nChange Name To: ");
-                        user = checkUserInput("Change Name To");
-                        r.changePetName(id, user);
+                        System.out.print("New Id: ");
+                        userInput = checkUserInputInt("New Id");
+                        r.changeOwnerId(id, userInput);
+                        if (r.checkOwnerId(userInput))
+                        {
+                            id = userInput;
+                        }
                         break;
                     case 3:
-                        r.displayPetByID(id);
-                        System.out.print("\nChange Breed To: ");
-                        user = checkUserInput("Change Breed To");
-                        r.changePetBreed(id, user);
+                        System.out.print("\nNew Telephone: ");
+                        user = checkTelephone();
+                        r.changeOwnerTelephone(id, user);
                         break;
                     case 4:
-                        r.displayPetByID(id);
-                        System.out.print("\nChange Age To: ");
-                        userInput = checkUserInputInt("Change Age To");
-                        r.changePetAge(id, userInput);
+                        System.out.print("New Address: ");
+                        user = keyboard.next();
+                        r.changeOwnerAddress(id, user);
                         break;
                     case 5:
-                        Pet p = r.getPetById(id);
-                        if (p instanceof Mammal)
-                        {
-                            editMammal(id);
-                        }
-                        else if (p instanceof Fish)
-                        {
-                            editFish(id);
-                        }
-                        else if (p instanceof Bird)
-                        {
-                            editBird(id);
-                        }
-                        else
-                        {
-                            editPetNextPage(id);
-                        }
+                        System.out.print("New Email: ");
+                        user = checkEmail();
+                        r.changeOwnerEmail(id, user);
                         break;
                     case 6:
                         clearInvalidMenu();
@@ -999,13 +979,119 @@ public class Main
                 }
                 if (option > 6 || option < 0)
                 {
-                    System.out.println("\nSorry There Is No Option " + option);
+                    System.out.println("Sorry There Is No Option " + option);
                     System.out.println("Please Choose Another Option From The List\n");
                 }
             }
         }
+        else
+        {
+            System.out.println("Owner Not Found");
+        }
     }
 
+    /**
+     * edit pet by id's
+     */
+    public static void editPet()
+    {
+        String user;
+        int userInput;
+        r.availableOwners();
+        System.out.print("\nEnter Pets Owner ID: ");
+        int id = checkUserInputInt("Enter Pets Owner ID");
+        if (r.checkOwnerId(id))
+        {
+            r.displayOwnersPet(id);
+            System.out.print("\nPet ID: ");
+            id = checkUserInputInt("Pet ID");
+            if (!r.checkPetIdDup(id))
+            {
+                System.out.println("Pet Not Found");
+            }
+            else
+            {
+                boolean back = false;
+                while (!back)
+                {
+                    System.out.println("\nEdit Pet Options");
+                    String[] menuList
+                            =
+                            {
+                                "Back", "Animal Category", "Name", "Breed", "Age", "Next Page"
+                            };
+                    printMenuItems(menuList);
+                    int option = checkUserInputMenu(6);
+                    switch (option)
+                    {
+                        case 0:
+                            System.out.println("Returning...");
+                            back = true;
+                            break;
+                        case 1:
+                            System.out.println("\nCategory To Change To: ");
+                            user = checkUserInput("Category To Change To");
+                            r.changePetAnimalCategory(id, user);
+                            break;
+                        case 2:
+                            r.displayPetByID(id);
+                            System.out.print("\nChange First Name To: ");
+                            user = checkUserInput("Change First Name To");
+                            r.editPet(id, "name", user);
+                            break;
+                        case 3:
+                            r.displayPetByID(id);
+                            System.out.print("\nChange Breed To: ");
+                            user = checkUserInput("Change Breed To");
+                            r.editPet(id, "breed", user);
+                            break;
+                        case 4:
+                            r.displayPetByID(id);
+                            System.out.print("\nChange Age To: ");
+                            userInput = checkUserInputInt("Change Age To");
+                            r.editPet(id, "age", userInput);
+                            break;
+                        case 5:
+                            Pet p = r.getPetById(id);
+                            if (p instanceof Mammal)
+                            {
+                                editMammal(id);
+                            }
+                            else if (p instanceof Fish)
+                            {
+                                editFish(id);
+                            }
+                            else if (p instanceof Bird)
+                            {
+                                editBird(id);
+                            }
+                            else
+                            {
+                                editPetNextPage(id);
+                            }
+                            break;
+                        case 6:
+                            clearInvalidMenu();
+                            break;
+                    }
+                    if (option > 6 || option < 0)
+                    {
+                        System.out.println("\nSorry There Is No Option " + option);
+                        System.out.println("Please Choose Another Option From The List\n");
+                    }
+                }
+            }
+        }
+        else
+        {
+            System.out.println("Owner Not Found ");
+        }
+    }
+
+    /**
+     * edit pet next page
+     * @param id
+     */
     public static void editPetNextPage(int id)
     {
         String user;
@@ -1027,22 +1113,23 @@ public class Main
                     back = true;
                     break;
                 case 7:
-                    r.displayPetByID(id);
                     System.out.print("\nChange Owner Id To: ");
+                    r.availableOwners();
+                    r.displayPetByID(id);
                     userInput = checkUserInputInt("Change Owner Id To");
-                    r.changePetOwner(id, userInput);
+                    r.editPet(id, "ownerId", userInput);
                     break;
                 case 8:
                     r.displayPetByID(id);
                     System.out.print("\nChange Gender To: ");
                     user = checkUserInput("Change Gender To");
-                    r.changePetGender(id, user);
+                    r.editPet(id, "gender", user);
                     break;
                 case 9:
                     r.displayPetByID(id);
                     System.out.print("\nChange Registered Date To: ");
                     user = keyboard.next();
-                    r.changePetRegDate(id, user);
+                    r.editPet(id, "regDate", user);
                     break;
                 case 10:
                     clearInvalidMenu();
@@ -1056,6 +1143,10 @@ public class Main
         }
     }
 
+    /**
+     * edit pet next page for mammal 
+     * @param id
+     */
     public static void editMammal(int id)
     {
         String user;
@@ -1078,28 +1169,29 @@ public class Main
                     back = true;
                     break;
                 case 7:
+                    r.availableOwners();
                     r.displayPetByID(id);
                     System.out.print("\nChange Owner Id To: ");
                     userInput = checkUserInputInt("Change Owner Id To");
-                    r.changePetOwner(id, userInput);
+                    r.editPet(id, "ownerId", userInput);
                     break;
                 case 8:
                     r.displayPetByID(id);
                     System.out.print("\nChange Gender To: ");
                     user = checkUserInput("Change Gender To");
-                    r.changePetGender(id, user);
+                    r.editPet(id, "gender", user);
                     break;
                 case 9:
                     r.displayPetByID(id);
                     System.out.print("\nChange Registered Date To: ");
                     user = keyboard.next();
-                    r.changePetRegDate(id, user);
+                    r.editPet(id, "regDate", user);
                     break;
                 case 10:
                     r.displayPetByID(id);
                     System.out.print("\nChange Neutered Status To: ");
                     user = checkUserInput("Change Neutered Status To");
-                    r.changePetNeutered(id, user);
+                    r.editPet(id, "neutered", user);
                     break;
                 case 11:
                     clearInvalidMenu();
@@ -1113,6 +1205,10 @@ public class Main
         }
     }
 
+    /**
+     *edit pet next page for fish 
+     * @param id
+     */
     public static void editFish(int id)
     {
         String user;
@@ -1135,28 +1231,29 @@ public class Main
                     back = true;
                     break;
                 case 7:
+                    r.availableOwners();
                     r.displayPetByID(id);
                     System.out.print("\nChange Owner Id To: ");
                     userInput = checkUserInputInt("Change Owner Id To");
-                    r.changePetOwner(id, userInput);
+                    r.editPet(id, "ownerId", userInput);
                     break;
                 case 8:
                     r.displayPetByID(id);
                     System.out.print("\nChange Gender To: ");
                     user = checkUserInput("Change Gender To");
-                    r.changePetGender(id, user);
+                    r.editPet(id, "gender", user);
                     break;
                 case 9:
                     r.displayPetByID(id);
                     System.out.print("\nChange Registered Date To: ");
                     user = keyboard.next();
-                    r.changePetRegDate(id, user);
+                    r.editPet(id, "regDate", user);
                     break;
                 case 10:
                     r.displayPetByID(id);
                     System.out.print("\nChange Water Type To: ");
                     user = keyboard.next();
-                    r.changePetWaterType(id, user);
+                    r.editPet(id, "water", user);
                     break;
                 case 11:
                     clearInvalidMenu();
@@ -1170,6 +1267,10 @@ public class Main
         }
     }
 
+    /**
+     * edit pet next page for bird
+     * @param id
+     */
     public static void editBird(int id)
     {
         String user;
@@ -1193,34 +1294,35 @@ public class Main
                     back = true;
                     break;
                 case 7:
+                    r.availableOwners();
                     r.displayPetByID(id);
                     System.out.print("\nChange Owner Id To: ");
                     userInput = checkUserInputInt("Change Owner Id To");
-                    r.changePetOwner(id, userInput);
+                    r.editPet(id, "ownerId", userInput);
                     break;
                 case 8:
                     r.displayPetByID(id);
                     System.out.print("\nChange Gender To: ");
                     user = checkUserInput("Change Gender To");
-                    r.changePetGender(id, user);
+                    r.editPet(id, "gender", user);
                     break;
                 case 9:
                     r.displayPetByID(id);
                     System.out.print("\nChange Registered Date To: ");
                     user = keyboard.next();
-                    r.changePetRegDate(id, user);
+                    r.editPet(id, "regDate", user);
                     break;
                 case 10:
                     r.displayPetByID(id);
                     System.out.print("\nChange Winspan To: ");
-                    userInput = checkUserInputInt("Change Winspan To");
-                    r.changeWingspan(id, userInput);
+                    userInput = checkUserInputInt("Change Wingspan To");
+                    r.editPet(id, "wingspan", userInput);
                     break;
                 case 11:
                     r.displayPetByID(id);
                     System.out.print("\nAbility To Fly To: ");
                     user = checkUserInput("Ability To Fly To");
-                    r.changeFly(id, user);
+                    r.editPet(id, "fly", user);
                     break;
                 case 12:
                     clearInvalidMenu();
@@ -1234,16 +1336,20 @@ public class Main
         }
     }
 
+    /**
+     * load options either by file or object stream
+     */
     public static void loadOption()
     {
         boolean back = false;
         while (!back)
         {
-            System.out.println("\nLoad Options");
-            String[] menuList =
-            {
-                "Back", "File Stream", "Object Stream"
-            };
+            System.out.println("\nLoad Options(Change File Path/Use Text File To Start Things Off As Exiting Project Will Auto Save To Object Stream)");
+            String[] menuList
+                    =
+                    {
+                        "Back", "File Stream", "Object Stream"
+                    };
             printMenuItems(menuList);
             System.out.print("Select An Option: ");
             int option = checkUserInputMenu(3);
@@ -1385,6 +1491,10 @@ public class Main
         System.out.print("Select An Option: ");
     }
 
+    /**
+     * selects gender using string
+     * @return
+     */
     public static String selectGender()
     {
         String gender = "";

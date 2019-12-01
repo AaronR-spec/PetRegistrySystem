@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package oop19_ca2_aaron_reihill;
 
 /**
  *
- * @author aaron
+ * @author D00222467/Aaron Reihill
  */
 public class Bird extends Pet
 {
@@ -15,20 +11,19 @@ public class Bird extends Pet
     private int wingspan;
     private boolean fly;
 
-    public Bird(String type, String breed, int age, String colour, String regDate, int wingspan, boolean fly)
-    {
-        super(type, breed, age, colour, regDate);
-        this.wingspan = wingspan;
-        this.fly = fly;
-    }
-
-    public Bird(String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
-    {
-        super(type, name, breed, age, colour, gender);
-        this.wingspan = wingspan;
-        this.fly = fly;
-    }
-
+    /**
+     * reads input and calls super constructor bird to make a bird object
+     * @param owner
+     * @param petId
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param wingspan
+     * @param fly
+     */
     public Bird(int owner, int petId, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
     {
         super(owner, petId, type, name, breed, age, colour, gender);
@@ -36,13 +31,18 @@ public class Bird extends Pet
         this.fly = fly;
     }
 
-    public Bird(int owner, String type, String name, String breed, int age, String colour, String gender, String regDate, int wingspan, boolean fly)
-    {
-        super(owner, type, name, breed, age, colour, gender, regDate);
-        this.wingspan = wingspan;
-        this.fly = fly;
-    }
-
+    /**
+     *reads input and calls super constructor bird to make a bird object
+     * @param owner
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param wingspan
+     * @param fly
+     */
     public Bird(int owner, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
     {
         super(owner, type, name, breed, age, colour, gender);
@@ -50,26 +50,47 @@ public class Bird extends Pet
         this.fly = fly;
     }
 
+    /**
+     * gets wingspan
+     * @return wingspan 
+     */
     public int getWingspan()
     {
         return wingspan;
     }
 
+    /**
+     * gets if bird can fly
+     * @return true or false if bird can fly
+     */
     public boolean isFly()
     {
         return fly;
     }
 
+    /**
+     * sets wingspan to input
+     * @param wingspan
+     */
     public void setWingspan(int wingspan)
     {
         this.wingspan = wingspan;
     }
 
+    /**
+     * sets fly to true or false
+     * @param fly
+     */
     public void setFly(boolean fly)
     {
         this.fly = fly;
     }
 
+    /**
+     * takes string in and sets if bird can fly or not
+     * @param fly
+     * @return true or false
+     */
     public boolean setFly(String fly)
     {
         boolean set;
@@ -91,6 +112,9 @@ public class Bird extends Pet
         return set;
     }
 
+    /**
+     * polymorfism override of displayPet
+     */
     @Override
     public void displayPet()
     {

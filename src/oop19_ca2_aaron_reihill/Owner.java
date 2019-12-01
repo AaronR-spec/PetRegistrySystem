@@ -8,7 +8,7 @@ import java.util.Objects;
 
 /**
  *
- * @author D00222467
+ * @author D00222467/Aaron Reihill
  */
 public class Owner implements Serializable
 {
@@ -23,40 +23,19 @@ public class Owner implements Serializable
     private static final String PET_ALREADY_REG = "Pet Already Registered";
     private static final String PET_NOT_FOUND = "Pet Not Found";
 
+    /**
+     * empty constructor
+     */
     public Owner()
     {
     }
 
-    public Owner(String name)
-    {
-        this.name = name;
-        this.id = index++;
-    }
-
-    public Owner(String name, List<Pet> pets)
-    {
-        this.name = name;
-        this.pets = pets;
-        this.id = index++;
-    }
-
-    public Owner(String name, String email, String telephone, String address, List<Pet> pets)
-    {
-        this.name = name;
-        this.email = email;
-        this.telephone = telephone;
-        this.address = address;
-        this.pets = pets;
-        this.id = index++;
-    }
-
-    public Owner(String name, String address)
-    {
-        this.name = name;
-        this.address = address;
-        this.id = index++;
-    }
-
+    /**
+     * owner constructor 
+     * @param name
+     * @param telephone
+     * @param address
+     */
     public Owner(String name, String telephone, String address)
     {
         this.name = name;
@@ -65,6 +44,13 @@ public class Owner implements Serializable
         this.id = index++;
     }
 
+    /**
+     *owner constructor 
+     * @param id
+     * @param name
+     * @param telephone
+     * @param address
+     */
     public Owner(int id, String name, String telephone, String address)
     {
         this.name = name;
@@ -73,6 +59,13 @@ public class Owner implements Serializable
         this.id = id;
     }
 
+    /**
+     *owner constructor 
+     * @param name
+     * @param email
+     * @param telephone
+     * @param address
+     */
     public Owner(String name, String email, String telephone, String address)
     {
         this.name = name;
@@ -83,76 +76,136 @@ public class Owner implements Serializable
         this.address = address;
     }
 
+    /**
+     * returns owner name
+     * @return name
+     */ 
     public String getName()
     {
         return name;
     }
 
+    /**
+     *  gets static index 
+     * @return index
+     */
     public static int getIndex()
     {
         return index;
     }
 
+    /**
+     * gets owner id
+     * @return id 
+     */
     public int getId()
     {
         return id;
     }
 
+    /**
+     * gets owner email
+     * @return email
+     */
     public String getEmail()
     {
         return email;
     }
 
+    /**
+     * gets owners pets list
+     * @return pets
+     */
     public List<Pet> getPets()
     {
         return pets;
     }
 
+    /**
+     * gets owners phone number
+     * @return telephone
+     */
     public String getTelephone()
     {
         return telephone;
     }
 
+    /**
+     * gets address
+     * @return address
+     */
     public String getAddress()
     {
         return address;
     }
 
+    /**
+     * sets name
+     * @param name
+     */
     public void setName(String name)
     {
         this.name = name;
     }
 
+    /**
+     * sets static index
+     * @param index
+     */
     public static void setIndex(int index)
     {
         Owner.index = index;
     }
 
+    /**
+     * sets owner id
+     * @param id
+     */
     public void setId(int id)
     {
         this.id = id;
     }
 
+    /**
+     * sets owner email
+     * @param email
+     */
     public void setEmail(String email)
     {
         this.email = email;
     }
 
+    /**
+     * sets owner telephone
+     * @param telephone
+     */
     public void setTelephone(String telephone)
     {
         this.telephone = telephone;
     }
 
+    /**
+     *sets owner pets
+     * @param pets
+     */
     public void setPets(List<Pet> pets)
     {
         this.pets = pets;
     }
 
+    /**
+     *sets owner address
+     * @param address
+     */
     public void setAddress(String address)
     {
         this.address = address;
     }
 
+    /**
+     * adds pet object to owners pet list
+     * @param p
+     */
     public void addPet(Pet p)
     {
         if (CheckPetDup(p.getType(), p.getName(), p.getBreed(), p.getAge(), p.getColour(), p.getGenderString()) == -1)
@@ -165,6 +218,15 @@ public class Owner implements Serializable
         }
     }
 
+    /**
+     * adds pet object to owners pet list
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     */
     public void addPet(String type, String name, String breed, int age, String colour, String gender)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
@@ -177,6 +239,16 @@ public class Owner implements Serializable
         }
     }
 
+    /**
+     * adds pet object to owners pet list
+     * @param petId
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     */
     public void addPet(int petId, String type, String name, String breed, int age, String colour, String gender)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
@@ -189,6 +261,17 @@ public class Owner implements Serializable
         }
     }
 
+    /**
+     * adds pet object to owners pet list
+     * @param id
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param water
+     */
     public void addPet(int id, String type, String name, String breed, int age, String colour, String gender, String water)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
@@ -201,6 +284,16 @@ public class Owner implements Serializable
         }
     }
 
+    /** 
+     * adds pet object to owners pet list
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param water
+     */
     public void addPet(String type, String name, String breed, int age, String colour, String gender, String water)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
@@ -213,30 +306,16 @@ public class Owner implements Serializable
         }
     }
 
-    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, String water)
-    {
-        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
-        {
-            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender, regDate, water));
-        }
-        else
-        {
-            System.out.println(PET_ALREADY_REG);
-        }
-    }
-
-    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, boolean neutered)
-    {
-        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
-        {
-            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender, regDate, neutered));
-        }
-        else
-        {
-            System.out.println(PET_ALREADY_REG);
-        }
-    }
-
+    /**
+     *adds pet object to owners pet list
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param neutered
+     */
     public void addPet(String type, String name, String breed, int age, String colour, String gender, boolean neutered)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
@@ -249,6 +328,17 @@ public class Owner implements Serializable
         }
     }
 
+    /**
+     *adds pet object to owners pet list
+     * @param petId
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param neutered
+     */
     public void addPet(int petId, String type, String name, String breed, int age, String colour, String gender, boolean neutered)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
@@ -261,18 +351,17 @@ public class Owner implements Serializable
         }
     }
 
-    public void addPet(String type, String name, String breed, int age, String colour, String gender, String regDate, int wingspan, boolean fly)
-    {
-        if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
-        {
-            this.pets.add(Pet.createPet(this.id, type, name, breed, age, colour, gender, regDate, wingspan, fly));
-        }
-        else
-        {
-            System.out.println(PET_ALREADY_REG);
-        }
-    }
-
+    /**
+     *adds pet object to owners pet list
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param wingspan
+     * @param fly
+     */
     public void addPet(String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
@@ -285,6 +374,18 @@ public class Owner implements Serializable
         }
     }
 
+    /**
+     *adds pet object to owners pet list
+     * @param petId
+     * @param type
+     * @param name
+     * @param breed
+     * @param age
+     * @param colour
+     * @param gender
+     * @param wingspan
+     * @param fly
+     */
     public void addPet(int petId, String type, String name, String breed, int age, String colour, String gender, int wingspan, boolean fly)
     {
         if (CheckPetDup(type, name, breed, age, colour, gender) == -1)
@@ -297,6 +398,10 @@ public class Owner implements Serializable
         }
     }
 
+    /**
+     * removes pet object form owners list
+     * @param p
+     */
     public void removePet(Pet p)
     {
         int petIndex = findPet(p.getPetID());
@@ -310,6 +415,10 @@ public class Owner implements Serializable
         }
     }
 
+    /**
+     * removes pet object form owners list
+     * @param id
+     */
     public void removePet(int id)
     {
         int petIndex = findPet(id);
@@ -323,41 +432,73 @@ public class Owner implements Serializable
         }
     }
 
+    /**
+     * clears all owners pets
+     */
     public void removeAllPet()
     {
         this.pets.clear();
     }
 
+    /**
+     * displays all of owners pets 
+     */
     public void displayAllPets()
     {
         Pet.displayAllPets(this.pets);
 
     }
+
+    /**
+     *  displays all of owners pets by age
+     * @param p
+     */
     public static void displayAllPetsByAge(List<Pet> p)
     {
         PetAgeComparator ageComparator = new PetAgeComparator();
         Collections.sort(p, ageComparator);
         Pet.displayAllPets(p);
     }
+
+    /**
+     * displays all of owners pets by id
+     * @param p
+     */
     public static void displayAllPetsById(List<Pet> p)
     {
         PetIdComparator idComparator = new PetIdComparator();
         Collections.sort(p, idComparator);
         Pet.displayAllPets(p);
     }
+
+    /**
+     * displays all of owners pets by gender
+     * @param p
+     */
     public static void displayAllPetsByGender(List<Pet> p)
     {
         PetGenderComparator genderComparator = new PetGenderComparator();
         Collections.sort(p, genderComparator);
         Pet.displayAllPets(p);
     }
-    public static void displayAllPetsByRegDate(List<Pet> p )
+
+    /**
+     * displays all of owners pets by registered date
+     * @param p
+     */
+    public static void displayAllPetsByRegDate(List<Pet> p)
     {
         PetRegDateComparator regComparator = new PetRegDateComparator();
         Collections.sort(p, regComparator);
         Collections.reverse(p);
         Pet.displayAllPets(p);
     }
+
+    /**
+     * returns pet index position in owners pet list
+     * @param id
+     * @return pets position in list
+     */
     public int findPet(int id)
     {
         int petIndex = -1;

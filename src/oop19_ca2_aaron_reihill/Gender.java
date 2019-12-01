@@ -1,15 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package oop19_ca2_aaron_reihill;
 
 /**
  *
- * @author aaron
+ * @author D00222467/Aaron Reihill
  */
 public enum Gender
 {
-    MALE, FEMALE, UNKOWN
+
+    /**
+     * male state
+     */
+    MALE,
+
+    /**
+     *female state
+     */
+    FEMALE,
+
+    /**
+     *unknown state
+     */
+    UNKNOWN
 }
