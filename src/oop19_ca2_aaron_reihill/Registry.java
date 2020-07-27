@@ -869,7 +869,7 @@ public class Registry
         {
             Scanner sc = new Scanner(new File(file));
 
-            sc.useDelimiter("[/\r\n]+");
+            sc.useDelimiter("[/\r\n]");
             String name, telephone, address, email;
             int id;
             while (sc.hasNext())
@@ -1364,6 +1364,7 @@ public class Registry
                 Owner.displayAllPetsByAge(o.getPets());
             }
         }
+        //Static binding in Java occurs during compile time while dynamic binding occurs during runtime
     }
 
     /**
@@ -1546,7 +1547,7 @@ public class Registry
         Pet.setIndex(pet + 1);
 
     }
-
+    
     @Override
     public String toString()
     {

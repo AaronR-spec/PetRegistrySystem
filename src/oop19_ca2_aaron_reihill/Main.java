@@ -43,7 +43,7 @@ public class Main
             switch (option)
             {
                 case 0:
-                    r.storeRegistry("E:\\Year 2\\Sem 1\\OOJava\\oop19_ca2_aaron_reihill\\src\\oop19_ca2_aaron_reihill\\store.dat");
+                    r.storeRegistry("store.dat");
                     System.out.println("GoodBye...");
                     exit = true;
                     break;
